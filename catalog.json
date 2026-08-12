@@ -1,0 +1,15 @@
+{
+  "name": "baslide01",
+  "surfaces": [
+    {"id": "gallery", "path": "/"},
+    {"id": "sidera-demo", "path": "/demos/sidera/"},
+    {"id": "sidera-original", "path": "/files (10)/"},
+    {"id": "zengcheng", "path": "/decks/zengcheng-taizikeng/deck.html"},
+    {"id": "sidera-layouts", "path": "/templates/sidera/layouts.html"},
+    {"id": "template-magazine", "path": "/templates/magazine/template.html"},
+    {"id": "template-swiss", "path": "/templates/swiss/template-swiss.html"},
+    {"id": "template-tableai", "path": "/templates/tableai/template-tableai.html"},
+    {"id": "template-atelier", "path": "/templates/atelier/template-atelier.html"},
+    {"id": "guizang-index", "path": "/skills/guizang-ppt/INDEX.html"}
+  ]
+}

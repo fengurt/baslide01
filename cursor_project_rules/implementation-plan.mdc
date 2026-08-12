@@ -1,0 +1,22 @@
+---
+description: Feature work log for baslide01. Complete steps in order and mark Done.
+alwaysApply: false
+---
+
+# Implementation plan
+
+## Step 1 · Repo layout and Sidera demo
+Done
+Moved the original `files (10)` drop into `demos/sidera/` with the documented `src/` and `docs/` layout, and restored `src/` inside the original folder so those script tags resolve.
+
+## Step 2 · Install slide skills and templates
+Done
+Vendored guizang-ppt (Styles A/B/C) into `skills/guizang-ppt/` and `~/.cursor/skills/guizang-ppt`, added Atelier + Sidera 8-layout templates, and wrote `skills/sidera-html-slides`.
+
+## Step 3 · Local serve and existing decks
+Done
+Added `scripts/dev-up.sh` (ports 8765 / 8080 / 5173) and a gallery hub that links the Sidera demo, Zengcheng deck, and templates.
+
+## Step 4 · GitHub
+Done
+Initialized git, created `fengurt/baslide01`, and pushed `main`.

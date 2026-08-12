@@ -1,0 +1,25 @@
+---
+description: Baslide01 is an HTML slide generation workshop. Keep demos, skills, and templates in their documented folders.
+alwaysApply: true
+---
+
+# Baslide01
+
+Static HTML slide workshop. No build step. Serve the repo root and open `/`.
+
+## Surfaces
+
+- `demos/sidera/` — 侍天 Sidera report prototype (D3, 58 analysis points, 8 page layouts, 1440×810 tokens)
+- `skills/guizang-ppt/` — Guizang HTML PPT skill (Style A magazine / B Swiss / C Table AI)
+- `skills/sidera-html-slides/` — Sidera-token HTML slide skill
+- `templates/` — blank generators: magazine, swiss, tableai, atelier, sidera
+- `decks/` — finished decks that must keep working
+
+## Rules
+
+- Generate slides as single-file HTML (or HTML + `images/` + local `motion.min.js`).
+- Do not invent CSS class names that are not in the chosen template.
+- Sidera canvas is 1440×810. Tokens: `--surface:#F4F0E7` `--paper:#FFFDF8` `--charcoal:#17130D` `--gold:#76551F` `--gold-hi:#D4A862` `--seal:#8C3228`.
+- Table AI Style C tokens: `--ink:#0A1626` `--accent:#A88B52` `--paper:#FFFFFF`.
+- Local run: `bash scripts/dev-up.sh`. Documented ports: 8765, then 8080, then 5173.
+- Original drop in `files (10)/` is provenance; the working copy is `demos/sidera/`.
