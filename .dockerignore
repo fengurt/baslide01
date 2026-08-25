@@ -1,0 +1,13 @@
+**
+!requirements.txt
+!platform_app/
+!platform_app/**
+!scripts/
+!scripts/project-*.sh
+!scripts/project-inventory.py
+!decks.json
+!decks/
+!decks/tiansight-landing-v2/
+!decks/tiansight-landing-v2/**
+!decks/tiansight-corporate/
+!decks/tiansight-corporate/**

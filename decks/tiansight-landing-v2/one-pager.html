@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="侍天 TIANSIGHT 为餐饮经营者提供可追溯、可执行、可复盘的 AI 决策支持。">
+<title>侍天 TIANSIGHT · 拍板之前，问侍天</title>
+<link rel="stylesheet" href="assets/phosphor-regular.css">
+<style>
+  *{box-sizing:border-box}
+  :root{--surface:#F4F0E7;--paper:#FFFDF8;--primary:#EFE6D2;--ink:#17130D;--gold:#76551F;--gold-hi:#D4A862;--muted:#706758;--seal:#8C3228;--line:rgba(23,19,13,.18);--shadow:0 28px 80px rgba(23,19,13,.15);--radius:2px}
+  html{scroll-behavior:smooth;background:#D8D1C4}
+  body{margin:0;color:var(--ink);background:#D8D1C4;font-family:"Noto Serif SC","Source Han Serif SC","Songti SC","STSong",serif}
+  button,a{font:inherit}a{color:inherit}img{display:block;max-width:100%;height:auto}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .landing{width:min(100%,1440px);margin:0 auto;overflow:hidden;background:var(--surface)}
+  .wrap{width:min(1180px,calc(100% - 96px));margin:0 auto}
+  .nav{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:14px;text-decoration:none;white-space:nowrap}.brand img{width:42px;height:42px;object-fit:contain;background:var(--primary);padding:5px}.brand strong{display:block;color:var(--gold);font-size:18px;letter-spacing:.14em}
+  .nav-links{display:flex;align-items:center;gap:30px;font-size:13px;font-weight:700}.nav-links a{text-decoration:none}.nav-links a:hover,.nav-links a:focus-visible{color:var(--gold)}
+  .hero{min-height:calc(100dvh - 76px);display:grid;grid-template-columns:.92fr 1.08fr;gap:72px;align-items:center;padding:62px 0 86px}
+  .eyebrow{margin:0 0 22px;color:var(--gold);font-size:12px;font-weight:800;letter-spacing:.24em}h1,h2,h3,p{margin-top:0}h1,h2,h3{text-wrap:balance}p,li,figcaption{text-wrap:pretty}
+  h1{max-width:650px;margin-bottom:26px;font-size:clamp(48px,5.5vw,78px);font-weight:600;line-height:1.08;letter-spacing:-.045em}
+  .hero-copy>p{max-width:560px;margin-bottom:0;color:var(--muted);font-size:18px;line-height:1.85}.export-button:focus-visible,a:focus-visible{outline:2px solid var(--seal);outline-offset:4px}
+  .hero-visual{position:relative;min-height:610px;perspective:1500px}.hero-visual::before{content:"";position:absolute;inset:18% 8% 8% 14%;background:var(--primary)}.hero-sheet{position:absolute;top:8%;left:50%;width:min(360px,57%);border:1px solid rgba(23,19,13,.12);box-shadow:0 30px 70px rgba(23,19,13,.16);transform-origin:center bottom;transition:transform .35s ease}.hero-sheet:nth-child(1){z-index:3;transform:translateX(-50%) rotateY(-7deg) rotateZ(-1deg)}.hero-sheet:nth-child(2){z-index:2;transform:translateX(-89%) translateY(12%) rotateY(18deg) rotateZ(-8deg)}.hero-sheet:nth-child(3){z-index:1;transform:translateX(-11%) translateY(16%) rotateY(-18deg) rotateZ(9deg)}.hero-visual:hover .hero-sheet:nth-child(1){transform:translateX(-50%) translateY(-2%) rotateY(-4deg)}.hero-visual:hover .hero-sheet:nth-child(2){transform:translateX(-96%) translateY(10%) rotateY(13deg) rotateZ(-9deg)}.hero-visual:hover .hero-sheet:nth-child(3){transform:translateX(-4%) translateY(13%) rotateY(-13deg) rotateZ(10deg)}.hero-visual::after{content:"经营诊断 / 行动清单 / 复盘验证";position:absolute;right:0;bottom:3%;z-index:4;padding:14px 18px;border-left:3px solid var(--seal);background:var(--paper);color:var(--gold);font-size:12px;font-weight:800;letter-spacing:.08em;box-shadow:0 12px 36px rgba(23,19,13,.11)}
+  section{padding:120px 0;border-top:1px solid var(--line)}.section-head{max-width:760px;margin-bottom:64px}.section-head h2{margin-bottom:18px;font-size:clamp(36px,4.2vw,60px);font-weight:600;line-height:1.18;letter-spacing:-.035em}.section-head p{max-width:620px;margin-bottom:0;color:var(--muted);font-size:17px;line-height:1.8}
+  .values{display:grid;grid-template-columns:1.08fr .82fr 1.1fr;gap:0;border-top:1px solid var(--gold)}.value{min-height:270px;padding:36px 40px 10px 0}.value+.value{padding-left:40px;border-left:1px solid var(--line)}.value-icon{display:block;margin-bottom:24px;color:var(--gold);font-size:34px;line-height:1}.value h3{margin-bottom:16px;color:var(--gold);font-size:32px;font-weight:600}.value p{max-width:280px;margin-bottom:0;color:var(--muted);font-size:16px;line-height:1.75}
+  .loop{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;align-items:start;padding-top:12px}.loop::before{content:"";position:absolute;left:8%;right:8%;top:50px;height:1px;background:var(--gold)}.loop-item{position:relative;text-align:center}.loop-mark{position:relative;z-index:1;width:78px;height:78px;margin:0 auto 22px;display:grid;place-items:center;border:1px solid var(--gold);border-radius:50%;background:var(--surface);color:var(--gold)}.loop-mark i{font-size:30px}.loop-question{display:block;margin-bottom:8px;color:var(--seal);font-size:12px;font-weight:800}.loop-item h3{margin-bottom:10px;font-size:20px}.loop-item p{max-width:185px;margin:0 auto;color:var(--muted);font-size:13px;line-height:1.65}.loop-return{width:max-content;max-width:100%;margin:52px auto 0;padding:15px 22px;border-left:3px solid var(--seal);background:var(--paper);color:var(--muted);font-size:14px}
+  .reports-layout{display:grid;grid-template-columns:.72fr 1.28fr;gap:76px;align-items:center}.reports-copy h2{margin-bottom:22px;font-size:clamp(36px,4vw,58px);font-weight:600;line-height:1.18;letter-spacing:-.035em}.reports-copy p{margin-bottom:26px;color:var(--muted);font-size:16px;line-height:1.8}.reports-copy ul{margin:0;padding:0;list-style:none}.reports-copy li{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);font-size:14px;font-weight:700}.reports-copy li i{color:var(--gold);font-size:19px}.report-visual{min-width:0}
+  .insight-stage{position:relative;min-height:540px;perspective:1800px;perspective-origin:50% 44%}.insight-stage::before{content:"";position:absolute;inset:8% 0 9%;border:1px solid rgba(118,85,31,.22);background:linear-gradient(180deg,rgba(239,230,210,.38),rgba(255,253,248,.72))}.insight-scene{position:absolute;inset:5% 1% 10%;transform-style:preserve-3d}.insight-scene::after{content:"";position:absolute;left:0;right:0;top:76%;height:14px;border-top:1px solid var(--gold);background:linear-gradient(180deg,rgba(118,85,31,.13),rgba(118,85,31,0));box-shadow:0 18px 30px rgba(23,19,13,.1);transform:rotateX(72deg);transform-origin:top}.insight-card{position:absolute;top:14%;width:52%;margin:0;padding:7px 7px 10px;border:1px solid rgba(23,19,13,.2);background:var(--paper);box-shadow:0 22px 46px rgba(23,19,13,.14);transform-style:preserve-3d;backface-visibility:hidden;transition:transform .32s ease,box-shadow .32s ease}.insight-media{position:relative;display:block;overflow:hidden;aspect-ratio:16/9}.insight-card img{width:100%;height:100%;object-fit:cover}.insight-card figcaption{padding:8px 6px 0;color:var(--gold);font-size:10px;font-weight:800;letter-spacing:.08em}.insight-card--penetration{z-index:1;left:0;transform:translateZ(0) rotateY(4deg)}.insight-card--market{z-index:2;left:12%;transform:translateZ(18px) rotateY(3deg)}.insight-card--repurchase{z-index:3;left:24%;transform:translateZ(36px) rotateY(2deg)}.insight-card--profit{z-index:4;left:36%;transform:translateZ(54px) rotateY(1deg)}.insight-card--price{z-index:5;left:48%;transform:translateZ(72px)}.insight-card--price img{object-position:23% 52%}.insight-edition{position:absolute;right:1%;bottom:1%;z-index:6;display:grid;grid-template-columns:auto auto;gap:2px 12px;align-items:end;padding:11px 14px;border-left:3px solid var(--seal);background:var(--paper);box-shadow:0 14px 32px rgba(23,19,13,.12);transform:translateZ(92px)}.insight-edition span,.insight-edition small{grid-column:1;color:var(--muted);font-size:9px;font-weight:800;letter-spacing:.15em}.insight-edition strong{grid-row:1 / span 2;grid-column:2;color:var(--gold);font-size:28px;line-height:1}.report-outputs{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--gold)}.report-outputs span{padding:16px 8px;color:var(--gold);font-size:11px;font-weight:800;text-align:center}.report-outputs span+span{border-left:1px solid var(--line)}
+  @media(hover:hover) and (prefers-reduced-motion:no-preference){.insight-card:hover{z-index:7;transform:translateZ(110px) translateY(-10px);box-shadow:0 34px 68px rgba(23,19,13,.22)}}
+  .service-list{max-width:1040px;margin-left:auto}.service-row{display:grid;grid-template-columns:74px 1fr 1.2fr auto;gap:28px;align-items:center;padding:32px 0;border-bottom:1px solid var(--line)}.service-row:first-child{border-top:1px solid var(--gold)}.service-index{width:58px;height:58px;display:grid;place-items:center;border:1px solid var(--gold);color:var(--gold)}.service-index i{font-size:27px}.service-type{display:block;margin-bottom:7px;color:var(--gold);font-size:11px;font-weight:800;letter-spacing:.12em}.service-row h3{margin:0;font-size:25px;font-weight:600}.service-row p{margin:0;color:var(--muted);font-size:14px;line-height:1.65}.service-row p b{display:block;margin-bottom:5px;color:var(--ink);font-size:12px}.service-row strong{color:var(--seal);font-size:14px;white-space:nowrap}
+  .foundation{display:block}.metrics h2{max-width:900px;margin-bottom:20px;font-size:clamp(34px,3.4vw,50px);font-weight:600;line-height:1.22;letter-spacing:-.025em}.metrics-intro{max-width:720px;margin-bottom:54px;color:var(--muted);font-size:16px;line-height:1.8}.metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--gold)}.metric{min-height:250px;padding:30px 30px 10px 0}.metric+.metric{padding-left:30px;border-left:1px solid var(--line)}.metric-icon{display:grid;width:54px;height:54px;place-items:center;margin-bottom:24px;border:1px solid var(--gold);color:var(--gold)}.metric-icon i{font-size:26px}.metric h3{margin-bottom:12px;font-size:22px}.metric p{margin:0;color:var(--muted);font-size:14px;line-height:1.7}
+  .clients .section-head{margin-bottom:48px}.client-register{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--gold);border-bottom:1px solid var(--line)}.client-name{min-height:154px;display:grid;place-items:center;padding:22px;text-align:center}.client-name+.client-name{border-left:1px solid var(--line)}.client-name:nth-child(5){border-left:0}.client-name:nth-child(n+5){border-top:1px solid var(--line)}.client-name img{width:100%;max-width:126px;max-height:92px;object-fit:contain}.client-name--wide img{max-width:160px;max-height:66px}.client-name--pending{align-content:center;gap:9px;color:var(--muted);font-size:13px;font-weight:700;line-height:1.55}.client-name--pending i{color:var(--gold);font-size:28px}.endorsements{display:grid;grid-template-columns:.78fr 1.22fr;gap:72px;align-items:start;margin-top:74px}.endorsements h3{max-width:430px;margin-bottom:0;font-size:clamp(30px,3vw,44px);font-weight:600;line-height:1.25}.quote-list{display:grid;gap:28px}.quote-list blockquote{position:relative;margin:0;padding:0 0 0 42px}.quote-list blockquote::before{content:"\201C";position:absolute;left:0;top:-10px;color:var(--gold);font-size:48px;line-height:1}.quote-list p{margin:0 0 10px;font-size:20px;line-height:1.55}.quote-list cite{color:var(--muted);font-size:12px;font-style:normal}
+  .cta{padding-bottom:140px}.cta-panel{display:grid;grid-template-columns:minmax(0,1fr) 154px;column-gap:52px;align-items:end;padding:72px 80px;border:1px solid var(--gold);background:var(--primary)}.cta-panel h2{grid-column:1 / -1;max-width:880px;margin-bottom:28px;font-size:clamp(42px,5vw,70px);font-weight:600;line-height:1.12;letter-spacing:-.04em}.cta-panel h2 span{display:block;white-space:nowrap}.cta-panel p{grid-column:1;max-width:640px;margin-bottom:0;color:var(--muted);font-size:16px;line-height:1.8}.cta-qr{grid-column:2;grid-row:2;margin:0;text-align:center}.cta-qr img{width:132px;height:auto;margin:0 auto 10px;padding:7px;background:var(--paper)}.cta-qr figcaption{color:var(--ink);font-size:11px;font-weight:700}
+  footer{display:flex;justify-content:space-between;gap:24px;padding:28px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:11px;letter-spacing:.08em}
+  .export-button{position:fixed;right:24px;bottom:24px;z-index:10;min-height:48px;padding:0 20px;border:1px solid var(--ink);border-radius:var(--radius);background:var(--ink);color:var(--paper);font-size:13px;font-weight:800;box-shadow:0 12px 30px rgba(23,19,13,.22);cursor:pointer}.export-button:hover{background:#2A241B}.export-button:disabled{cursor:wait;opacity:.72}.is-exporting .landing{width:1440px;max-width:none}.is-exporting .hero{min-height:824px}
+  @media(max-width:900px){.wrap{width:min(100% - 40px,680px)}.nav-links{display:none}.hero{min-height:auto;grid-template-columns:1fr;gap:34px;padding:58px 0 82px}h1{font-size:clamp(44px,12vw,66px)}.hero-visual{min-height:520px}section{padding:86px 0}.values{grid-template-columns:1fr}.value{min-height:auto;padding:30px 0}.value+.value{padding-left:0;border-left:0;border-top:1px solid var(--line)}.loop{grid-template-columns:1fr;gap:28px}.loop::before{top:38px;bottom:38px;left:38px;right:auto;width:1px;height:auto}.loop-item{display:grid;grid-template-columns:78px 1fr;gap:24px;text-align:left}.loop-mark{margin:0}.loop-item p{max-width:none;margin:0}.loop-return{margin-top:34px}.reports-layout{grid-template-columns:1fr;gap:44px}.insight-stage{min-height:500px}.service-list{margin-left:0}.service-row{grid-template-columns:58px 1fr;gap:14px 20px}.service-index{grid-row:1 / span 2}.service-row p,.service-row strong{grid-column:2}.metric{padding-right:18px}.metric+.metric{padding-left:18px}.metric h3{font-size:18px}.metric p{font-size:12px}.endorsements{grid-template-columns:1fr;gap:38px}.cta-panel{grid-template-columns:minmax(0,1fr) 136px;column-gap:28px;padding:50px 34px}.cta-qr img{width:120px}}
+  @media(max-width:560px){.wrap{width:calc(100% - 32px)}.nav{height:68px}.brand img{width:38px;height:38px}.hero{padding-top:48px}.hero-copy>p{font-size:16px}.hero-visual{min-height:430px}.hero-sheet{width:58%;top:9%}.hero-visual::after{right:0;bottom:0;font-size:10px}.section-head{margin-bottom:44px}.insight-stage{min-height:340px}.insight-card{top:12%;width:60%;padding:4px 4px 7px}.insight-card figcaption{padding-top:5px;font-size:8px}.insight-card--penetration{left:0;transform:translateZ(0) rotateY(3deg)}.insight-card--market{left:10%;transform:translateZ(12px) rotateY(2deg)}.insight-card--repurchase{left:20%;transform:translateZ(24px) rotateY(1deg)}.insight-card--profit{left:30%;transform:translateZ(36px)}.insight-card--price{left:40%;transform:translateZ(48px)}.insight-edition{right:0;bottom:0;padding:8px 9px}.insight-edition span,.insight-edition small{font-size:7px}.insight-edition strong{font-size:20px}.report-outputs{grid-template-columns:repeat(2,1fr)}.report-outputs span{padding:11px 5px;font-size:9px}.report-outputs span:nth-child(odd){border-left:0}.report-outputs span:nth-child(n+3){border-top:1px solid var(--line)}.metric-grid{grid-template-columns:repeat(2,1fr)}.metric{min-height:220px;padding-right:16px}.metric+.metric{padding-left:16px}.metric:nth-child(3){border-left:0}.metric:nth-child(n+3){border-top:1px solid var(--line)}.metric h3{font-size:19px}.client-register{grid-template-columns:repeat(2,1fr)}.client-name{min-height:84px;font-size:14px}.client-name:nth-child(odd){border-left:0}.client-name:nth-child(n+3){border-top:1px solid var(--line)}.quote-list p{font-size:17px}.cta-panel{display:block;padding:42px 24px}.cta-panel h2{font-size:clamp(34px,10vw,42px)}.cta-panel h2 span{white-space:normal}.cta-panel p{margin-bottom:28px}.cta-qr{width:132px;text-align:center}footer{display:block;line-height:1.8}footer span{display:block}footer span+span{margin-top:8px}.export-button{right:16px;bottom:16px}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-sheet,.insight-card,.insight-scene{transition:none}}
+</style>
+<style>#hq-scene{position:absolute;inset:0;width:100%;height:100%;display:block;border-radius:10px;background:#14161C}.insight-stage{overflow:hidden;border-radius:10px}</style>
+</head>
+<body>
+<main class="landing" id="landing">
+  <header class="wrap nav">
+    <a class="brand" href="#top" aria-label="TIANSIGHT 首页"><img src="assets/tiansight-logo.png" alt="侍天标志" width="42" height="42"><strong>TIANSIGHT</strong></a>
+    <nav class="nav-links" aria-label="页面导航"><a href="#reports">报告样张</a><a href="#loop">经营五问</a><a href="#services">服务与价格</a></nav>
+  </header>
+
+  <div class="wrap hero" id="top">
+    <div class="hero-copy"><h1>拍板之前，问侍天</h1><p>交 6 个月经营数据，7 日内取得经营诊断：增长在何处、利润失于何处、先改哪三件、由谁执行、以何验收。</p><p>2 万元 / 5 门店 + 6 个月数据，内测特惠——先验证我们，再决定要不要合作。</p></div>
+<div class="hero-visual" aria-label="方法论地图、分析维度与决策维度三张侍天报告以立体形式展示"><img class="hero-sheet" src="assets/report-decision-dimensions.png" alt="侍天决策维度报告页面" width="1054" height="1492"><img class="hero-sheet" src="assets/report-analysis-dimensions.png" alt="侍天分析维度报告页面" width="1054" height="1492"><img class="hero-sheet" src="assets/report-sample-1.png" alt="侍天方法论地图报告页面" width="720" height="1018"></div>
+  </div>
+
+<section class="clients"><div class="wrap"><div class="section-head"><h2>这些品牌，已与侍天同行</h2><p>从单店到连锁，从新派淮扬菜到老字号。</p></div><div class="client-register" aria-label="侍天部分合作伙伴"><div class="client-name"><img src="assets/partners/subangyuan.jpg" alt="苏帮袁" width="640" height="640"></div><div class="client-name"><img src="assets/partners/qingshuiting.jpg" alt="清水亭" width="640" height="640"></div><div class="client-name client-name--wide"><img src="assets/partners/3699.png" alt="3699 河鲜小馆" width="530" height="145"></div><div class="client-name"><img src="assets/partners/youyuanjingmeng.jpg" alt="游园京梦" width="435" height="435"></div><div class="client-name"><img src="assets/partners/wuyutai.jpg" alt="吴裕泰" width="500" height="500"></div><div class="client-name"><img src="assets/partners/yun1980.jpg" alt="韵 1980 新派淮扬菜" width="640" height="640"></div><div class="client-name"><img src="assets/partners/chaofa.jpg" alt="潮发潮汕牛肉" width="640" height="640"></div><div class="client-name client-name--pending"><i class="ph ph-handshake" aria-hidden="true"></i><span>更多伙伴<br>正在签约中</span></div></div><div class="endorsements"><div><h3>伙伴背书</h3></div><div class="quote-list"><blockquote><p>“太高效，也太透彻了。以前一个月才能完成的深度分析和落地辅导，现在一周就能完成，还能持续跟进。”</p><cite>餐饮老板 王总</cite></blockquote><blockquote><p>“报告分析得非常细，最关键的是结论有证据，不靠猜，也没有 AI 幻觉。大力推荐。”</p><cite>餐饮老板 张总</cite></blockquote><blockquote><p>“不仅把问题讲清楚，还把优先级、责任人和验收指标都排好了，团队拿到就能执行。”</p><cite>餐饮老板 李总</cite></blockquote></div></div></div></section>
+
+<section id="reports"><div class="wrap reports-layout"><div class="reports-copy"><p class="eyebrow">以样张为证</p><h2>一份报告，就是一份决策文件</h2><p>每条结论具备四要素：证据、利润影响、执行动作、验收指标。可计算的，量化到位；不可计算的，如实说明。</p><ul><li><i class="ph ph-trend-up" aria-hidden="true"></i>哪里最值得先改</li><li><i class="ph ph-user-focus" aria-hidden="true"></i>谁负责，何时完成</li><li><i class="ph ph-check-circle" aria-hidden="true"></i>用什么指标验收</li></ul></div><div class="report-visual"><div class="insight-stage" aria-label="侍天经营指挥中枢三维看板"><canvas id="hq-scene" aria-label="侍天经营指挥中枢：三维空间中的战略看板陈列"></canvas><div class="insight-edition" aria-label="第二大脑 V4.2 经营洞察图谱"><span>真实报告</span><strong>V4.2</strong><small>经营洞察图谱</small></div></div><div class="report-outputs"><span>菜品结构</span><span>商圈供需</span><span>复购四象限</span><span>利润敏感性</span><span>价格带洞察</span></div></div></div></section>
+
+<section id="loop"><div class="wrap"><div class="section-head"><h2>经营五问</h2><p>逐店逐月，循环推演——五问既明，百事可决。</p></div><div class="loop" role="img" aria-label="从看清经营、发现增长点、判断优先级、形成行动单到验证结果的经营决策闭环"><div class="loop-item"><div class="loop-mark"><i class="ph ph-database" aria-hidden="true"></i><span class="sr-only">现状</span></div><div><span class="loop-question">现在怎样</span><h3>看清经营</h3><p>汇总收银、平台、会员与门店数据</p></div></div><div class="loop-item"><div class="loop-mark"><i class="ph ph-funnel" aria-hidden="true"></i><span class="sr-only">机会</span></div><div><span class="loop-question">机会在哪</span><h3>发现增长点</h3><p>增长机会与利润流失，一并定位</p></div></div><div class="loop-item"><div class="loop-mark"><i class="ph ph-target" aria-hidden="true"></i><span class="sr-only">优先</span></div><div><span class="loop-question">先做什么</span><h3>判断顺序</h3><p>按利润影响与可执行性排序</p></div></div><div class="loop-item"><div class="loop-mark"><i class="ph ph-list-checks" aria-hidden="true"></i><span class="sr-only">行动</span></div><div><span class="loop-question">谁来负责</span><h3>形成清单</h3><p>明确动作、责任人、期限与指标</p></div></div><div class="loop-item"><div class="loop-mark"><i class="ph ph-check-circle" aria-hidden="true"></i><span class="sr-only">结果</span></div><div><span class="loop-question">是否有效</span><h3>验证结果</h3><p>对比执行前后变化，继续校正</p></div></div></div><div class="loop-return">经验证有效的做法沉淀为门店标准，不随人员流动而流失。</div></div></section>
+
+  <section><div class="wrap"><div class="section-head"><p class="eyebrow">把复杂留给侍天</p><h2>经营者只需专注三件事</h2><p>看清问题，改对动作，让有效经验沉淀为门店资产。</p></div><div class="values"><article class="value"><span class="value-icon"><i class="ph ph-chart-line-up" aria-hidden="true"></i></span><h3>看得清</h3><p>收银、平台、会员数据合成一本账，每个数字有出处，异常能追溯。</p></article><article class="value"><span class="value-icon"><i class="ph ph-list-checks" aria-hidden="true"></i></span><h3>改得动</h3><p>问题进入行动清单，明确优先级、责任人和验证周期。</p></article><article class="value"><span class="value-icon"><i class="ph ph-arrows-clockwise" aria-hidden="true"></i></span><h3>留得下</h3><p>有效的做法沉淀成店里的标准动作，换店长、开新店都不走样。</p></article></div></div></section>
+
+<section id="services"><div class="wrap"><div class="section-head"><h2>层层递进，天天有数</h2><p>第一层出洞察，第二层建大脑，第三层立 AI 原生品牌——X 为增值专项，每一层皆可挂接。</p></div><div class="service-list"><article class="service-row"><span class="service-index"><i class="ph ph-magnifying-glass" aria-hidden="true"></i></span><div><span class="service-type">第一层 · 经营洞察</span><h3>先把问题看清</h3></div><p><b>老板得到</b>增长机会、利润流失点与 90 天行动清单</p><strong>2 万元 / 5 门店 + 6 个月数据 · 内测特惠</strong></article><article class="service-row"><span class="service-index"><i class="ph ph-play-circle" aria-hidden="true"></i></span><div><span class="service-type">第二层 · 第二大脑共建</span><h3>让系统昼夜守望经营</h3></div><p><b>老板得到</b>打通收银、平台与会员数据：自动对账、异常预警、决策看板</p><strong>深度共建</strong></article><article class="service-row"><span class="service-index"><i class="ph ph-bell-ringing" aria-hidden="true"></i></span><div><span class="service-type">第三层 · AI 原生品牌</span><h3>从零构建一个新品牌</h3></div><p><b>老板得到</b>品牌、组织、数字底座一体化设计，数据资产归品牌自己</p><strong>从 0 共创</strong></article><article class="service-row"><span class="service-index"><i class="ph ph-brain" aria-hidden="true"></i></span><div><span class="service-type">X · 增值专项</span><h3>随层挂接，按需启用</h3></div><p><b>老板得到</b>企业大学、菜单结构、运营托管、成本优化、专家顾问团支持</p><strong>按需挂接</strong></article></div></div></section>
+
+<section><div class="wrap foundation"><div class="metrics"><h2>增长与止损，皆可量化</h2><p class="metrics-intro">看见机会，守住利润，把资源投向最值得做的事，让有效经验在每家门店持续复制。</p><div class="metric-grid"><article class="metric"><span class="metric-icon"><i class="ph ph-trend-up" aria-hidden="true"></i></span><h3>看见增长机会</h3><p>找到值得加码的门店、菜品、时段与渠道。</p></article><article class="metric"><span class="metric-icon"><i class="ph ph-shield-check" aria-hidden="true"></i></span><h3>守住利润空间</h3><p>减少折扣、损耗、人效与结构性浪费。</p></article><article class="metric"><span class="metric-icon"><i class="ph ph-target" aria-hidden="true"></i></span><h3>聚焦关键投入</h3><p>把时间和预算集中到最有影响的经营动作。</p></article><article class="metric"><span class="metric-icon"><i class="ph ph-repeat" aria-hidden="true"></i></span><h3>复制有效经验</h3><p>一家店验证有效的做法，直接搬到其他店用。</p></article></div></div></div></section>
+
+  <section class="cta"><div class="wrap cta-panel"><h2><span>携手侍天，</span><span>持续领先。</span></h2><p>以最近 6 个月经营数据为始，7 日内交付经营诊断：增长机会、利润流失、行动次序、验收标准。内测特惠——续与不续，以结果为凭。</p><figure class="cta-qr"><img src="assets/tiansight-wechat-qr.png" alt="微信扫码联系侍天" width="768" height="764"><figcaption>微信扫码联系侍天</figcaption></figure></div></section>
+  <footer class="wrap"><span>侍天 TIANSIGHT / Table AI Alliance</span><span>Second Brain / Decision System / Restaurant Growth</span><span>Time is money. With TIANSIGHT, lose neither.</span></footer>
+</main>
+
+<button class="export-button" id="export-image" type="button">导出长图 PNG</button>
+<script src="assets/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  var stage=document.querySelector('.insight-stage');var cv=document.getElementById('hq-scene');
+  if(!stage||!cv||typeof THREE==='undefined')return;
+  var INK=0x14161C,GOLD=0xB08A3E,VERM=0xC0392B,IVORY=0xF4F0E7;
+  var renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true,preserveDrawingBuffer:true});
+  renderer.setClearColor(INK,1);
+  var scene=new THREE.Scene();scene.fog=new THREE.Fog(INK,13,30);
+  var camera=new THREE.PerspectiveCamera(42,1,0.1,100);camera.position.set(0,0.7,10.5);
+  scene.add(new THREE.AmbientLight(0xffffff,0.95));
+  var glow=new THREE.PointLight(GOLD,0.6,40);glow.position.set(0,4,6);scene.add(glow);
+  var grid=new THREE.GridHelper(70,46,GOLD,0x262a33);grid.position.y=-3.1;
+  grid.material.transparent=true;grid.material.opacity=0.5;scene.add(grid);
+  function labelTexture(title,sub){var c=document.createElement('canvas');c.width=640;c.height=400;var g=c.getContext('2d');
+    g.fillStyle='#1B1E26';g.fillRect(0,0,640,400);g.strokeStyle='#B08A3E';g.lineWidth=6;g.strokeRect(14,14,612,372);
+    g.fillStyle='#B08A3E';g.font='600 30px "Noto Serif SC",serif';g.textAlign='center';g.fillText(title,320,190);
+    g.fillStyle='#8b8f99';g.font='400 22px "Noto Serif SC",serif';g.fillText(sub||'TIANSIGHT',320,240);
+    var t=new THREE.CanvasTexture(c);return t;}
+  function headerSprite(){var c=document.createElement('canvas');c.width=1024;c.height=128;var g=c.getContext('2d');
+    g.fillStyle='rgba(0,0,0,0)';g.fillRect(0,0,1024,128);
+    g.fillStyle='#B08A3E';g.font='600 54px "Noto Serif SC",serif';g.textAlign='center';g.fillText('侍 天 · 经 营 指 挥 中 枢',512,66);
+    g.fillStyle='#8b8f99';g.font='400 26px serif';g.fillText('TIANSIGHT COMMAND',512,108);
+    var t=new THREE.CanvasTexture(c);var m=new THREE.SpriteMaterial({map:t,transparent:true});
+    var sp=new THREE.Sprite(m);sp.scale.set(7.4,0.92,1);sp.position.set(0,3.25,-1.4);return sp;}
+  scene.add(headerSprite());
+  var boards=[],loader=new THREE.TextureLoader();
+  var defs=[
+    {src:'assets/insight-profit-matrix.png',cap:'利润敏感性矩阵',x:0,z:-1.2,w:4.6,h:2.6,ry:0},
+    {src:'assets/chaofa-menu-structure.png',cap:'菜品结构矩阵',x:-3.9,z:0.2,w:3.4,h:2.3,ry:0.42},
+    {src:'assets/chaofa-market-supply.png',cap:'商圈供需洞察',x:3.9,z:0.2,w:3.4,h:1.65,ry:-0.42},
+    {src:'assets/chaofa-repurchase-quadrant.png',cap:'复购分层四象限',x:-2.35,z:1.9,w:2.7,h:1.5,ry:0.30,y:-1.35},
+    {src:'assets/insight-price-band.png',cap:'价格带断层洞察',x:2.35,z:1.9,w:2.7,h:1.55,ry:-0.30,y:-1.35}
+  ];
+  defs.forEach(function(d,i){
+    var group=new THREE.Group();
+    var mat=new THREE.MeshBasicMaterial({map:labelTexture(d.cap,'加载中')});
+    var mesh=new THREE.Mesh(new THREE.PlaneGeometry(d.w,d.h),mat);group.add(mesh);
+    var frame=new THREE.Mesh(new THREE.PlaneGeometry(d.w+0.12,d.h+0.12),new THREE.MeshBasicMaterial({color:GOLD}));
+    frame.position.z=-0.012;group.add(frame);
+    var back=new THREE.Mesh(new THREE.PlaneGeometry(d.w+0.34,d.h+0.34),new THREE.MeshBasicMaterial({color:0x0e1015}));
+    back.position.z=-0.025;group.add(back);
+    loader.load(d.src,function(t){t.minFilter=THREE.LinearFilter;mat.map=t;mat.needsUpdate=true;},undefined,
+      function(){mat.map=labelTexture(d.cap,'REPORT PANEL');mat.needsUpdate=true;});
+    group.position.set(d.x,(d.y||0)+0.35,d.z);group.rotation.y=d.ry;group.userData={ph:i*1.7,y:(d.y||0)+0.35};
+    scene.add(group);boards.push(group);
+  });
+  var mark=new THREE.Mesh(new THREE.CircleGeometry(0.16,32),new THREE.MeshBasicMaterial({color:VERM}));
+  mark.rotation.x=-Math.PI/2;mark.position.set(0,-3.05,3.2);scene.add(mark);
+  var mx=0,my=0;stage.addEventListener('pointermove',function(e){var r=stage.getBoundingClientRect();
+    mx=((e.clientX-r.left)/r.width-0.5)*2;my=((e.clientY-r.top)/r.height-0.5)*2;});
+  function size(){var w=stage.clientWidth,h=stage.clientHeight;renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+    renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+  size();if(window.ResizeObserver){new ResizeObserver(size).observe(stage);}else{window.addEventListener('resize',size);}
+  var t0=performance.now();
+  function frame(now){var t=(now-t0)/1000;
+    boards.forEach(function(b){b.position.y=b.userData.y+Math.sin(t*0.8+b.userData.ph)*0.06;});
+    camera.position.x=Math.sin(t*0.10)*0.7+mx*0.55;camera.position.y=0.7+Math.sin(t*0.06)*0.15-my*0.3;
+    camera.lookAt(0,0.15,0);renderer.render(scene,camera);requestAnimationFrame(frame);}
+  requestAnimationFrame(frame);
+  window.__hqRenderOnce=function(){size();renderer.render(scene,camera);};
+})();
+</script>
+<script>
+  const exportButton=document.querySelector('#export-image');
+  exportButton.addEventListener('click',async()=>{
+    const original=exportButton.textContent;
+    exportButton.disabled=true;exportButton.textContent='生成中...';document.documentElement.classList.add('is-exporting');
+    try{
+      await document.fonts.ready;await Promise.all([...document.images].map(image=>image.complete?Promise.resolve():new Promise(resolve=>{image.addEventListener('load',resolve,{once:true});image.addEventListener('error',resolve,{once:true})})));await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+      const landing=document.querySelector('#landing');
+      if(window.__hqRenderOnce){window.__hqRenderOnce();}
+      const canvas=await html2canvas(landing,{backgroundColor:'#F4F0E7',height:landing.scrollHeight,logging:false,scale:1.5,useCORS:true,width:1440,windowHeight:900,windowWidth:1440});
+      const link=document.createElement('a');link.download='TIANSIGHT-landing-page.png';link.href=canvas.toDataURL('image/png');link.click();
+    }catch(error){console.error(error);exportButton.textContent='导出失败，请重试';await new Promise(resolve=>setTimeout(resolve,1800))}
+    finally{document.documentElement.classList.remove('is-exporting');exportButton.disabled=false;exportButton.textContent=original}
+  });
+</script>
+</body>
+</html>

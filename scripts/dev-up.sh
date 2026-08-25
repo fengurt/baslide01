@@ -61,7 +61,7 @@ cd "$ROOT"
 echo "serving $ROOT on http://${HOST}:${PORT}/"
 python3 "$ROOT/scripts/serve.py" --host "$HOST" --port "$PORT" --dir "$ROOT" &
 SERVER_PID=$!
-sleep 0.6
+sleep 1.2
 if ! lsof -nP -iTCP:"$PORT" -sTCP:LISTEN >/dev/null 2>&1; then
   echo "server failed to bind port $PORT" >&2
   wait "$SERVER_PID" || true
@@ -74,7 +74,18 @@ if command -v open >/dev/null 2>&1; then
   open "$URL"
 fi
 echo "gallery     $URL"
-echo "sidera      ${URL}demos/sidera/"
-echo "zengcheng   ${URL}decks/zengcheng-taizikeng/deck.html"
-echo "layouts     ${URL}templates/sidera/layouts.html"
+echo "preview     ${URL}preview/"
+echo "TIANSIGHT      ${URL}demos/TIANSIGHT/"
+echo "decks       ${URL}decks/"
+echo "D01         ${URL}decks/zengcheng-taizikeng/deck.html"
+echo "D02         ${URL}decks/premium-ppt/presentation.html"
+echo "D03         ${URL}decks/stone-briefing/"
+echo "D03.1       ${URL}decks/stone-briefing/presentation.html"
+echo "D03.2       ${URL}decks/stone-briefing/html-v1.html"
+echo "D04         ${URL}decks/stone-roadmap/presentation.html"
+echo "D05         ${URL}decks/stone-dossier/presentation.html"
+echo "D06         ${URL}decks/qingshuiting/presentation.html"
+echo "TIANSIGHT-v2   ${URL}templates/TIANSIGHT/gallery.html"
+echo "layouts     ${URL}templates/TIANSIGHT/layouts.html"
+echo "audit       ${URL}audit/?run=1"
 wait "$SERVER_PID"

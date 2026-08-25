@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>韵1980 扬州市集 · 小酒馆模型 · 补充册 S2</title>
+<style>
+:root{
+  --zhu:#C0322B;--zhu-deep:#8E1F1B;--zhu-pale:#F0D9D4;
+  --hop:#7A8B3C;      /* 酒花绿 —— 珠江啤酒厂 */
+  --amber:#C8862B;    /* 麦汁琥珀 */
+  --tong:#B07D3A;--qing:#2F4B45;
+  --paper:#F3EEE5;--paper-2:#E8E0D2;--kiln:#1C1917;
+  --ink:#2B2523;--ink-2:#6B605A;--line:#D8CDBB;
+  --serif:"Songti SC","Noto Serif SC","Source Han Serif SC",STSong,SimSun,serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:#2A2522}
+body{font-family:var(--sans);color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.deck{display:flex;flex-direction:column;align-items:center;gap:26px;padding:26px 0 60px}
+.slide{position:relative;width:1280px;height:720px;flex:0 0 auto;overflow:hidden;background:var(--paper);box-shadow:0 10px 40px rgba(0,0,0,.45)}
+.rail{position:absolute;left:0;top:0;bottom:0;width:52px;background:var(--zhu);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:22px 0 20px;z-index:5}
+.rail.h{background:var(--hop)}
+.rail .vt{writing-mode:vertical-rl;font-family:var(--serif);font-size:14px;letter-spacing:.42em;opacity:.94}
+.rail .no{font-family:var(--serif);font-size:22px;font-weight:700;line-height:1;border:1.5px solid rgba(255,255,255,.75);padding:7px 5px}
+.rail .brand{writing-mode:vertical-rl;font-family:var(--serif);font-size:11px;letter-spacing:.3em;opacity:.62}
+.body{position:absolute;left:52px;right:0;top:0;bottom:0;padding:38px 50px 32px}
+.eyebrow{font-size:11.5px;letter-spacing:.34em;color:var(--zhu);font-weight:600;margin-bottom:9px}
+.eyebrow.h{color:var(--hop)}
+h2{font-family:var(--serif);font-size:37px;font-weight:700;line-height:1.12;color:var(--kiln)}
+h2 .sub{display:block;font-family:var(--sans);font-size:13.5px;font-weight:400;letter-spacing:.05em;color:var(--ink-2);margin-top:9px}
+.rule{height:2px;background:linear-gradient(90deg,var(--zhu) 0 92px,var(--line) 92px 100%);margin:15px 0 20px}
+.rule.h{background:linear-gradient(90deg,var(--hop) 0 92px,var(--line) 92px 100%)}
+.tags{display:flex;gap:15px;flex-wrap:wrap}
+.tag{position:relative;background:#fff;border:1px solid var(--line);padding:15px 15px 13px;min-width:145px;flex:1;box-shadow:2px 3px 0 rgba(192,50,43,.10)}
+.tag::before{content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);width:9px;height:9px;border-radius:50%;background:var(--paper-2);border:1px solid var(--line)}
+.tag .k{display:block;font-family:var(--serif);font-size:32px;font-weight:700;color:var(--zhu);line-height:1;margin-top:13px;font-variant-numeric:tabular-nums}
+.tag .k small{font-size:14px;font-weight:400;color:var(--ink-2);margin-left:3px}
+.tag .l{display:block;font-size:11.5px;color:var(--ink-2);margin-top:8px;line-height:1.5}
+.tag.hop .k{color:var(--hop)}
+.tag.dark{background:var(--kiln);border-color:var(--kiln)}
+.tag.dark .k{color:#E8B04B}.tag.dark .l{color:#A79C93}
+.tag.dark::before{background:#3A322C;border-color:#4A413A}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+.g75{display:grid;grid-template-columns:7fr 5fr;gap:26px}
+.g57{display:grid;grid-template-columns:5fr 7fr;gap:26px}
+.card{background:#fff;border:1px solid var(--line);padding:16px 18px}
+.card h4{font-family:var(--serif);font-size:16.5px;color:var(--kiln);margin-bottom:9px;padding-bottom:7px;border-bottom:1px solid var(--line)}
+.card p,.card li{font-size:12.4px;line-height:1.72;color:var(--ink)}
+.card ul{padding-left:16px}.card li{margin-bottom:5px}
+.hl{color:var(--zhu);font-weight:700}
+.hh{color:var(--hop);font-weight:700}
+.dim{color:var(--ink-2)}
+.chip{display:inline-block;background:var(--zhu);color:#fff;font-size:10.5px;padding:2px 8px;margin-right:6px;vertical-align:2px}
+.chip.h{background:var(--hop)}.chip.k{background:var(--kiln)}.chip.a{background:var(--amber)}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{background:var(--kiln);color:#EDE5D8;font-weight:500;text-align:left;padding:7px 9px;font-size:11px;letter-spacing:.05em}
+td{padding:6px 9px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+tr:nth-child(even) td{background:rgba(255,255,255,.55)}
+td.n{text-align:right}
+.win{color:var(--zhu);font-weight:700}
+.wh{color:var(--hop);font-weight:700}
+.warn{color:var(--tong);font-weight:700}
+.bars{display:flex;flex-direction:column;gap:6px}
+.bar{display:grid;grid-template-columns:118px 1fr 62px;align-items:center;gap:10px;font-size:11.4px}
+.bar .lb{color:var(--ink-2);text-align:right}
+.bar .tr{background:var(--paper-2);height:16px;position:relative}
+.bar .fl{height:100%;background:var(--qing)}
+.bar .fl.z{background:var(--zhu)}.bar .fl.h{background:var(--hop)}
+.bar .fl.a{background:var(--amber)}.bar .fl.g{background:#B9AE9C}
+.bar .vl{font-variant-numeric:tabular-nums;color:var(--kiln);font-weight:600}
+.foot{position:absolute;left:52px;right:0;bottom:0;padding:0 50px 13px;display:flex;justify-content:space-between;font-size:10px;color:var(--ink-2);letter-spacing:.05em}
+.slide.dark{background:var(--kiln)}
+.slide.dark h2,.slide.dark .card h4{color:var(--paper)}
+.slide.dark .card{background:#262120;border-color:#3B3330}
+.slide.dark .card p,.slide.dark .card li{color:#D6CCC2}
+.slide.dark .rule{background:linear-gradient(90deg,var(--hop) 0 92px,#3B3330 92px 100%)}
+.slide.dark td{border-bottom-color:#3B3330;color:#D6CCC2}
+.slide.dark tr:nth-child(even) td{background:rgba(255,255,255,.03)}
+.slide.dark .bar .tr{background:#332C29}
+.slide.dark .bar .vl{color:#EDE5D8}
+.slide.dark .foot{color:#6E635C}
+.slide.dark h2 .sub{color:#9B8F86}
+.slide.dark .dim{color:#8E837B}
+.cover{background:var(--kiln);overflow:hidden}
+.cover .seal{position:absolute;right:62px;top:62px;width:136px;height:136px;background:var(--hop);display:flex;align-items:center;justify-content:center;transform:rotate(-4deg)}
+.cover .seal span{writing-mode:vertical-rl;font-family:var(--serif);font-size:26px;color:#fff;letter-spacing:.14em;font-weight:700}
+.cover .glow{position:absolute;left:-140px;bottom:-240px;width:660px;height:660px;border-radius:50%;background:radial-gradient(circle,rgba(122,139,60,.30) 0%,rgba(122,139,60,0) 68%)}
+.cover .glow2{position:absolute;right:120px;bottom:-180px;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,rgba(192,50,43,.26) 0%,rgba(192,50,43,0) 70%)}
+.cover .stripes{position:absolute;bottom:0;height:8px;width:100%;background:repeating-linear-gradient(90deg,var(--hop) 0 40px,var(--zhu) 40px 80px)}
+.flip{display:grid;grid-template-columns:1fr 34px 1fr;gap:12px;align-items:center;margin-bottom:9px;font-size:12px}
+.flip .from{background:#EDE6DA;border-left:3px solid #B9AE9C;padding:9px 12px}
+.flip .to{background:#fff;border-left:3px solid var(--zhu);padding:9px 12px}
+.flip .ar{text-align:center;color:var(--zhu);font-size:17px}
+@page{size:1280px 720px;margin:0}
+@media print{
+  html,body{background:#fff}
+  .deck{gap:0;padding:0;display:block}
+  .slide{box-shadow:none;page-break-after:always;break-after:page}
+  .slide:last-child{page-break-after:auto}
+  .nav{display:none!important}
+}
+.nav{position:fixed;right:16px;bottom:16px;z-index:99;background:var(--hop);color:#fff;font-size:12px;padding:9px 15px;letter-spacing:.1em;box-shadow:0 4px 16px rgba(0,0,0,.4)}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- 01 封面 -->
+<section class="slide cover">
+  <div class="glow"></div><div class="glow2"></div>
+  <div class="seal"><span>小酒馆</span></div>
+  <div style="position:absolute;left:86px;top:140px;right:280px">
+    <div style="font-size:12px;letter-spacing:.4em;color:var(--amber);margin-bottom:24px">补 充 册 S2 · 模 型 修 正</div>
+    <h2 style="font-size:62px;color:#F3EEE5;line-height:1.14">韵1980 · 扬州市集<br><span style="color:var(--hop)">是一间小酒馆</span></h2>
+    <div style="width:96px;height:3px;background:var(--zhu);margin:28px 0 22px"></div>
+    <p style="font-size:15px;line-height:2;color:#B3A79D;max-width:660px">
+      S1 虽已补录菜单，但仍按「正餐 ＋ 附属夜宵」口径建模，场景属性识别不足。<br>
+      进一步校准后，其更接近<span style="color:#E8B04B">中式小酒馆</span>——酒水构成核心收入，菜品承担佐酒与收口功能，
+      而门店就开在<span style="color:#E8B04B">珠江啤酒厂</span>里。<br>
+      本册重推六件事：竞争集、客单、菜单、酒单、空间、时段。
+    </p>
+  </div>
+  <div style="position:absolute;left:86px;bottom:64px;display:flex;gap:40px;font-size:11.5px;color:#7E736B;letter-spacing:.1em">
+    <div>菜单 · 110 支（含夜宵 27 支）</div><div>供给 · 500m 内 85 家</div><div>原点 · 珠江琶醍啤酒文化创意艺术区</div>
+  </div>
+  <div class="stripes"></div>
+</section>
+
+<!-- 02 模型修正 -->
+<section class="slide">
+  <div class="rail"><div class="vt">修 正</div><div class="no">02</div><div class="brand">小酒馆</div></div>
+  <div class="body">
+    <div class="eyebrow">MODEL SHIFT · 模型口径调整与结论校准</div>
+    <h2>「小酒馆」对应一套不同的经营模型<span class="sub">模型口径调整后，需要区分应校准的结论与仍然成立的判断</span></h2>
+    <div class="rule"></div>
+    <div class="grid2">
+      <div>
+        <div style="font-size:11.5px;letter-spacing:.16em;color:var(--zhu);margin-bottom:10px;font-weight:600">▎ 需要重新校准的六项</div>
+        <div class="flip"><div class="from"><b>客单靠加菜</b><br><span class="dim">S1：2 人桌 110 元，靠推蒸菜补</span></div><div class="ar">→</div><div class="to"><b>客单靠酒</b><br><span class="dim">2 人标准局 161 元，酒占 35%</span></div></div>
+        <div class="flip"><div class="from"><b>21 家酒吧是流量来源</b><br><span class="dim">S1：承接酒吧散场客流</span></div><div class="ar">→</div><div class="to"><b>21 家酒吧也是竞争主体</b><br><span class="dim">同时段、同场景、同一客群</span></div></div>
+        <div class="flip"><div class="from"><b>晚市 17:00–21:30 是主战场</b></div><div class="ar">→</div><div class="to"><b>17:00–01:00 是一段连续的场</b><br><span class="dim">午市降级，深夜升级</span></div></div>
+        <div class="flip"><div class="from"><b>菜单结构补 111–140 元</b></div><div class="ar">→</div><div class="to"><b>菜单结构应精简大菜、增加小食</b><br><span class="dim">98 元以上热炒占用较多资源</span></div></div>
+        <div class="flip"><div class="from"><b>综合毛利 63.0%</b></div><div class="ar">→</div><div class="to"><b>含酒后 65.1–65.5%</b><br><span class="dim">酒水毛利 68–72% 提升整体</span></div></div>
+        <div class="flip"><div class="from"><b>4 间包房是资产</b></div><div class="ar">→</div><div class="to"><b>吧台与江景酒位才是资产</b><br><span class="dim">10㎡ 吧台太小，55㎡ 室外空着</span></div></div>
+      </div>
+      <div>
+        <div style="font-size:11.5px;letter-spacing:.16em;color:var(--qing);margin-bottom:10px;font-weight:600">▎ 依然成立的六条</div>
+        <div class="card" style="margin-bottom:11px"><h4>① 品类空白是真的</h4><p>商场内 / 100m / 300m / 500m 四层，江浙淮扬门店<b class="hl">全部为 0</b>；17 家中餐正餐清一色粤／潮／顺德。<span class="hh">在小酒馆口径下这个空白更大——中式小酒馆同样是 0 家。</span></p></div>
+        <div class="card" style="margin-bottom:11px"><h4>② 价格带效率排序不变</h4><p>500m 内 111–140 元效率 2.17、141–180 元 1.79、181+ 仅 0.46。<span class="hh">小酒馆模型把客单推到 141–180 这一档，仍在高效率区，且与场内八强完全同框。</span></p></div>
+        <div class="card" style="margin-bottom:11px"><h4>③ 红色视觉锤成立</h4><p>22 支、20.6%、全价格带覆盖、毛利与全单持平。<span class="hh">在酒馆的暗光环境里，朱红的辨识度比在明亮餐厅更强。</span></p></div>
+        <div class="card" style="margin-bottom:11px"><h4>④ 拆单依然是第一优先</h4><p>只是拆法变了：不是「正餐／午市／夜宵」，而是<b class="hh">「酒单 ／ 佐酒单 ／ 收口单」</b>。</p></div>
+        <div class="card"><h4>⑤ 市场容错率低 ⑥ 三项主要风险不变</h4><p>85 家中有 4 家暂停营业。评分低于 4.3、定位模糊、价格与价值不匹配仍是主要风险，<span class="warn">其中定位模糊对小酒馆影响更为显著</span>。</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>S2 修正基于「小酒馆模型」这一前提</span><span>02 / 14</span></div>
+</section>
+
+<!-- 03 为什么这份菜单本来就是小酒馆 -->
+<section class="slide">
+  <div class="rail"><div class="vt">证 据</div><div class="no">03</div><div class="brand">小酒馆</div></div>
+  <div class="body">
+    <div class="eyebrow">EVIDENCE · 菜单结构证据</div>
+    <h2>按佐酒属性重新归类 107 支菜品<span class="sub">强佐酒菜占 40.2%，菜单结构已具备小酒馆基础，但酒单尚未纳入</span></h2>
+    <div class="rule"></div>
+    <div class="g75">
+      <div>
+        <table>
+          <tr><th>重排后的类别</th><th class="n">支数</th><th class="n">占比</th><th class="n">均价</th><th class="n">中位</th><th class="n">毛利</th><th>在酒馆里的角色</th></tr>
+          <tr style="background:var(--zhu-pale)"><td><b>冷碟糟卤</b></td><td class="n"><b>24</b></td><td class="n"><b>22.4%</b></td><td class="n">51</td><td class="n">48</td><td class="n">64.0%</td><td><b>核心佐酒</b>——肴肉／醉虾／糟蟹／醉毛豆／盐水鹅／金陵烧鸭／熏鲽鱼</td></tr>
+          <tr style="background:var(--zhu-pale)"><td><b>小份浇头</b></td><td class="n"><b>4</b></td><td class="n"><b>3.7%</b></td><td class="n">20</td><td class="n">20</td><td class="n">64.6%</td><td><b>最便宜的下酒</b>——韭黄牛肚／韭菜猪肝／什锦腰花／青椒茄子</td></tr>
+          <tr style="background:var(--zhu-pale)"><td><b>热菜 · 小份可分享（≤68）</b></td><td class="n"><b>15</b></td><td class="n"><b>14.0%</b></td><td class="n">50</td><td class="n">52</td><td class="n win">66.4%</td><td><b>热的下酒</b>——大煮干丝／臭大元／银鱼土鸡蛋／红油肥肠煲</td></tr>
+          <tr><td>热菜 · 大菜（≥72）</td><td class="n">23</td><td class="n">21.5%</td><td class="n">133</td><td class="n">98</td><td class="n warn">60.5%</td><td class="warn">偏正餐结构，酒馆场景点单效率较低</td></tr>
+          <tr><td>蒸菜</td><td class="n">8</td><td class="n">7.5%</td><td class="n">85</td><td class="n">83</td><td class="n">61.8%</td><td class="warn">偏正餐，需精简</td></tr>
+          <tr><td>时蔬</td><td class="n">6</td><td class="n">5.6%</td><td class="n">38</td><td class="n">37</td><td class="n">66.1%</td><td>解腻，保留</td></tr>
+          <tr><td>主食收口</td><td class="n">19</td><td class="n">17.8%</td><td class="n">26</td><td class="n">24</td><td class="n win">67.5%</td><td><b>散场前那一碗</b>——面／浇头面／粥／烧饼／生煎</td></tr>
+          <tr><td>甜品</td><td class="n">8</td><td class="n">7.5%</td><td class="n">23</td><td class="n">23</td><td class="n win">71.2%</td><td>收口，毛利最高</td></tr>
+        </table>
+        <div class="grid2" style="margin-top:15px">
+          <div class="card"><h4>强佐酒菜 43 支 · 40.2%</h4><p>冷碟糟卤 ＋ 小份浇头 ＋ ≤68 元热菜，<span class="hh">高于多数专业小酒馆 35% 的参考线</span>。糟卤、醉、酱、卤构成较完整的淮扬佐酒菜体系。</p></div>
+          <div class="card"><h4>大菜 31 支 · 29.0%</h4><p>热菜 ≥72 元 23 支 ＋ 蒸菜 8 支，均价 133／85，毛利 60.5%／61.8%（全单最低两档）。<span class="warn">在酒馆场景中，其预计点单率偏低，并占用灶台、拉低毛利。</span></p></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card" style="border-left:3px solid var(--hop)"><h4>唯一缺的那一页</h4>
+          <p style="font-size:14px"><b class="hh">110 支菜，0 支酒。</b></p>
+          <p style="margin-top:8px">当前定价表未包含酒水条目。按小酒馆模型，<span class="hh">酒水应占客单的 28–38%</span>，因此<b>现有定价表尚未覆盖完整收入结构</b>。</p>
+          <p style="margin-top:8px">补上酒单，2 人桌客单从 110 直接到 161；不补，所有客单模型都不成立。</p>
+        </div>
+        <div class="card"><h4>三个支持酒馆定位的菜单信号</h4>
+          <ul>
+            <li><b>糟卤自成板块。</b>「宵夜糟卤凉拌小食」6 支单列——糟卤是酒的伴侣，不是饭的伴侣。</li>
+            <li><b>浇头单列 4 支、16–26 元。</b>正餐店不会把浇头做成独立品类，酒馆会——它是最小单位的下酒菜。</li>
+            <li><b>营业到深夜的完整结构。</b>凉菜／热菜／面／浇头／甜品／粥六层夜宵，这是酒馆的收口逻辑，不是餐厅加个宵夜。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>归类口径：冷碟＋浇头＋≤68 元热菜＝强下酒菜</span><span>03 / 14</span></div>
+</section>
+
+<!-- 04 在地资产：啤酒厂 -->
+<section class="slide dark">
+  <div class="rail h"><div class="vt">在 地</div><div class="no">04</div><div class="brand">小酒馆</div></div>
+  <div class="body">
+    <div class="eyebrow h">TERROIR · 尚未充分利用的在地资产</div>
+    <h2>啤酒厂旧址构成不可复制的场地资产<span class="sub">珠江啤酒的产地背景可形成竞争对手难以复制的产品与叙事资源</span></h2>
+    <div class="rule h"></div>
+    <div class="g57">
+      <div>
+        <div class="tags" style="flex-direction:column;gap:12px">
+          <div class="tag dark" style="min-width:auto"><span class="k">1985</span><span class="l">珠江啤酒厂旧址 ——「啤酒厂1985 博物馆」就在园区里<br>门店地址即产地地址</span></div>
+          <div class="tag dark" style="min-width:auto"><span class="k">21</span><span class="l">500m 内的西餐／酒吧／派对餐吧<br>它们卖进口啤酒与鸡尾酒，<b style="color:#E8B04B">卖的不是这里的酒</b></span></div>
+          <div class="tag dark" style="min-width:auto"><span class="k">0</span><span class="l">500m 内以「厂酿鲜啤」为核心卖点的餐饮门店<br>在啤酒厂里，没有人卖啤酒厂的故事</span></div>
+        </div>
+        <div class="card" style="margin-top:14px;border-left:3px solid var(--hop)"><h4>一个可验证的旁证</h4><p>竞对三秋桂子（天河高德置地，人均 125）的酒单里就有 <b style="color:#E8B04B">10°珠江纯生 18 元/600ml、珠江精品纯生 28 元/600ml</b>。<span style="color:#E8B04B">一家在天河的浙菜馆都在卖珠江啤酒——而我们就开在酿它的地方。</span></p></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card"><h4>把「在地」做成产品的四层</h4>
+          <table style="font-size:11.5px">
+            <tr><th>层</th><th>做法</th><th>难度</th><th>价值</th></tr>
+            <tr><td><b style="color:#E8B04B">L1 供应</b></td><td>争取园区鲜啤／原浆的稳定供货与生啤龙头（tap）</td><td>低</td><td>酒水毛利与出杯效率</td></tr>
+            <tr><td><b style="color:#E8B04B">L2 命名</b></td><td>菜单上写「厂酿鲜啤（今日桶次 · 出厂 ×× 小时）」</td><td>低</td><td>新鲜度＝故事＝溢价</td></tr>
+            <tr><td><b style="color:#E8B04B">L3 配对</b></td><td>把糟卤冷碟与鲜啤做成固定组合：<b>「一杯厂酿 ＋ 三味糟卤」</b></td><td>中</td><td>独有的产品结构</td></tr>
+            <tr><td><b style="color:#E8B04B">L4 联名</b></td><td>与珠江啤酒谈联名／专供／限定桶，做「琶醍原浆 × 扬州糟卤」</td><td>高</td><td>不可复制的壁垒</td></tr>
+          </table>
+        </div>
+        <div class="card"><h4>为什么这件事比「江鲜」更重要</h4>
+          <p>江鲜（河豚、大黄鱼、甲鱼）是<b>好但贵</b>的差异化：成本高、损耗 8–15%、有资质门槛，毛利只有 58–61%。</p>
+          <p style="margin-top:8px">厂酿鲜啤是<b style="color:#E8B04B">便宜且独有</b>的差异化：毛利 68–75%、损耗低、零资质门槛，而且<span style="color:#E8B04B">它把「为什么这家店必须开在这里」这个问题回答掉了</span>。</p>
+          <p style="margin-top:8px"><b style="color:#E8B04B">江鲜负责让人记住，鲜啤负责让人常来。</b></p>
+        </div>
+        <div class="card"><h4>一句可以直接用的话</h4>
+          <div style="border:1px solid #4A413A;padding:13px 15px;margin-top:4px;background:#1F1B1A">
+            <div style="font-family:var(--serif);font-size:19px;color:#fff;letter-spacing:.04em;line-height:1.6">在酿珠江的地方喝珠江，<br>配一碟扬州的糟卤。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>L4 联名需与园区／珠江啤酒方另行商谈</span><span>04 / 14</span></div>
+</section>
+
+<!-- 05 竞争集重定义 -->
+<section class="slide">
+  <div class="rail"><div class="vt">对 手</div><div class="no">05</div><div class="brand">小酒馆</div></div>
+  <div class="body">
+    <div class="eyebrow">COMPETITIVE SET · 模型口径调整后重定义竞争集</div>
+    <h2>核心竞争集是 27 家提供酒水的门店<span class="sub">其业态以西式与日式为主，500 米内尚无中式小酒馆</span></h2>
+    <div class="rule"></div>
+    <div class="g75">
+      <div>
+        <table>
+          <tr><th>业态</th><th class="n">500m 家数</th><th class="n">人均中位</th><th class="n">评分中位</th><th>代表</th><th class="n">与我们的关系</th></tr>
+          <tr><td><b>西餐／派对餐吧</b></td><td class="n">18</td><td class="n">129</td><td class="n">4.45</td><td>MR.ROCKY 130／VINO 160／JoJos 141／RockyBro 134／1860 142／清漫 121</td><td class="n win">直接同侪</td></tr>
+          <tr><td><b>日式居酒屋</b></td><td class="n">3</td><td class="n">110</td><td class="n">4.6</td><td>鸟剑居酒屋 110／鸟鹏烧鸟 108／北海道矗立 117</td><td class="n win"><b>最接近的模型</b></td></tr>
+          <tr><td>烧烤烤串</td><td class="n">2</td><td class="n">85</td><td class="n">4.1</td><td>破店肥哈 85</td><td class="n">夜档同侪</td></tr>
+          <tr><td>酒吧</td><td class="n">1</td><td class="n">115</td><td class="n">3.6</td><td>珠江琶醍 A 区</td><td class="n">场景同侪</td></tr>
+          <tr style="border-top:2px solid var(--zhu)"><td><b style="color:var(--zhu)">中式小酒馆</b></td><td class="n win"><b>0</b></td><td class="n">—</td><td class="n">—</td><td class="dim">无</td><td class="n win"><b>空白</b></td></tr>
+          <tr style="border-top:1px solid var(--line)"><td class="dim">江景中餐正餐</td><td class="n">17</td><td class="n">117</td><td class="n">4.1</td><td class="dim">陶醉馆 133／潮粤楼 131／阅江米库 127／南海渔村徐博馆 158</td><td class="n dim">部分重叠</td></tr>
+        </table>
+        <div style="margin-top:16px;font-size:11.5px;color:var(--ink-2);letter-spacing:.1em;margin-bottom:9px">500 米内「有酒的店」共 24 家 —— 按风味语系拆</div>
+        <div class="bars">
+          <div class="bar"><div class="lb">西式（美/意/派对吧）</div><div class="tr"><div class="fl a" style="width:100%"></div></div><div class="vl">18 家</div></div>
+          <div class="bar"><div class="lb">日式（居酒屋/烧鸟）</div><div class="tr"><div class="fl a" style="width:17%"></div></div><div class="vl">3 家</div></div>
+          <div class="bar"><div class="lb">烧烤/清吧</div><div class="tr"><div class="fl a" style="width:17%"></div></div><div class="vl">3 家</div></div>
+          <div class="bar"><div class="lb" style="color:var(--zhu)">中式小酒馆</div><div class="tr"></div><div class="vl win">0 家</div></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card"><h4>为什么居酒屋是最该研究的对标</h4>
+          <p>鸟剑居酒屋（110 元／4.7 分／3,799 条）与鸟鹏烧鸟（108 元／4.6 分／琶洲日料销量榜第 1）——<span class="hl">人均 108–110、评分 4.6–4.7</span>，靠的正是「小份 ＋ 佐酒 ＋ 长时段」的结构。</p>
+          <p style="margin-top:8px">相关门店证明了在琶醍，<b class="hl">约 110 元的酒馆客单具备市场基础，并可获得较高评分</b>。扬州市集可形成以糟卤、厂酿与花雕为核心的中式版本。</p>
+        </div>
+        <div class="card"><h4>我们对西餐酒吧的三个不对称优势</h4>
+          <ul>
+            <li><b>热食。</b>18 家西餐吧缺少热汤面、砂锅、啫啫等中式热食供给。<span class="hl">该能力可形成深夜时段差异。</span></li>
+            <li><b>中国胃。</b>连喝三次洋酒配薯条的人，第四次会想要一碟肴肉配冰啤。</li>
+            <li><b>在地酒。</b>它们卖进口酒，我们卖这座厂的酒。<span class="hl">故事上我们赢在主场。</span></li>
+          </ul>
+        </div>
+        <div class="card"><h4>一个必须承认的劣势</h4>
+          <p>其<b>酒水运营能力</b>（酒单深度、调酒、活动、DJ、氛围节奏）来自长期积累。<span class="warn">扬州市集不宜竞争酒单丰富度，应突出「酒水 ＋ 中式热食」组合。</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>「有酒的店」＝西餐/派对吧＋居酒屋＋烧烤＋清吧</span><span>05 / 14</span></div>
+</section>
+
+<!-- 06 客单模型重算 -->
+<section class="slide">
+  <div class="rail"><div class="vt">客 单</div><div class="no">06</div><div class="brand">小酒馆</div></div>
+  <div class="body">
+    <div class="eyebrow">SPEND · 酒水纳入后的客单模型</div>
+    <h2>酒水是改善 2 人桌客单的核心变量<span class="sub">S1 通过蒸菜将客单由 110 元提升至 154 元；小酒馆模型加入酒水后可达到 161 元</span></h2>
+    <div class="rule"></div>
+    <div class="g75">
+      <div>
+        <table>
+          <tr><th>场景</th><th>菜</th><th>酒</th><th class="n">菜额</th><th class="n">酒额</th><th class="n">合计</th><th class="n">人均</th><th class="n">酒占比</th></tr>
+          <tr><td>2 人 · 早场小酌</td><td>冷碟2＋浇头1</td><td>鲜啤 4 杯</td><td class="n">120</td><td class="n">112</td><td class="n">232</td><td class="n">116</td><td class="n">48%</td></tr>
+          <tr style="background:var(--zhu-pale)"><td><b>2 人 · 标准局</b></td><td>冷碟2＋热菜1＋主食1</td><td>鲜啤 4 杯</td><td class="n">210</td><td class="n">112</td><td class="n">322</td><td class="n win"><b>161</b></td><td class="n">35%</td></tr>
+          <tr><td>2 人 · 深夜面局</td><td>宵夜冷碟2＋面2</td><td>鲜啤 2 杯</td><td class="n">154</td><td class="n">56</td><td class="n">210</td><td class="n">105</td><td class="n">27%</td></tr>
+          <tr><td>3 人 · 朋友局</td><td>冷碟2＋热菜2＋时蔬1＋主食2</td><td>鲜啤5＋精酿1</td><td class="n">357</td><td class="n">178</td><td class="n">535</td><td class="n win">178</td><td class="n">33%</td></tr>
+          <tr style="background:var(--zhu-pale)"><td><b>4 人 · 主力局</b></td><td>冷碟3＋热菜2＋时蔬1＋主食2＋甜品2</td><td>鲜啤6＋精酿2</td><td class="n">451</td><td class="n">244</td><td class="n">695</td><td class="n win"><b>174</b></td><td class="n">35%</td></tr>
+          <tr><td>4 人 · 黄酒局</td><td>冷碟3＋热菜2＋蒸菜1＋主食2</td><td>花雕1壶＋鲜啤2</td><td class="n">453</td><td class="n">184</td><td class="n">637</td><td class="n win">159</td><td class="n">29%</td></tr>
+          <tr><td>6 人 · 聚会局</td><td>冷碟4＋热菜3＋蒸菜1＋时蔬2＋主食3＋甜3</td><td>鲜啤10＋精酿2</td><td class="n">753</td><td class="n">356</td><td class="n">1,109</td><td class="n win">185</td><td class="n">32%</td></tr>
+          <tr><td>4 人 · 深夜局</td><td>宵夜冷碟3＋热菜2＋面2＋浇头2</td><td>鲜啤 6 杯</td><td class="n">315</td><td class="n">168</td><td class="n">483</td><td class="n">121</td><td class="n">35%</td></tr>
+        </table>
+        <div class="grid3" style="margin-top:15px">
+          <div class="card"><h4>S1 vs S2</h4><table style="font-size:11.5px"><tr><th></th><th class="n">S1 无酒</th><th class="n">S2 含酒</th></tr><tr><td>2 人</td><td class="n warn">110</td><td class="n win">161</td></tr><tr><td>4 人</td><td class="n">148</td><td class="n win">174</td></tr><tr><td>加权</td><td class="n warn">134</td><td class="n win">158</td></tr></table></div>
+          <div class="card"><h4>落位</h4><p>加权 <b class="hl">158 元</b>，落在 <b>141–180</b> 带（效率 1.79），与场内八强（111–160）完全同框，且高于居酒屋对标（108–110）。</p></div>
+          <div class="card"><h4>毛利</h4><p>菜 63.0% ＋ 酒 70% ，按酒占 <b>32%</b> 混合 → <b class="hl">65.2%</b>。比纯餐厅高 2.2 个百分点。</p></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card" style="border-left:3px solid var(--hop)"><h4>酒单假设（用于建模）</h4>
+          <table style="font-size:11.5px">
+            <tr><th>品</th><th class="n">定价</th><th class="n">毛利</th></tr>
+            <tr><td>厂酿鲜啤（400ml）</td><td class="n">28</td><td class="n">72%</td></tr>
+            <tr><td>精酿／限定桶</td><td class="n">38</td><td class="n">68%</td></tr>
+            <tr><td>花雕温饮（1 壶）</td><td class="n">128</td><td class="n">70%</td></tr>
+            <tr><td>江南果酒／米酒（杯）</td><td class="n">45</td><td class="n">70%</td></tr>
+            <tr><td>无醇青梅／酸梅（杯）</td><td class="n">25</td><td class="n">78%</td></tr>
+          </table>
+          <p style="margin-top:8px;font-size:11.5px" class="dim">定价参照：三秋桂子珠江纯生 18／28 元；场内西餐吧人均 129 元中酒水通常占 45–60%。模型采用 <b>32% 的审慎假设</b>，以保持酒馆而非酒吧的经营结构。</p>
+        </div>
+        <div class="card"><h4>把酒占比控制在 28–38% 的三个理由</h4>
+          <ul>
+            <li><b>低于 28%</b>：难以达到目标客单，模型接近 S1 的 134 元水平。</li>
+            <li><b>高于 38%</b>：经营结构趋近酒吧，将与 18 家西餐吧直接竞争，<span class="warn">而其酒水运营能力更成熟</span>。</li>
+            <li><b>28–38% 之间</b>：菜仍是主角、酒是脊梁，这正是「小酒馆」区别于「餐厅」和「酒吧」的位置。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>模型口径：Σ(品类中位价 × 份数) ＋ Σ(酒品定价 × 杯数)</span><span>06 / 14</span></div>
+</section>
+
+<!-- 07 酒单设计 -->
+<section class="slide dark">
+  <div class="rail h"><div class="vt">酒 单</div><div class="no">07</div><div class="brand">小酒馆</div></div>
+  <div class="body">
+    <div class="eyebrow h">DRINKS · 酒水结构补充</div>
+    <h2>酒单建议采用四条产品线、24 支 SKU<span class="sub">控制酒单深度，强化每支酒与菜单菜品的配对关系</span></h2>
+    <div class="rule h"></div>
+    <div class="grid2" style="gap:22px">
+      <div>
+        <table>
+          <tr><th>线</th><th class="n">支数</th><th class="n">价格带</th><th>内容</th><th>配对</th></tr>
+          <tr style="background:rgba(122,139,60,.16)"><td><b style="color:#C3D67A">① 厂酿鲜啤</b><br><span class="dim">主角</span></td><td class="n">5</td><td class="n">28–48</td><td>鲜啤 / 原浆 / 白啤 / 限定桶 / 4 杯拼样板</td><td>糟卤冷碟、香辣蟹、赤焰罗氏虾、烧饼</td></tr>
+          <tr><td><b style="color:#E8B04B">② 黄酒花雕</b><br><span class="dim">正统</span></td><td class="n">7</td><td class="n">38–188</td><td>温饮花雕 / 十年陈 / 二十年陈 / 手炉温壶</td><td>醉虾、糟蟹、肴肉、狮子头、河豚</td></tr>
+          <tr><td><b style="color:#E8B04B">③ 江南果酒米酒</b><br><span class="dim">女客</span></td><td class="n">6</td><td class="n">45–128</td><td>青梅 / 桂花 / 杨梅 / 米酒 / 洛神</td><td>甜品、冷碟、素蟹粉</td></tr>
+          <tr><td><b style="color:#E8B04B">④ 无醇软饮</b><br><span class="dim">兜底</span></td><td class="n">6</td><td class="n">18–35</td><td>无醇青梅 / 酸梅汤 / 陈皮柠檬 / 大麦茶 / 气泡水</td><td>全场；开车客与不饮酒者</td></tr>
+        </table>
+        <div class="card" style="margin-top:15px"><h4>三个必须做的酒水动作</h4>
+          <ul>
+            <li><b style="color:#E8B04B">生啤龙头墙（tap wall）。</b>吧台上 4–6 个龙头，是小酒馆最直观的身份标识，也是最好的拍照背景。<span style="color:#E8B04B">场内 18 家西餐吧里，没有一家把中式酒馆的龙头墙做出来。</span></li>
+            <li><b style="color:#E8B04B">温酒服务。</b>花雕手炉温壶上桌，是黄酒线的仪式感来源，成本极低、感知极强，且与「淮扬」的正统性完全咬合。</li>
+            <li><b style="color:#E8B04B">早场时段价。</b>17:00–19:00 鲜啤第二杯半价——用来把空档时段的座位先坐满，坐满的店才会有人进。</li>
+          </ul>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card" style="border-left:3px solid var(--hop)"><h4>签名产品：「一杯厂酿 ＋ 三味糟卤」</h4>
+          <div style="background:#1F1B1A;border:1px solid #4A413A;padding:14px 16px;margin:8px 0">
+            <div style="font-family:var(--serif);font-size:20px;color:#fff">厂酿三味 　<span style="color:#C3D67A">88 元</span></div>
+            <div style="font-size:12px;color:#A79C93;margin-top:7px;line-height:1.8">
+              厂酿鲜啤一杯（400ml）<br>
+              ＋ 胭脂醉毛豆 · 脯香凝香青荚 · 水晶凝脂肴肉 三味小碟
+            </div>
+          </div>
+          <p>单点合计 28＋28＋26＋48 ＝ 130 元，套餐 88 元。<span style="color:#E8B04B">看起来是让利，实际是把客人第一次点单的决策成本降到零</span>，而且一次就讲清楚了「这家店是干什么的」。</p>
+          <p style="margin-top:8px">它同时是<b style="color:#E8B04B">最好的传播素材</b>：一杯琥珀色的酒 ＋ 三碟朱红与青绿的小菜，横构图，天然出片。</p>
+        </div>
+        <div class="card"><h4>酒水管理的四条纪律</h4>
+          <table style="font-size:11.5px">
+            <tr><th>项</th><th class="n">标准</th></tr>
+            <tr><td>酒水营收占比</td><td class="n" style="color:#E8B04B">28–38%</td></tr>
+            <tr><td>酒水综合毛利</td><td class="n" style="color:#E8B04B">≥68%</td></tr>
+            <tr><td>鲜啤日损耗（管线/泡沫）</td><td class="n" style="color:#E8B04B">≤6%</td></tr>
+            <tr><td>酒水 SKU 上限</td><td class="n" style="color:#E8B04B">24 支</td></tr>
+          </table>
+          <p style="margin-top:8px">SKU 上限尤其重要。<span style="color:#E8B04B">小酒馆的酒单越短越有主张</span>，24 支足够覆盖全部场景，超过 30 支就变成库存负担与选择困难。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>酒单为建议方案，具体品项需与供应方确认</span><span>07 / 14</span></div>
+</section>
+
+<!-- 08 菜单小酒馆化 -->
+<section class="slide">
+  <div class="rail"><div class="vt">菜 单</div><div class="no">08</div><div class="brand">小酒馆</div></div>
+  <div class="body">
+    <div class="eyebrow">MENU RESHAPE · 减 25 支、加 12 支</div>
+    <h2>菜单结构应围绕酒馆场景重组<span class="sub">核心动作有两项：精简低点单率大菜，补充 38–68 元佐酒小食</span></h2>
+    <div class="rule"></div>
+    <div class="g75">
+      <div>
+        <table>
+          <tr><th>板块</th><th class="n">现有</th><th class="n">建议</th><th class="n">增减</th><th>怎么改</th></tr>
+          <tr><td><b>冷碟糟卤</b></td><td class="n">24</td><td class="n">24</td><td class="n">0</td><td>不动。这是酒馆的核心资产，且已成体系</td></tr>
+          <tr style="background:var(--zhu-pale)"><td><b>佐酒小食（新板块）</b></td><td class="n">0</td><td class="n win"><b>12</b></td><td class="n win">+12</td><td><b>新增</b>：炸物／烤物／卤味／串，价格带 <b>28–68</b></td></tr>
+          <tr><td>小份浇头</td><td class="n">4</td><td class="n">6</td><td class="n win">+2</td><td>加 2 支（雪菜笋丝／蟹粉），做成「浇头墙」</td></tr>
+          <tr><td>热菜 · 可分享（≤68）</td><td class="n">15</td><td class="n">15</td><td class="n">0</td><td>保留全部</td></tr>
+          <tr><td><b>热菜 · 大菜（≥72）</b></td><td class="n">23</td><td class="n warn"><b>12</b></td><td class="n warn">−11</td><td><b>精简 11 支</b>：≥98 元保留 6 支代表菜，其余下架或转小份</td></tr>
+          <tr><td>蒸菜</td><td class="n">8</td><td class="n warn">5</td><td class="n warn">−3</td><td>保留狮子头 2 支＋菊花豆腐＋黄鳝＋开片虾</td></tr>
+          <tr><td>时蔬</td><td class="n">6</td><td class="n">6</td><td class="n">0</td><td>不动。解腻必需</td></tr>
+          <tr><td>主食收口</td><td class="n">19</td><td class="n warn">14</td><td class="n warn">−5</td><td>精简 5 支重复面点（合并两种米糕、两种小笼）</td></tr>
+          <tr><td>甜品</td><td class="n">8</td><td class="n warn">6</td><td class="n warn">−2</td><td>胭脂米布丁与玫瑰圆子正餐/夜宵重复，各留一份</td></tr>
+          <tr style="border-top:2px solid var(--kiln)"><td><b>菜品合计</b></td><td class="n"><b>107</b></td><td class="n"><b>94</b></td><td class="n"><b>−13</b></td><td></td></tr>
+          <tr><td><b style="color:var(--hop)">＋ 酒单</b></td><td class="n">0</td><td class="n wh"><b>24</b></td><td class="n wh">+24</td><td>四条线（P07）</td></tr>
+        </table>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:11px">
+        <div class="card" style="border-left:3px solid var(--zhu)"><h4>新板块「佐酒小食」12 支怎么设计</h4>
+          <p style="margin-bottom:7px">原则：<b class="hl">28–68 元、单手可食或一筷一口、出餐 ≤6 分钟、复用现有食材</b>。</p>
+          <table style="font-size:11.5px">
+            <tr><th>方向</th><th>示例（用现有食材延展）</th><th class="n">建议价</th></tr>
+            <tr><td>炸</td><td>脆炸银鱼／椒盐河虾／炸响铃／黄桥烧饼夹肴肉</td><td class="n">38–58</td></tr>
+            <tr><td>烤</td><td>盐烤毛豆／炭烤鳝段／烤臭大元／烤年糕</td><td class="n">32–68</td></tr>
+            <tr><td>卤</td><td>卤味拼（鹅掌／鹅翅／鸭胗）／卤鹌鹑蛋</td><td class="n">38–68</td></tr>
+            <tr><td>渍</td><td>糟油毛蚶／醉蚬子／油浸小黄鱼</td><td class="n">42–62</td></tr>
+          </table>
+          <p style="margin-top:8px">这 12 支<span class="hl">不新增食材、不新增灶位</span>——炸和卤都可以在明档与凉菜间完成，是边际成本最低的扩张。</p>
+        </div>
+        <div class="card"><h4>精简 11 支大菜的原因</h4>
+          <ul>
+            <li>≥72 元热菜均价 133、毛利 60.5%，是全单<b class="warn">最低的一档</b>；</li>
+            <li>酒馆场景下 4 人桌只点 2 道热菜，23 支大菜里有一半永远轮不到；</li>
+            <li>它们全部集中在炒灶，<span class="warn">而炒灶在 21:30 之后必须让位给面档与浇头</span>。</li>
+          </ul>
+          <p style="margin-top:7px"><b>保留的 6 支「镇店大菜」建议：</b>河豚（三做合一）288、手打年糕家烧大黄鱼 168、梅干菜黑蒜长江河鳗 168、泡椒生态甲鱼 198、吮指香辣蟹 128、扬州全家福 128。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>94 支菜 ＋ 24 支酒 ＝ 118 个可点条目，分三张单呈现</span><span>08 / 14</span></div>
+</section>
+
+<!-- 09 三张单 -->
+<section class="slide">
+  <div class="rail"><div class="vt">分 单</div><div class="no">09</div><div class="brand">小酒馆</div></div>
+  <div class="body">
+    <div class="eyebrow">MENU SET · 菜单拆分逻辑调整</div>
+    <h2>菜单拆分应由时段逻辑转向功能逻辑<span class="sub">S1 按正餐、午市与夜宵拆分；小酒馆应按酒水、佐酒与收口功能拆分</span></h2>
+    <div class="rule"></div>
+    <div class="grid3" style="margin-bottom:18px">
+      <div class="card" style="border-top:3px solid var(--hop)">
+        <h4>① 酒单 · 24 支</h4>
+        <p class="dim" style="font-size:11.5px;margin-bottom:8px">一张纸，正反面。放在桌上，不收走。</p>
+        <ul>
+          <li>厂酿鲜啤 5</li><li>黄酒花雕 7</li><li>果酒米酒 6</li><li>无醇软饮 6</li>
+        </ul>
+        <p style="margin-top:8px"><b class="hh">首屏呈现「厂酿三味 88 元」</b>，用于明确门店的酒馆身份。</p>
+      </div>
+      <div class="card" style="border-top:3px solid var(--zhu)">
+        <h4>② 佐酒单 · 57 支</h4>
+        <p class="dim" style="font-size:11.5px;margin-bottom:8px">主单。全时段供应，17:00–01:00 不变。</p>
+        <ul>
+          <li>朱红十二味（成组页）12</li>
+          <li>冷碟糟卤 24</li>
+          <li>佐酒小食 12（新）</li>
+          <li>小份浇头 6</li>
+          <li>时蔬 6</li>
+          <li><span class="dim">（朱红十二味与冷碟／小食有重叠，成组展示）</span></li>
+        </ul>
+      </div>
+      <div class="card" style="border-top:3px solid var(--kiln)">
+        <h4>③ 热菜与收口单 · 37 支</h4>
+        <p class="dim" style="font-size:11.5px;margin-bottom:8px">21:30 后炒灶收缩，此单减半为「深夜版」。</p>
+        <ul>
+          <li>热菜可分享 15</li>
+          <li>镇店大菜 6</li>
+          <li>蒸菜 5</li>
+          <li>主食收口 14 ／ 甜品 6</li>
+          <li><b class="hl">21:30 后仅保留</b>：热菜 8＋面 5＋浇头 6＋粥 1＋甜品 4</li>
+        </ul>
+      </div>
+    </div>
+    <table>
+      <tr><th style="width:14%">时段</th><th style="width:16%">在场的单</th><th style="width:22%">场景</th><th style="width:16%">目标人均</th><th style="width:16%">目标翻台/上座</th><th style="width:16%">营收占比</th></tr>
+      <tr><td><b>17:00–19:00</b><br><span class="dim">早场</span></td><td>酒单＋佐酒单</td><td>下班一杯、等人、看江景日落</td><td class="n">96–120</td><td class="n">上座 45%</td><td class="n">11%</td></tr>
+      <tr style="background:var(--zhu-pale)"><td><b>19:00–22:00</b><br><span class="dim">主场</span></td><td>三张单全开</td><td>朋友局、家庭局、商务小聚</td><td class="n win"><b>174</b></td><td class="n">翻台 1.6</td><td class="n win"><b>56%</b></td></tr>
+      <tr><td><b>22:00–01:00</b><br><span class="dim">深夜</span></td><td>酒单＋佐酒单＋深夜版</td><td>酒吧散场、加班后、续摊</td><td class="n">105–121</td><td class="n">翻台 1.2</td><td class="n">24%</td></tr>
+      <tr><td><b>11:30–14:00</b><br><span class="dim">午市（轻）</span></td><td>面＋浇头＋时蔬＋冷碟</td><td>周边写字楼快餐</td><td class="n">68–88</td><td class="n">上座 30%</td><td class="n">9%</td></tr>
+    </table>
+    <div class="grid2" style="margin-top:16px">
+      <div class="card"><h4>午市为什么要降级</h4><p>S1 把午市列为战略机会（园区无中式商务午餐）。<span class="warn">在小酒馆模型下这个判断要收回一半</span>——酒馆的人力与备料结构是为晚上设计的，硬做午市会摊薄晚场的准备时间与出品稳定性。</p><p style="margin-top:8px"><b>建议：午市只做轻版</b>（面／浇头／时蔬／冷碟约 20 支，人均 68–88），当作覆盖固定成本的补充，而不是第二战场。</p></div>
+      <div class="card"><h4>深夜时段营收占比可达 24%</h4><p>22:00–01:00 翻台 1.2、人均 105–121 元。除直接营收外，该时段有利于建立<span class="hl">「琶醍深夜中式热食」的稳定认知</span>。</p><p style="margin-top:8px"><b class="warn">前提是落实营业至 01:00 的许可、排烟与噪声条件，以及园区夜间通行。</b></p></div>
+    </div>
+  </div>
+  <div class="foot"><span>三张单可共用一个夹子，按时段抽换第三张</span><span>09 / 14</span></div>
+</section>
+
+<!-- 10 空间重构 -->
+<section class="slide">
+  <div class="rail"><div class="vt">空 间</div><div class="no">10</div><div class="brand">小酒馆</div></div>
+  <div class="body">
+    <div class="eyebrow">SPACE · 133 座空间结构调整</div>
+    <h2>现有座位与空间结构不匹配酒馆场景<span class="sub">按 FF-01 图纸复核，吧台、室外区与包房比例需要调整</span></h2>
+    <div class="rule"></div>
+    <div class="g75">
+      <div>
+        <table>
+          <tr><th>区域</th><th class="n">现状</th><th class="n">建议</th><th>理由</th><th class="n">优先级</th></tr>
+          <tr style="background:var(--zhu-pale)"><td><b>酒吧吧台</b></td><td class="n">10㎡ · 0 座</td><td class="n win"><b>20–25㎡ · 10–12 座</b></td><td>吧台是小酒馆的心脏；需容纳 4–6 个生啤龙头、温酒区、单人客座位。<b>10㎡ 只够放酒瓶，放不下生意。</b></td><td class="n win">P0</td></tr>
+          <tr style="background:var(--zhu-pale)"><td><b>静水吧台区（室外）</b></td><td class="n">55㎡ · 0 座</td><td class="n win"><b>16–20 座</b></td><td>江景 ＋ 露天 ＋ 啤酒，是小酒馆最贵的座位。<b>目前图纸上完全空着。</b></td><td class="n win">P0</td></tr>
+          <tr><td><b>板前</b></td><td class="n">7 座</td><td class="n win">7 座（改定位）</td><td>从「主厨 Omakase」改为<b>糟卤冷碟吧台</b>——单人客与二人客的首选位，也是明档的观众席</td><td class="n win">P0</td></tr>
+          <tr><td><b>6 人包房 ×3</b></td><td class="n">18 座</td><td class="n warn">保留 2 间 ＋ 1 间改半开放</td><td>酒馆客群以 2–4 人为主；3 间 6 人包房利用率会偏低。改 1 间为可开放的卡座区，忙时并入大堂</td><td class="n">P1</td></tr>
+          <tr><td>10 人包房</td><td class="n">10 座</td><td class="n">保留</td><td>私密局与商务局仍需要，且是唯一能做 288 元以上客单的空间</td><td class="n">—</td></tr>
+          <tr><td>沿江用餐区</td><td class="n">24 座</td><td class="n">24 座（增 2 人位）</td><td>4 人台改 4 组 2 人江景位，匹配酒馆客群结构</td><td class="n">P1</td></tr>
+          <tr><td>明厨 40㎡</td><td class="n">—</td><td class="n win">增设糟卤冷碟档</td><td>现片、现拆、糟卤缸展示——酒馆的视觉核心从「炒」变成「卤与切」</td><td class="n win">P0</td></tr>
+          <tr style="border-top:2px solid var(--kiln)"><td><b>座位合计</b></td><td class="n"><b>133</b></td><td class="n win"><b>159–165</b></td><td>净增 26–32 座，主要来自室外与吧台</td><td class="n"></td></tr>
+        </table>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:11px">
+        <div class="card"><h4>座位结构对比</h4>
+          <table style="font-size:11.5px">
+            <tr><th>类型</th><th class="n">现状</th><th class="n">建议</th></tr>
+            <tr><td>吧台座（含板前）</td><td class="n">7 · 5.3%</td><td class="n win">19 · 11.8%</td></tr>
+            <tr><td>2 人座</td><td class="n">少</td><td class="n win">≥28 · 17%</td></tr>
+            <tr><td>4 人座</td><td class="n">多</td><td class="n">约 60 · 37%</td></tr>
+            <tr><td>6 人及以上</td><td class="n">42 · 31.6%</td><td class="n warn">36 · 22%</td></tr>
+            <tr><td>室外</td><td class="n">0</td><td class="n win">16–20 · 11%</td></tr>
+          </table>
+          <p style="margin-top:8px">小酒馆的客群结构是<b class="hl">2 人 40%／4 人 35%／6 人＋ 25%</b>，与正餐相反。座位必须跟着改。</p>
+        </div>
+        <div class="card" style="border-left:3px solid var(--hop)"><h4>室外 16 座的账</h4>
+          <p>按年可用 200 天（避开雨季与酷暑正午）、上座 65%、翻台 1.3、人均 128 元测算：</p>
+          <p style="margin-top:6px;font-family:var(--serif);font-size:22px;color:var(--hop)">16 × 0.65 × 1.3 × 128 × 200 ≈ <b>34.6 万元/年</b></p>
+          <p style="margin-top:6px">投入（雨棚、地插、照明、防风屏、加热器、可收纳家具）约 18–25 万，<span class="hh">第一年即可回本</span>。</p>
+        </div>
+        <div class="card"><h4>一处必须现场校核</h4><p>FF-02 显示主通道最窄处 <b>900mm</b>、2 人卡座宽 <b>550mm</b>。<span class="warn">酒馆的服务频次远高于正餐（每桌加酒 4–8 次），900mm 通道在高峰期会成为瓶颈。</span>建议加宽至 1,100mm，或把该段改为单向服务动线。</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>依据：不止设计 FF-01 / FF-02，2026.07.29 修正版</span><span>10 / 14</span></div>
+</section>
+
+<!-- 11 经营测算 -->
+<section class="slide dark">
+  <div class="rail h"><div class="vt">测 算</div><div class="no">11</div><div class="brand">小酒馆</div></div>
+  <div class="body">
+    <div class="eyebrow h">ECONOMICS · 小酒馆经营测算</div>
+    <h2>模型呈现更低翻台、更高客单与毛利<span class="sub">与 S1 正餐模型对照：营收接近，但收入结构与风险来源不同</span></h2>
+    <div class="rule h"></div>
+    <div class="grid2" style="gap:22px">
+      <div>
+        <table>
+          <tr><th>时段</th><th class="n">座位</th><th class="n">上座/翻台</th><th class="n">人次</th><th class="n">客单</th><th class="n">日营收</th></tr>
+          <tr><td>早场 17–19</td><td class="n">98</td><td class="n">45%</td><td class="n">44</td><td class="n">108</td><td class="n">4,752</td></tr>
+          <tr style="background:rgba(192,50,43,.14)"><td><b>主场 19–22</b></td><td class="n">98</td><td class="n">翻台 1.6</td><td class="n"><b>125</b></td><td class="n"><b>174</b></td><td class="n"><b>21,750</b></td></tr>
+          <tr><td>深夜 22–01</td><td class="n">60＋室外</td><td class="n">翻台 1.2</td><td class="n">46</td><td class="n">115</td><td class="n">5,290</td></tr>
+          <tr><td>包房＋吧台</td><td class="n">47</td><td class="n">80%×1.3</td><td class="n">49</td><td class="n">228</td><td class="n">11,172</td></tr>
+          <tr><td>午市（轻，工作日）</td><td class="n">98</td><td class="n">30%</td><td class="n">29</td><td class="n">78</td><td class="n">2,262</td></tr>
+          <tr style="border-top:2px solid var(--hop)"><td><b>日均合计</b></td><td class="n"></td><td class="n"></td><td class="n"><b>约 288</b></td><td class="n" style="color:#E8B04B"><b>158</b></td><td class="n" style="color:#E8B04B"><b>约 44,000</b></td></tr>
+        </table>
+        <div class="card" style="margin-top:15px"><h4>与 S1 正餐模型对照</h4>
+          <table style="font-size:11.5px">
+            <tr><th>指标</th><th class="n">S1 正餐模型</th><th class="n">S2 小酒馆模型</th></tr>
+            <tr><td>加权客单</td><td class="n">134（无酒）</td><td class="n" style="color:#E8B04B">158（酒占 32%）</td></tr>
+            <tr><td>晚市翻台</td><td class="n">2.0</td><td class="n warn">1.6（停留更长）</td></tr>
+            <tr><td>营业时长</td><td class="n">11:30–21:30</td><td class="n" style="color:#E8B04B">17:00–01:00＋轻午市</td></tr>
+            <tr><td>综合毛利率</td><td class="n">63.0%</td><td class="n" style="color:#E8B04B">65.2%</td></tr>
+            <tr><td>月营收（估）</td><td class="n">约 119 万</td><td class="n" style="color:#E8B04B">约 128 万</td></tr>
+            <tr><td>坪效（530㎡）</td><td class="n">2,245</td><td class="n" style="color:#E8B04B">约 2,415</td></tr>
+          </table>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:11px">
+        <div class="card"><h4>小酒馆模型的三个结构性优点</h4>
+          <ul>
+            <li><b style="color:#E8B04B">毛利更高。</b>酒水 68–72% 的毛利使整体提升 2.2 个百分点，且不占用灶台。</li>
+            <li><b style="color:#E8B04B">时段更长。</b>17:00–01:00 八小时对 17:00–21:30 四个半小时，<b>同样的租金摊到更多营业时间上</b>。</li>
+            <li><b style="color:#E8B04B">人力更省。</b>22:00 后只需 8–10 人，而正餐模型的午市要额外配一组备料人力。</li>
+          </ul>
+        </div>
+        <div class="card"><h4>但也有三个新增成本</h4>
+          <table style="font-size:11.5px">
+            <tr><th>项</th><th class="n">投入</th><th>说明</th></tr>
+            <tr><td>吧台改造＋生啤龙头</td><td class="n">18–28 万</td><td>扩至 20–25㎡，4–6 tap，制冷与管线</td></tr>
+            <tr><td>室外 16 座</td><td class="n">18–25 万</td><td>雨棚／地插／照明／防风／加热</td></tr>
+            <tr><td>酒水铺底与库存</td><td class="n">12–18 万</td><td>24 支 SKU 的首批与周转</td></tr>
+            <tr style="border-top:1px solid #3B3330"><td><b>合计增投</b></td><td class="n" style="color:#E8B04B"><b>48–71 万</b></td><td>在 S1 估算的 640 万总投资之上</td></tr>
+          </table>
+        </div>
+        <div class="card"><h4>盈亏平衡的变化</h4>
+          <p>固定成本增加约 1.2 万/月（折旧＋室外维护），但边际贡献率从 47.8% 提升到 <b style="color:#E8B04B">50.4%</b>（酒水拉动）。</p>
+          <p style="margin-top:7px">盈亏平衡月营收从 86 万降到 <b style="color:#E8B04B">约 83.5 万</b>——<span style="color:#E8B04B">小酒馆模型的保本线反而更低</span>。这是本册最实在的一个结论。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>测算为情景估算，需以实际租金与人力方案校准</span><span>11 / 14</span></div>
+</section>
+
+<!-- 12 定位重述 -->
+<section class="slide">
+  <div class="rail"><div class="vt">定 位</div><div class="no">12</div><div class="brand">小酒馆</div></div>
+  <div class="body">
+    <div class="eyebrow">POSITIONING · 定位表达校准</div>
+    <h2>定位应明确为啤酒厂场景中的中式小酒馆<span class="sub">介于正餐与酒吧之间，填补 500 米范围内的业态空白</span></h2>
+    <div class="rule"></div>
+    <div style="background:var(--zhu);padding:24px 30px;margin-bottom:20px">
+      <div style="font-size:11px;letter-spacing:.3em;color:rgba(255,255,255,.72);margin-bottom:11px">POSITIONING STATEMENT · S2</div>
+      <div style="font-family:var(--serif);font-size:28px;color:#fff;line-height:1.6;font-weight:700">
+        在酿珠江的地方，开一间扬州小酒馆——<br>
+        <span style="color:#FFE1A8">一杯厂酿、一碟糟卤、一碗热汤面</span>，从傍晚坐到深夜，人均 150–175。
+      </div>
+    </div>
+    <div class="grid3" style="margin-bottom:16px">
+      <div class="card" style="border-top:3px solid var(--hop)"><h4>脊梁 · 酒</h4><p>厂酿鲜啤（在地不可复制）＋ 花雕温饮（淮扬正统）。目标酒水占比 <b class="hh">28–38%</b>，毛利 ≥68%。<span class="hh">这是与所有中餐正餐的分界线。</span></p></div>
+      <div class="card" style="border-top:3px solid var(--zhu)"><h4>血肉 · 糟卤冷碟</h4><p>24 支冷碟糟卤 ＋ 12 支佐酒小食 ＝ 36 支强下酒菜。<b class="hl">淮扬糟卤是中国最成体系的一套佐酒菜</b>，这是与 18 家西餐吧的分界线。</p></div>
+      <div class="card" style="border-top:3px solid var(--kiln)"><h4>收口 · 中式热食</h4><p>14 支面点主食 ＋ 6 支浇头 ＋ 粥。500m 内深夜中式热食供给接近空白，<b>有利于建立清晰认知与稳定消费习惯。</b></p></div>
+    </div>
+    <div class="grid2">
+      <div class="card"><h4>门头与首图（S2 修订）</h4>
+        <div style="border:1px solid var(--line);padding:15px 17px;margin-top:5px;background:#fff">
+          <div style="font-family:var(--serif);font-size:23px;color:var(--kiln);letter-spacing:.05em">韵1980 · 扬州市集</div>
+          <div style="font-size:13.5px;color:var(--zhu);margin-top:7px;letter-spacing:.06em;font-weight:600">厂酿鲜啤 · 扬州糟卤 · 深夜热汤面</div>
+          <div style="font-size:12px;color:var(--ink-2);margin-top:5px">17:00 — 01:00 　｜　梅府家宴第三代传人 成伟 主理</div>
+        </div>
+        <p style="margin-top:10px">相较 S1，定位表达应将<span class="hl">「厂酿鲜啤」置于「江鲜」之前</span>。江鲜仍提供产品价值支撑，但「厂酿」更能解释门店与啤酒厂场地之间的关系。</p>
+      </div>
+      <div class="card"><h4>五个明确不做（S2 修订）</h4>
+        <table style="font-size:12px">
+          <tr><th>不做</th><th>理由</th></tr>
+          <tr><td>不做 DJ、不做夜店氛围</td><td>该领域由 18 家西餐吧占优；同时可能造成 40 岁以上客群流失</td></tr>
+          <tr><td>不做 30 支以上的酒单</td><td>小酒馆的酒单越短越有主张；24 支足够</td></tr>
+          <tr><td>不做重午市</td><td>人力与备料结构为晚上设计，硬做会伤晚场出品</td></tr>
+          <tr><td>不做 181 元以上的宴请大菜</td><td>该带流量效率仅 0.46，且与酒馆气质冲突</td></tr>
+          <tr><td>不把酒水占比推过 38%</td><td>越过这条线就变成酒吧，进入我们打不赢的战场</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>S2 在 S1 基础上校准两项定位表达：核心品类与门头首句</span><span>12 / 14</span></div>
+</section>
+
+<!-- 13 行动与风险 -->
+<section class="slide">
+  <div class="rail"><div class="vt">行 动</div><div class="no">13</div><div class="brand">小酒馆</div></div>
+  <div class="body">
+    <div class="eyebrow">ACTIONS &amp; RISKS · 模型调整后的新增事项</div>
+    <h2>新增十项行动与四项风险<span class="sub">S1 优化清单继续有效，本页仅列示小酒馆模型新增事项</span></h2>
+    <div class="rule"></div>
+    <div class="grid2" style="gap:24px">
+      <div>
+        <div style="font-size:11.5px;letter-spacing:.16em;color:var(--zhu);margin-bottom:9px;font-weight:600">▎ 新增行动（按优先级）</div>
+        <table>
+          <tr><th style="width:5%">#</th><th style="width:34%">动作</th><th style="width:41%">要点</th><th style="width:20%">时限</th></tr>
+          <tr><td>1</td><td><b>补酒单 24 支</b></td><td>四条线；首屏「厂酿三味 88 元」</td><td class="win">T-45</td></tr>
+          <tr><td>2</td><td><b>谈厂酿鲜啤供应</b></td><td>先拿 L1 供货与 tap，再谈 L4 联名</td><td class="win">T-75</td></tr>
+          <tr><td>3</td><td><b>吧台扩至 20–25㎡</b></td><td>4–6 个龙头＋温酒区＋10–12 座</td><td class="win">T-70（工程）</td></tr>
+          <tr><td>4</td><td><b>室外 16 座落地</b></td><td>雨棚／地插／照明／加热；年增约 34.6 万</td><td class="win">T-60</td></tr>
+          <tr><td>5</td><td><b>菜单减 13 支、增 12 支小食</b></td><td>精简 ≥98 元大菜 11 支；新增佐酒小食板块</td><td class="win">T-50</td></tr>
+          <tr><td>6</td><td><b>板前改糟卤冷碟吧台</b></td><td>明档核心从「炒」改为「卤与切」</td><td>T-45</td></tr>
+          <tr><td>7</td><td><b>三张单重拆</b></td><td>酒单／佐酒单／热菜收口单</td><td>T-30</td></tr>
+          <tr><td>8</td><td><b>早场时段价</b></td><td>17:00–19:00 鲜啤第二杯半价</td><td>T-15</td></tr>
+          <tr><td>9</td><td><b>酒水 SOP 与培训</b></td><td>出杯、管线清洗、温酒、控醉、代驾</td><td>T-20</td></tr>
+          <tr><td>10</td><td><b>座位结构调整</b></td><td>2 人位增至 ≥28 席；1 间包房改半开放</td><td>T-40</td></tr>
+        </table>
+      </div>
+      <div>
+        <div style="font-size:11.5px;letter-spacing:.16em;color:var(--tong);margin-bottom:9px;font-weight:600">▎ 新增风险</div>
+        <div class="card" style="margin-bottom:10px"><h4><span class="chip">R1</span>深夜许可与噪声 <span class="dim" style="font-weight:400">· 概率中 / 影响极高</span></h4><p>营业至 01:00 需要许可、排烟、噪声、园区夜间通行四项同时满足。<span class="warn">在小酒馆模型下这不再是「加分项」，而是模型能否成立的前提</span>——深夜时段占营收 24%。</p><p style="margin-top:6px"><b>对策：</b>T-90 启动谈判并写入租约；备用方案收缩至 23:00，届时深夜营收占比降到约 12%，需用早场与包房补。</p></div>
+        <div class="card" style="margin-bottom:10px"><h4><span class="chip">R2</span>经营结构偏向酒吧 <span class="dim" style="font-weight:400">· 概率中 / 影响高</span></h4><p>酒水占比超过 38% 后，客群可能向 25–32 岁夜场客集中，<span class="warn">与 18 家西餐吧直接竞争，而现阶段酒水运营能力不足</span>；同时可能造成 35 岁以上家庭与商务客流失。</p><p style="margin-top:6px"><b>对策：</b>将「酒水占比 28–38%」列为周度监控指标；菜品人均低于 100 元时立即预警。</p></div>
+        <div class="card" style="margin-bottom:10px"><h4><span class="chip">R3</span>酒水是一项全新能力 <span class="dim" style="font-weight:400">· 概率高 / 影响中</span></h4><p>鲜啤管线清洗、出杯损耗、酒水盘点、控醉与安全、代驾协作——<span class="warn">这些是韵此前两家店都没有的能力</span>。做不好，损耗率与安全事故会同时上升。</p><p style="margin-top:6px"><b>对策：</b>开业前 20 天做专项培训；鲜啤日损耗（管线／泡沫）设 ≤6% 的硬指标。</p></div>
+        <div class="card"><h4><span class="chip">R4</span>「市集」＋酒＝大排档联想 <span class="dim" style="font-weight:400">· 概率中 / 影响中</span></h4><p>S1 已提示过这条，<span class="warn">加上酒之后风险放大</span>：市集 ＋ 深夜 ＋ 啤酒 ＋ 48 元的价格中位，四个要素叠在一起很容易被归入排档。</p><p style="margin-top:6px"><b>对策：</b>用器皿（统一朱红）、灯光（2700–3000K／Ra≥90）、温酒仪式、以及「梅府家宴第三代」的署名把调性顶住。<span class="hl">松弛感来自氛围，讲究感来自细节——两者必须同时在场。</span></p></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>S1 的十二条运营优化依然有效，本页只列新增项</span><span>13 / 14</span></div>
+</section>
+
+<!-- 14 收束 -->
+<section class="slide dark">
+  <div class="rail h"><div class="vt">收 束</div><div class="no">14</div><div class="brand">小酒馆</div></div>
+  <div class="body">
+    <div class="eyebrow h">SUMMARY · 结论摘要</div>
+    <h2>核心结论<span class="sub">S2 补充册结论摘要</span></h2>
+    <div class="rule h"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px 24px">
+      <div class="card" style="border-left:3px solid var(--hop)"><h4>1 · 菜单结构支持小酒馆定位</h4><p>冷碟糟卤 ＋ 小份浇头 ＋ ≤68 元热菜合计 <b style="color:#E8B04B">43 支、40.2%</b>，超过多数专业小酒馆的 35% 参考线。糟卤、浇头与夜宵结构共同构成酒馆基础，但酒单尚未纳入。</p></div>
+      <div class="card" style="border-left:3px solid var(--hop)"><h4>2 · 酒水改善 2 人桌客单</h4><p>无酒时 2 人桌人均 110 元、加权 134 元；加入酒水后标准组合为 <b style="color:#E8B04B">161 元</b>、加权 <b style="color:#E8B04B">158 元</b>，进入 141–180 元区间。<b style="color:#E8B04B">酒水占比 32%，并提升综合毛利。</b></p></div>
+      <div class="card" style="border-left:3px solid var(--hop)"><h4>3 · 啤酒厂旧址是关键在地资产</h4><p>500m 内<b style="color:#E8B04B">尚无以「厂酿鲜啤」为核心卖点的门店</b>。江鲜形成产品认知，鲜啤提供复购动力；鲜啤毛利约 72%，且损耗较低。</p></div>
+      <div class="card" style="border-left:3px solid var(--hop)"><h4>4 · 重定义竞争集后，业态空白更明确</h4><p>500m 内提供酒水的门店以西式（18）与日式（3）为主，<b style="color:#E8B04B">中式小酒馆为 0 家。</b>居酒屋（108–110 元／4.6–4.7 分）验证了该客单水平的市场基础。</p></div>
+      <div class="card" style="border-left:3px solid var(--hop)"><h4>5 · 模型下盈亏平衡点下降</h4><p>翻台由 2.0 降至 1.6，客单由 134 元升至 158 元，毛利由 63.0% 升至 65.2%，营业时长由 4.5 小时延长至 8 小时。边际贡献率提升至 <b style="color:#E8B04B">50.4%</b>，盈亏平衡月营收降至 <b style="color:#E8B04B">83.5 万元</b>。</p></div>
+      <div class="card" style="border-left:3px solid var(--tong)"><h4>6 · 深夜经营条件是模型成立的前提</h4><p>深夜时段占营收 <b style="color:#E8B04B">24%</b>。营业至 01:00 的许可、排烟、噪声与园区夜间通行条件缺一不可。<span class="warn">建议在 T-90 前完成确认，并纳入租约。</span></p></div>
+    </div>
+    <div style="margin-top:20px;display:flex;justify-content:space-between;align-items:flex-end">
+      <div style="font-family:var(--serif);font-size:21px;color:#C3D67A;letter-spacing:.06em">一杯厂酿 · 一碟糟卤 · 一碗热汤面</div>
+      <div style="font-size:11px;color:#6E635C;letter-spacing:.1em">韵1980 扬州市集 · 小酒馆模型 · 补充册 S2 · 2026.08</div>
+    </div>
+  </div>
+  <div class="foot"><span></span><span>14 / 14</span></div>
+</section>
+
+</div>
+<div class="nav">导出 PDF：⌘/Ctrl + P → 另存为 PDF → 布局「横向」→ 边距「无」→ 勾选「背景图形」</div>
+</body>
+</html>

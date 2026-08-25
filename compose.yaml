@@ -1,0 +1,33 @@
+services:
+  db:
+    image: postgres:18.4
+    environment:
+      POSTGRES_DB: baslide
+      POSTGRES_USER: baslide
+      POSTGRES_PASSWORD: baslide-local
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U baslide -d baslide"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+    volumes:
+      - baslide_pgdata:/var/lib/postgresql
+  app:
+    build: .
+    environment:
+      DATABASE_URL: postgresql://baslide:baslide-local@db:5432/baslide
+      BASLIDE_ROOT: /app
+      ASSET_STORE: /app/var/assets
+      PYTHONPATH: /app
+    ports:
+      - 127.0.0.1:8765:8765
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - .:/app
+      - baslide_assets:/app/var/assets
+
+volumes:
+  baslide_pgdata:
+  baslide_assets:

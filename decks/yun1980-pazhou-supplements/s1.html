@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>韵1980 扬州食集 · 珠江琶醍 · 补充分析</title>
+<style>
+/* ============ 令牌 ============ */
+:root{
+  --zhu:#C0322B;        /* 胭脂朱 —— 品牌视觉锤 */
+  --zhu-deep:#8E1F1B;   /* 深朱 */
+  --zhu-pale:#F0D9D4;   /* 淡朱 */
+  --tong:#B07D3A;       /* 麦芽铜 —— 啤酒厂 */
+  --qing:#2F4B45;       /* 江水青 —— 淮扬清鲜 */
+  --paper:#F3EEE5;      /* 江雾纸 */
+  --paper-2:#E8E0D2;
+  --kiln:#1C1917;       /* 窑黑 */
+  --ink:#2B2523;
+  --ink-2:#6B605A;
+  --line:#D8CDBB;
+  --serif:"Songti SC","Noto Serif SC","Source Han Serif SC","Source Han Serif CN",STSong,SimSun,serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:#2A2522}
+body{font-family:var(--sans);color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+
+/* ============ 幻灯片容器 16:9 ============ */
+.deck{display:flex;flex-direction:column;align-items:center;gap:26px;padding:26px 0 60px}
+.slide{
+  position:relative;width:1280px;height:720px;flex:0 0 auto;overflow:hidden;
+  background:var(--paper);
+  box-shadow:0 10px 40px rgba(0,0,0,.45);
+}
+/* 左侧朱红印章条 */
+.rail{position:absolute;left:0;top:0;bottom:0;width:52px;background:var(--zhu);color:#fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:22px 0 20px;z-index:5}
+.rail .vt{writing-mode:vertical-rl;font-family:var(--serif);font-size:14px;letter-spacing:.42em;opacity:.92}
+.rail .no{font-family:var(--serif);font-size:22px;font-weight:700;line-height:1;
+  border:1.5px solid rgba(255,255,255,.75);padding:7px 5px;letter-spacing:0}
+.rail .brand{writing-mode:vertical-rl;font-family:var(--serif);font-size:11px;letter-spacing:.3em;opacity:.6}
+.body{position:absolute;left:52px;right:0;top:0;bottom:0;padding:40px 52px 34px}
+
+/* 标题体系 */
+.eyebrow{font-family:var(--sans);font-size:11.5px;letter-spacing:.34em;color:var(--zhu);font-weight:600;margin-bottom:10px}
+h2{font-family:var(--serif);font-size:38px;font-weight:700;letter-spacing:.02em;line-height:1.1;color:var(--kiln)}
+h2 .sub{display:block;font-family:var(--sans);font-size:14px;font-weight:400;letter-spacing:.06em;color:var(--ink-2);margin-top:9px}
+.rule{height:2px;background:linear-gradient(90deg,var(--zhu) 0 92px,var(--line) 92px 100%);margin:16px 0 22px}
+
+/* ============ 签名元素：市集价签 ============ */
+.tags{display:flex;gap:16px;flex-wrap:wrap}
+.tag{position:relative;background:#fff;border:1px solid var(--line);
+  padding:16px 16px 14px;min-width:150px;flex:1;
+  box-shadow:2px 3px 0 rgba(192,50,43,.10)}
+.tag::before{content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);
+  width:9px;height:9px;border-radius:50%;background:var(--paper-2);border:1px solid var(--line)}
+.tag .k{display:block;font-family:var(--serif);font-size:34px;font-weight:700;color:var(--zhu);
+  line-height:1;margin-top:14px;font-variant-numeric:tabular-nums}
+.tag .k small{font-size:15px;font-weight:400;color:var(--ink-2);margin-left:3px}
+.tag .l{display:block;font-size:11.5px;color:var(--ink-2);margin-top:9px;letter-spacing:.05em;line-height:1.5}
+.tag.dark{background:var(--kiln);border-color:var(--kiln)}
+.tag.dark .k{color:#E8B04B}.tag.dark .l{color:#A79C93}
+.tag.dark::before{background:#3A322C;border-color:#4A413A}
+
+/* ============ 通用块 ============ */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.grid-7-5{display:grid;grid-template-columns:7fr 5fr;gap:28px}
+.grid-5-7{display:grid;grid-template-columns:5fr 7fr;gap:28px}
+.card{background:#fff;border:1px solid var(--line);padding:18px 20px}
+.card h4{font-family:var(--serif);font-size:17px;color:var(--kiln);margin-bottom:10px;
+  padding-bottom:8px;border-bottom:1px solid var(--line)}
+.card p,.card li{font-size:12.5px;line-height:1.75;color:var(--ink)}
+.card ul{padding-left:16px}
+.card li{margin-bottom:5px}
+.hl{color:var(--zhu);font-weight:700}
+.dim{color:var(--ink-2)}
+.chip{display:inline-block;background:var(--zhu);color:#fff;font-size:10.5px;padding:2px 8px;
+  letter-spacing:.08em;margin-right:6px;vertical-align:2px}
+.chip.q{background:var(--qing)}.chip.t{background:var(--tong)}.chip.k{background:var(--kiln)}
+
+/* 表格 */
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{background:var(--kiln);color:#EDE5D8;font-weight:500;text-align:left;padding:7px 9px;
+  font-size:11px;letter-spacing:.06em}
+td{padding:6px 9px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+tr:nth-child(even) td{background:rgba(255,255,255,.55)}
+td.n{text-align:right}
+.win{color:var(--zhu);font-weight:700}
+.warn{color:var(--tong);font-weight:700}
+
+/* 条形图 */
+.bars{display:flex;flex-direction:column;gap:7px}
+.bar{display:grid;grid-template-columns:78px 1fr 52px;align-items:center;gap:10px;font-size:11.5px}
+.bar .lb{color:var(--ink-2);text-align:right}
+.bar .tr{background:var(--paper-2);height:17px;position:relative}
+.bar .fl{height:100%;background:var(--qing)}
+.bar .fl.z{background:var(--zhu)}
+.bar .fl.t{background:var(--tong)}
+.bar .fl.g{background:#B9AE9C}
+.bar .vl{font-variant-numeric:tabular-nums;color:var(--kiln);font-weight:600}
+
+/* 双条对比 */
+.dbar{display:grid;grid-template-columns:74px 1fr 1fr;gap:8px;align-items:center;font-size:11px;margin-bottom:5px}
+.dbar .lb{color:var(--ink-2);text-align:right}
+.dbar .side{display:flex;align-items:center;gap:6px}
+.dbar .side.l{justify-content:flex-end}
+.dbar .b{height:15px;background:var(--zhu)}
+.dbar .b.o{background:var(--qing)}
+
+/* 注脚 */
+.foot{position:absolute;left:52px;right:0;bottom:0;padding:0 52px 14px;
+  display:flex;justify-content:space-between;font-size:10px;color:var(--ink-2);letter-spacing:.05em}
+
+/* 深色版 */
+.slide.dark{background:var(--kiln)}
+.slide.dark h2,.slide.dark .card h4{color:var(--paper)}
+.slide.dark .card{background:#262120;border-color:#3B3330}
+.slide.dark .card p,.slide.dark .card li{color:#D6CCC2}
+.slide.dark .rule{background:linear-gradient(90deg,var(--zhu) 0 92px,#3B3330 92px 100%)}
+.slide.dark td{border-bottom-color:#3B3330;color:#D6CCC2}
+.slide.dark tr:nth-child(even) td{background:rgba(255,255,255,.03)}
+.slide.dark .bar .tr{background:#332C29}
+.slide.dark .bar .vl{color:#EDE5D8}
+.slide.dark .foot{color:#6E635C}
+.slide.dark h2 .sub{color:#9B8F86}
+
+/* 封面 */
+.cover{background:var(--kiln);position:relative;overflow:hidden}
+.cover .seal{position:absolute;right:64px;top:64px;width:132px;height:132px;background:var(--zhu);
+  display:flex;align-items:center;justify-content:center;transform:rotate(-4deg)}
+.cover .seal span{writing-mode:vertical-rl;font-family:var(--serif);font-size:27px;color:#fff;
+  letter-spacing:.16em;font-weight:700}
+.cover .glow{position:absolute;left:-120px;bottom:-220px;width:620px;height:620px;border-radius:50%;
+  background:radial-gradient(circle,rgba(192,50,43,.34) 0%,rgba(192,50,43,0) 68%)}
+.cover .stripes{position:absolute;right:0;bottom:0;height:8px;width:100%;
+  background:repeating-linear-gradient(90deg,var(--zhu) 0 44px,transparent 44px 88px)}
+
+/* 打印 / PDF —— 16:9 横版 */
+@page{size:1280px 720px;margin:0}
+@media print{
+  html,body{background:#fff}
+  .deck{gap:0;padding:0;display:block}
+  .slide{box-shadow:none;page-break-after:always;break-after:page;margin:0}
+  .slide:last-child{page-break-after:auto}
+  .nav{display:none!important}
+}
+.nav{position:fixed;right:16px;bottom:16px;z-index:99;background:var(--zhu);color:#fff;
+  font-size:12px;padding:9px 15px;letter-spacing:.1em;box-shadow:0 4px 16px rgba(0,0,0,.4)}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- ============ 01 封面 ============ -->
+<section class="slide cover">
+  <div class="glow"></div>
+  <div class="seal"><span>扬州食集</span></div>
+  <div style="position:absolute;left:88px;top:150px;right:280px">
+    <div style="font-size:12px;letter-spacing:.4em;color:#B07D3A;margin-bottom:26px">补 充 分 析 · 珠 江 琶 醍 啤 酒 厂</div>
+    <h2 style="font-size:66px;color:#F3EEE5;line-height:1.14;letter-spacing:.03em">韵1980 · 扬州食集<br><span style="color:var(--zhu)">开业定位与运营优化</span></h2>
+    <div style="width:96px;height:3px;background:var(--zhu);margin:30px 0 24px"></div>
+    <p style="font-size:15.5px;line-height:2;color:#B3A79D;max-width:640px">
+      以 110 支菜单定价表（含夜宵板块）为轴，叠加珠江琶醍<span style="color:#E8B04B">商场内 / 100m / 300m / 500m</span>
+      四层共 85 家餐饮的最新供给数据，回答三件事：<br>
+      开业怎么定位、运营怎么调优、下一步往哪走。
+    </p>
+  </div>
+  <div style="position:absolute;left:88px;bottom:66px;display:flex;gap:44px;font-size:11.5px;color:#7E736B;letter-spacing:.12em">
+    <div>数据 · 点评 POI 202604 ＋ 现场采集 2026-08-19</div>
+    <div>原点 · 113.339886, 23.107299</div>
+    <div>版本 · 补充册 S1</div>
+  </div>
+  <div class="stripes"></div>
+</section>
+
+<!-- ============ 02 六个数字 ============ -->
+<section class="slide">
+  <div class="rail"><div class="vt">要 点</div><div class="no">02</div><div class="brand">扬州食集</div></div>
+  <div class="body">
+    <div class="eyebrow">EXECUTIVE READ · 六项关键指标</div>
+    <h2>补录菜单后，经营判断需要重新校准<span class="sub">此前分析未纳入 110 支菜单定价表；本次补齐材料，并结合琶醍供给重新测算</span></h2>
+    <div class="rule"></div>
+    <div class="tags" style="margin-bottom:20px">
+      <div class="tag"><span class="k">110</span><span class="l">菜单 SKU（收费 107 ＋ 餐前赠送 3）<br>其中夜宵板块 27 支，占 25%</span></div>
+      <div class="tag"><span class="k">48<small>元</small></span><span class="l">全单价格中位<br>较既有门店菜牌 88 元 <b class="hl">低 45%</b></span></div>
+      <div class="tag"><span class="k">63.0<small>%</small></span><span class="l">综合毛利率（售价 6,690／成本 2,478）<br>与 63.9% 的规划值几乎一致</span></div>
+      <div class="tag dark"><span class="k">2.17</span><span class="l">500m 内 <b style="color:#E8B04B">111–140 元</b>带的流量效率<br>27.9% 的门店吃掉 60.5% 的评论</span></div>
+      <div class="tag dark"><span class="k">1</span><span class="l">500m 内做中式夜宵热食的店<br>（破店肥哈烤串）—— 夜宵是真空</span></div>
+      <div class="tag dark"><span class="k">0</span><span class="l">500m 内江浙／淮扬门店<br>20 家中餐正餐全部是粤／潮／顺德系</span></div>
+    </div>
+    <div class="grid3">
+      <div class="card"><h4>核心结论</h4><p><span class="hl">补录菜单与琶醍的休闲聚会及夜间消费场景具有较高匹配度。</span>价格结构、夜宵板块与场地供给共同支持这一判断。</p></div>
+      <div class="card"><h4>主要机会</h4><p>夜宵。500m 内 21 家西餐酒吧延续客流至 23 点，但<span class="hl">中式深夜热食供给接近空白</span>。27 支夜宵 SKU 构成重要的时段机会。</p></div>
+      <div class="card"><h4>主要风险</h4><p>全单价格中位为 48 元，若缺少点单结构引导，<span class="warn">客单可能低于 110 元</span>，无法进入 111–140 元的高效率价格带。</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>韵1980 扬州食集 · 珠江琶醍补充分析</span><span>02 / 20</span></div>
+</section>
+
+<!-- ============ 03 方法论 ============ -->
+<section class="slide">
+  <div class="rail"><div class="vt">方 法</div><div class="no">03</div><div class="brand">扬州食集</div></div>
+  <div class="body">
+    <div class="eyebrow">METHOD · 七项分析方法</div>
+    <h2>本册采用七项分析方法<span class="sub">每项方法对应一个经营问题，并在后续页面形成可验证结论</span></h2>
+    <div class="rule"></div>
+    <table>
+      <tr><th style="width:14%">工具</th><th style="width:26%">它回答什么</th><th style="width:34%">在本册怎么用</th><th style="width:26%">结论落在</th></tr>
+      <tr><td><b>圈层供给分析</b></td><td>识别周边供给与市场空白</td><td>商场内 50 / 100m 30 / 300m 48 / 500m 82 四层拆品类</td><td>P06 供给结构 · P09 空白位</td></tr>
+      <tr><td><b>价格带流量效率</b><br><span class="dim">流量占比 ÷ 店数占比</span></td><td>哪一档价格在这里最好赚</td><td>把 500m 内 68 家有人均的店按价格带切开，比评论分布</td><td class="win">P07 —— 111–140 效率 2.17</td></tr>
+      <tr><td><b>菜单结构解剖</b></td><td>这份菜单在卖什么</td><td>110 支按品类／价格带／味型／成本四轴拆</td><td>P04 · P05 · P12</td></tr>
+      <tr><td><b>君臣佐使</b></td><td>谁负责认知、谁负责赚钱</td><td>把 107 支收费菜重新归位，检查使命是否错配</td><td class="win">P10 —— 君类价格偏低</td></tr>
+      <tr><td><b>时段竞争矩阵</b></td><td>一天里哪一段最值得打</td><td>把 500m 竞争者按午／晚／夜三段重排</td><td class="win">P11 —— 夜宵真空</td></tr>
+      <tr><td><b>倾向指数客单建模</b><br><span class="dim">Σ(品类中位价 × 点单份数)</span></td><td>测算菜单对应的客单水平</td><td>8 组场景模拟，正餐 4 组 + 夜宵 4 组</td><td class="win">P13 —— 正餐 148／夜宵 96</td></tr>
+      <tr><td><b>视觉锤评估</b></td><td>「红」这件事成立吗</td><td>22 支红色菜的价格、品类、毛利、可拍性四维打分</td><td>P14</td></tr>
+    </table>
+    <div class="grid2" style="margin-top:18px">
+      <div class="card"><h4>与主报告的关系</h4><p>主报告（14 分册）解决的是<b>「在琶醍开一家什么店」</b>；本补充册解决的是<b>「拿着这份 110 支的菜单，怎么开、怎么调」</b>。主报告的定价结论仍然成立，但<span class="hl">菜单形态变了，达成路径必须重算</span>。</p></div>
+      <div class="card"><h4>数据边界</h4><p>① 点评「平均消费」低于真实客单 10–25%，本册凡做经营测算处均已注明修正；② 500m 内 85 家中 17 家无人均、11 家无评分，占比测算已剔除空值；③ 夜宵供给靠品类与业态推断，无营业时间字段，属定性判断。</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>方法论索引</span><span>03 / 20</span></div>
+</section>
+
+<!-- ============ 04 菜单解剖 ============ -->
+<section class="slide">
+  <div class="rail"><div class="vt">菜 单</div><div class="no">04</div><div class="brand">扬州食集</div></div>
+  <div class="body">
+    <div class="eyebrow">MENU ANATOMY · 110 支菜单结构</div>
+    <h2>菜单结构概览<span class="sub">十二个板块、107 支收费菜、22 支红色菜品、6 支苏北菜、3 支时价河豚</span></h2>
+    <div class="rule"></div>
+    <div class="grid-7-5">
+      <div>
+        <table>
+          <tr><th>板块</th><th class="n">支数</th><th class="n">均价</th><th class="n">中位</th><th class="n">区间</th><th class="n">均成本</th><th class="n">毛利率</th></tr>
+          <tr><td>淮扬凉菜</td><td class="n">18</td><td class="n">52</td><td class="n">50</td><td class="n">22–128</td><td class="n">19</td><td class="n">63.7%</td></tr>
+          <tr><td><b>淮扬热炒</b></td><td class="n"><b>30</b></td><td class="n"><b>111</b></td><td class="n"><b>88</b></td><td class="n">42–288</td><td class="n">43</td><td class="n">61.4%</td></tr>
+          <tr><td>淮扬蒸菜</td><td class="n">8</td><td class="n">85</td><td class="n">83</td><td class="n">52–128</td><td class="n">32</td><td class="n">61.8%</td></tr>
+          <tr><td>时令时蔬</td><td class="n">6</td><td class="n">38</td><td class="n">37</td><td class="n">28–58</td><td class="n">13</td><td class="n">66.1%</td></tr>
+          <tr><td>面点主食</td><td class="n">13</td><td class="n">25</td><td class="n">22</td><td class="n">18–38</td><td class="n">8</td><td class="n win">69.2%</td></tr>
+          <tr><td>正餐甜品</td><td class="n">5</td><td class="n">22</td><td class="n">22</td><td class="n">18–26</td><td class="n">6</td><td class="n win">71.4%</td></tr>
+          <tr style="border-top:2px solid var(--zhu)"><td>宵夜糟卤凉拌</td><td class="n">6</td><td class="n">46</td><td class="n">45</td><td class="n">26–72</td><td class="n">16</td><td class="n">65.0%</td></tr>
+          <tr><td>宵夜重口硬菜</td><td class="n">8</td><td class="n">58</td><td class="n">38</td><td class="n">28–128</td><td class="n">21</td><td class="n">63.5%</td></tr>
+          <tr><td>宵夜汤面</td><td class="n">5</td><td class="n">32</td><td class="n">32</td><td class="n">22–42</td><td class="n">12</td><td class="n">63.6%</td></tr>
+          <tr><td>宵夜浇头</td><td class="n">4</td><td class="n">21</td><td class="n">20</td><td class="n">16–26</td><td class="n">7</td><td class="n">64.6%</td></tr>
+          <tr><td>宵夜甜品</td><td class="n">3</td><td class="n">24</td><td class="n">24</td><td class="n">22–26</td><td class="n">7</td><td class="n win">70.8%</td></tr>
+          <tr><td>宵夜粥</td><td class="n">1</td><td class="n">18</td><td class="n">18</td><td class="n">18</td><td class="n">5</td><td class="n win">72.2%</td></tr>
+          <tr style="border-top:2px solid var(--kiln)"><td><b>合计</b></td><td class="n"><b>107</b></td><td class="n"><b>62.5</b></td><td class="n"><b>48</b></td><td class="n">16–288</td><td class="n"><b>23.2</b></td><td class="n"><b>63.0%</b></td></tr>
+        </table>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="card"><h4>正餐 vs 夜宵：两套生意</h4>
+          <table style="font-size:11.5px">
+            <tr><th></th><th class="n">支数</th><th class="n">均价</th><th class="n">中位</th><th class="n">毛利率</th></tr>
+            <tr><td>正餐板块</td><td class="n">80</td><td class="n">70</td><td class="n">58</td><td class="n">62.6%</td></tr>
+            <tr><td>夜宵板块</td><td class="n">27</td><td class="n">40</td><td class="n">32</td><td class="n win">64.6%</td></tr>
+          </table>
+          <p style="margin-top:9px">夜宵支数占 25%，但价格只有正餐的一半——<span class="hl">这是一条独立的、低客单高频次的生意线</span>，不能用正餐的逻辑管它。</p>
+        </div>
+        <div class="card"><h4>表内自带的三处口径问题</h4>
+          <ul>
+            <li>「各品类汇总」的毛利率全部显示 100%、均成本显示 0——公式引用错列，<span class="warn">请以本页重算值为准</span>。</li>
+            <li>凉菜均价表内写 19 元，实为 <b>52 元</b>；热炒写 43 元，实为 <b>111 元</b>。</li>
+            <li>红色菜数表内合计 23，实际带【红】前缀的收费菜为 <b>22 支</b>（胭脂米布丁在正餐与宵夜重复计列）。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>数据源：韵_扬州食集_菜单定价表.xlsx（本报告独立重算）</span><span>04 / 20</span></div>
+</section>
+
+<!-- ============ 05 价格带迁移 ============ -->
+<section class="slide">
+  <div class="rail"><div class="vt">价 格</div><div class="no">05</div><div class="brand">扬州食集</div></div>
+  <div class="body">
+    <div class="eyebrow">PRICE STRUCTURE · 与既有门店菜牌对照</div>
+    <h2>菜单价格结构明显下探<span class="sub">这反映门店场景差异：由宴请型正餐转向兼顾轻重消费的市集形态</span></h2>
+    <div class="rule"></div>
+    <div class="grid-7-5">
+      <div>
+        <div style="display:grid;grid-template-columns:76px 1fr 1fr;gap:8px;font-size:10.5px;color:var(--ink-2);margin-bottom:8px">
+          <div></div><div style="text-align:right;padding-right:6px">◀ 既有门店菜牌 87 支</div><div style="padding-left:6px">扬州食集 107 支 ▶</div>
+        </div>
+        <div class="dbar"><div class="lb">≤30 元</div><div class="side l"><span>5.7%</span><div class="b o" style="width:23px"></div></div><div class="side"><div class="b" style="width:123px"></div><span><b>30.8%</b></span></div></div>
+        <div class="dbar"><div class="lb">31–50</div><div class="side l"><span>16.1%</span><div class="b o" style="width:64px"></div></div><div class="side"><div class="b" style="width:86px"></div><span><b>21.5%</b></span></div></div>
+        <div class="dbar"><div class="lb">51–70</div><div class="side l"><span>10.3%</span><div class="b o" style="width:41px"></div></div><div class="side"><div class="b" style="width:75px"></div><span>18.7%</span></div></div>
+        <div class="dbar"><div class="lb">71–90</div><div class="side l"><span>21.8%</span><div class="b o" style="width:87px"></div></div><div class="side"><div class="b" style="width:45px"></div><span>11.2%</span></div></div>
+        <div class="dbar"><div class="lb">91–110</div><div class="side l"><span>9.2%</span><div class="b o" style="width:37px"></div></div><div class="side"><div class="b" style="width:30px"></div><span>7.5%</span></div></div>
+        <div class="dbar"><div class="lb" style="color:var(--zhu);font-weight:700">111–140</div><div class="side l"><span>4.6%</span><div class="b o" style="width:18px"></div></div><div class="side"><div class="b" style="width:19px"></div><span>4.7%</span></div></div>
+        <div class="dbar"><div class="lb">141–180</div><div class="side l"><span>13.8%</span><div class="b o" style="width:55px"></div></div><div class="side"><div class="b" style="width:8px"></div><span>1.9%</span></div></div>
+        <div class="dbar"><div class="lb">181+</div><div class="side l"><span>18.3%</span><div class="b o" style="width:73px"></div></div><div class="side"><div class="b" style="width:15px"></div><span>3.7%</span></div></div>
+        <table style="margin-top:18px">
+          <tr><th></th><th class="n">最低</th><th class="n">P25</th><th class="n">中位</th><th class="n">P75</th><th class="n">最高</th><th class="n">均价</th></tr>
+          <tr><td>既有门店菜牌</td><td class="n">22</td><td class="n">58</td><td class="n">88</td><td class="n">168</td><td class="n">336</td><td class="n">121</td></tr>
+          <tr><td><b>扬州食集</b></td><td class="n">16</td><td class="n">28</td><td class="n win">48</td><td class="n">78</td><td class="n">288</td><td class="n">63</td></tr>
+          <tr><td class="dim">场内参照 · 陶醉馆</td><td class="n" colspan="6">人均 133／4.7 分</td></tr>
+          <tr><td class="dim">场内参照 · 阅江米库</td><td class="n" colspan="6">人均 127／4.7 分</td></tr>
+        </table>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:13px">
+        <div class="card"><h4><span class="chip">优势</span>低价引流带更完整</h4><p>≤50 元占比为 <b class="hl">52.3%</b>，显著高于既有门店的 21.8%，也高于三秋桂子的 46.7%。菜单已具备较低的首次点单门槛。</p></div>
+        <div class="card"><h4><span class="chip t">关注</span>111–140 仍是薄弱段</h4><p>仅 5 支（4.7%），与既有门店的 4.6% 接近。而这一段正是 500m 内<b class="hl">流量效率最高（2.17）</b>的价格带。建议配置 2–3 支价值感明确的代表菜。</p></div>
+        <div class="card"><h4><span class="chip k">注意</span>高价带占比显著降低</h4><p>181 元以上菜品占比由 18.3% 降至 3.7%（仅河豚 288×3、甲鱼 198）。<span class="warn">包房宴请与商务接待缺少价格支撑</span>，如保留 4 间包房，需以套餐而非散点菜单承接。</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>既有门店口径：韵主菜牌 2026.7.3，87 支标价菜</span><span>05 / 20</span></div>
+</section>
+
+<!-- ============ 06 500m供给结构 ============ -->
+<section class="slide dark">
+  <div class="rail"><div class="vt">场 域</div><div class="no">06</div><div class="brand">扬州食集</div></div>
+  <div class="body">
+    <div class="eyebrow">SUPPLY · 商场内 / 100m / 300m / 500m</div>
+    <h2>琶醍餐饮供给呈现清晰的圈层差异<span class="sub">85 家餐饮分布于四层圈带；越接近项目原点，价格、评分与西式餐饮占比越高</span></h2>
+    <div class="rule"></div>
+    <div class="tags" style="margin-bottom:22px">
+      <div class="tag dark"><span class="k">50</span><span class="l">商场内餐饮<br>人均中位 <b style="color:#E8B04B">111</b>／评分 4.2／评论中位 197</span></div>
+      <div class="tag dark"><span class="k">30</span><span class="l">100m 内<br>人均中位 106／评分 4.3／评论中位 100</span></div>
+      <div class="tag dark"><span class="k">48</span><span class="l">300m 内（45 家在场内）<br>人均中位 110／评分 4.1</span></div>
+      <div class="tag dark"><span class="k">82</span><span class="l">500m 内<br>人均中位 <b style="color:#E8B04B">86.5</b>／人均≥120 者 22 家</span></div>
+    </div>
+    <div class="grid-7-5">
+      <div>
+        <div style="font-size:11.5px;color:#9B8F86;margin-bottom:10px;letter-spacing:.1em">500 米内品类构成（前 12 类，共 82 家）</div>
+        <div class="bars">
+          <div class="bar"><div class="lb">西餐</div><div class="tr"><div class="fl z" style="width:100%"></div></div><div class="vl">18 · 129元</div></div>
+          <div class="bar"><div class="lb">小吃快餐</div><div class="tr"><div class="fl g" style="width:72%"></div></div><div class="vl">13 · 19元</div></div>
+          <div class="bar"><div class="lb">咖啡</div><div class="tr"><div class="fl g" style="width:61%"></div></div><div class="vl">11 · 16元</div></div>
+          <div class="bar"><div class="lb">粤菜</div><div class="tr"><div class="fl t" style="width:61%"></div></div><div class="vl">11 · 117元</div></div>
+          <div class="bar"><div class="lb">私房菜</div><div class="tr"><div class="fl t" style="width:22%"></div></div><div class="vl">4 · 144元</div></div>
+          <div class="bar"><div class="lb">其他美食</div><div class="tr"><div class="fl g" style="width:22%"></div></div><div class="vl">4 · 30元</div></div>
+          <div class="bar"><div class="lb">日本菜</div><div class="tr"><div class="fl z" style="width:17%"></div></div><div class="vl">3 · 110元</div></div>
+          <div class="bar"><div class="lb">饮品店</div><div class="tr"><div class="fl g" style="width:17%"></div></div><div class="vl">3 · 32元</div></div>
+          <div class="bar"><div class="lb">火锅</div><div class="tr"><div class="fl t" style="width:11%"></div></div><div class="vl">2 · 86元</div></div>
+          <div class="bar"><div class="lb">烧烤烤串</div><div class="tr"><div class="fl t" style="width:11%"></div></div><div class="vl">2 · 85元</div></div>
+          <div class="bar"><div class="lb">特色菜</div><div class="tr"><div class="fl z" style="width:11%"></div></div><div class="vl">2 · 145元</div></div>
+          <div class="bar"><div class="lb">面馆</div><div class="tr"><div class="fl g" style="width:11%"></div></div><div class="vl">2 · 31元</div></div>
+          <div class="bar"><div class="lb" style="color:var(--zhu)">江浙淮扬</div><div class="tr"></div><div class="vl" style="color:var(--zhu)">0</div></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:13px">
+        <div class="card"><h4>三条结构性事实</h4>
+          <ul>
+            <li><b style="color:#E8B04B">西餐一家独大</b>：500m 内 18 家，商场内 17 家，人均中位 129，评分中位 4.45。琶醍的主业态是「江景西餐酒吧」。</li>
+            <li><b style="color:#E8B04B">中餐全是粤系</b>：粤菜 11 ＋ 私房 4 ＋ 创意 1 ＋ 潮式地方菜 1 ＝ 17 家，无一例外是粤／潮／顺德。</li>
+            <li><b style="color:#E8B04B">哑铃形</b>：19 元的快餐咖啡（24 家）和 110–145 元的江景餐吧（30 家）各占一头，50–80 元这一段只有 3 家。</li>
+          </ul>
+        </div>
+        <div class="card"><h4>经营状态信号</h4><p>85 家中有 <b style="color:#E8B04B">7 家状态异常</b>：暂停营业 4 家（朝花熹食宴会厅 92 元／MONEY MACHINE 87 元／潮壹聚 27 元／融 Roam 274 元）、尚未营业 2 家、新店 1 家。<span style="color:#E8B04B">中间价位与超高价位均有经营承压案例</span>，稳定经营者主要集中在 110–160 元。</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>数据源：近距餐饮数据包 · 全部.csv（85 行）</span><span>06 / 20</span></div>
+</section>
+
+<!-- ============ 07 价格带效率 ============ -->
+<section class="slide">
+  <div class="rail"><div class="vt">效 率</div><div class="no">07</div><div class="brand">扬州食集</div></div>
+  <div class="body">
+    <div class="eyebrow">EFFICIENCY · 价格带流量效率</div>
+    <h2>111–140 元是琶醍的高效率价格带<span class="sub">27.9% 的门店贡献 60.5% 的流量，该结论在 500m 尺度上再次得到验证</span></h2>
+    <div class="rule"></div>
+    <div class="grid-7-5">
+      <div>
+        <table>
+          <tr><th>人均带</th><th class="n">店数</th><th class="n">店数占比</th><th class="n">评论合计</th><th class="n">流量占比</th><th class="n">单店流量效率</th><th class="n">评分中位</th></tr>
+          <tr><td>≤30 元</td><td class="n">20</td><td class="n">29.4%</td><td class="n">1,930</td><td class="n">2.2%</td><td class="n" style="color:#B9AE9C">0.07</td><td class="n">4.0</td></tr>
+          <tr><td>31–50</td><td class="n">4</td><td class="n">5.9%</td><td class="n">149</td><td class="n">0.2%</td><td class="n" style="color:#B9AE9C">0.03</td><td class="n">3.8</td></tr>
+          <tr><td>51–80</td><td class="n">3</td><td class="n">4.4%</td><td class="n">586</td><td class="n">0.7%</td><td class="n" style="color:#B9AE9C">0.15</td><td class="n">4.35</td></tr>
+          <tr><td>81–110</td><td class="n">11</td><td class="n">16.2%</td><td class="n">15,266</td><td class="n">17.3%</td><td class="n">1.07</td><td class="n">4.1</td></tr>
+          <tr style="background:var(--zhu-pale)"><td><b>111–140</b></td><td class="n"><b>19</b></td><td class="n"><b>27.9%</b></td><td class="n"><b>53,404</b></td><td class="n"><b>60.5%</b></td><td class="n win" style="font-size:15px">2.17</td><td class="n"><b>4.4</b></td></tr>
+          <tr><td><b>141–180</b></td><td class="n">6</td><td class="n">8.8%</td><td class="n">13,958</td><td class="n">15.8%</td><td class="n win">1.79</td><td class="n">4.55</td></tr>
+          <tr><td>181 元以上</td><td class="n">5</td><td class="n">7.4%</td><td class="n">2,983</td><td class="n">3.4%</td><td class="n warn">0.46</td><td class="n">4.7</td></tr>
+        </table>
+        <div style="display:flex;gap:14px;margin-top:16px">
+          <div class="card" style="flex:1"><h4>与主报告的交叉验证</h4><p>主报告在 1km 尺度上测得 111–140 带效率 <b>4.13</b>、250+ 带 <b>0.69</b>。本次在 500m 尺度、用一份全新采集的 85 家名单重算，得到 <b class="hl">2.17</b> 与 <b>0.46</b>。<span class="hl">量级不同（样本更集中），但排序完全一致</span>：中段高、两头低。结论是稳的。</p></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:13px">
+        <div class="card"><h4>三条定价含义</h4>
+          <ul>
+            <li><b>下限 111 元。</b>81–110 带效率为 1.07；低于 110 元后效率降至 0.15 以下，主要对应快餐与咖啡供给。</li>
+            <li><b>甜点 111–140。</b>效率 2.17，且评分中位 4.4——高效率与高口碑同时出现，说明这一段的消费者<span class="hl">愿意付钱也愿意夸</span>。</li>
+            <li><b>上限 180 元。</b>181+ 的 5 家评分中位 4.7（最高），但流量只有 3.4%。<span class="warn">在琶醍，贵而好 ≠ 有生意。</span></li>
+          </ul>
+        </div>
+        <div class="card"><h4>对扬州食集的直接判断</h4>
+          <p>菜单价格中位 48 元<b>不等于</b>客单 48 元。关键变量是<span class="hl">点单份数</span>。按 P13 模型，4 人正餐为 148 元／人，位于高效率价格带；2 人正餐为 110 元／人，处于下限。</p>
+          <p style="margin-top:8px"><b>所以运营的第一目标不是提价，是提份数。</b></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>口径：500m 内 68 家有效人均门店；效率＝流量占比 ÷ 店数占比</span><span>07 / 20</span></div>
+</section>
+
+<!-- ============ 08 类型×圈层 ============ -->
+<section class="slide">
+  <div class="rail"><div class="vt">圈 层</div><div class="no">08</div><div class="brand">扬州食集</div></div>
+  <div class="body">
+    <div class="eyebrow">RINGS × CATEGORY · 圈层价格梯度</div>
+    <h2>四层圈带的品类与价格梯度<span class="sub">场内为核心经营圈，100m 为直接竞争圈，300–500m 提供溢出与补充供给</span></h2>
+    <div class="rule"></div>
+    <div class="grid2">
+      <div>
+        <table>
+          <tr><th>中类</th><th class="n">商场内</th><th class="n">100m</th><th class="n">300m</th><th class="n">500m</th><th class="n">500m 人均中位</th></tr>
+          <tr><td><b>西餐</b></td><td class="n">17</td><td class="n">9</td><td class="n">16</td><td class="n"><b>18</b></td><td class="n">129</td></tr>
+          <tr><td>小吃快餐</td><td class="n">4</td><td class="n">3</td><td class="n">5</td><td class="n">13</td><td class="n">19</td></tr>
+          <tr><td>咖啡</td><td class="n">3</td><td class="n">1</td><td class="n">3</td><td class="n">11</td><td class="n">16</td></tr>
+          <tr><td><b>粤菜</b></td><td class="n">6</td><td class="n">3</td><td class="n">6</td><td class="n"><b>11</b></td><td class="n">117</td></tr>
+          <tr><td>私房菜</td><td class="n">3</td><td class="n">2</td><td class="n">3</td><td class="n">4</td><td class="n win">144</td></tr>
+          <tr><td>日本菜</td><td class="n">2</td><td class="n">1</td><td class="n">1</td><td class="n">3</td><td class="n">110</td></tr>
+          <tr><td>火锅</td><td class="n">2</td><td class="n">1</td><td class="n">2</td><td class="n">2</td><td class="n">86</td></tr>
+          <tr><td>烧烤烤串</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">2</td><td class="n">85</td></tr>
+          <tr><td>特色菜</td><td class="n">1</td><td class="n">—</td><td class="n">1</td><td class="n">2</td><td class="n">145</td></tr>
+          <tr><td>创意菜</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">133</td></tr>
+          <tr><td>面馆／粥粉面</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">3</td><td class="n">31</td></tr>
+          <tr style="border-top:2px solid var(--zhu)"><td style="color:var(--zhu)"><b>江浙／淮扬</b></td><td class="n win">0</td><td class="n win">0</td><td class="n win">0</td><td class="n win">0</td><td class="n">—</td></tr>
+          <tr style="border-top:2px solid var(--kiln)"><td><b>人均中位</b></td><td class="n"><b>111</b></td><td class="n"><b>106</b></td><td class="n"><b>110</b></td><td class="n"><b>86.5</b></td><td class="n"></td></tr>
+          <tr><td><b>评分中位</b></td><td class="n">4.2</td><td class="n">4.3</td><td class="n">4.1</td><td class="n">4.1</td><td class="n"></td></tr>
+          <tr><td><b>人均 ≥120 者</b></td><td class="n">17</td><td class="n">8</td><td class="n">16</td><td class="n">22</td><td class="n"></td></tr>
+        </table>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card"><h4>梯度解读</h4><p>人均中位从场内 111 → 100m 106 → 300m 110 → 500m 86.5。<span class="hl">前三层价格水平接近，500m 圈层受外围社区餐饮影响而下降。</span>琶醍高客单区半径约为 300 米，圈外价格结构明显不同。</p></div>
+        <div class="card"><h4>贴身战名单（100m 内、人均≥100、评分≥4.4）</h4>
+          <table style="font-size:11.5px">
+            <tr><th>店名</th><th class="n">人均</th><th class="n">评分</th><th class="n">评论</th></tr>
+            <tr><td>MR.ROCKY 洛奇先生</td><td class="n">130</td><td class="n">4.7</td><td class="n">19,453</td></tr>
+            <tr><td>VINO 维罗纳（9F 露台）</td><td class="n">160</td><td class="n">4.7</td><td class="n">4,258</td></tr>
+            <tr><td>JoJos Riverside</td><td class="n">141</td><td class="n">4.4</td><td class="n">2,420</td></tr>
+            <tr><td>蒸蒸日膳（海鲜蒸汽火锅）</td><td class="n">111</td><td class="n">4.4</td><td class="n">2,481</td></tr>
+            <tr><td>阅江米库（私房菜）</td><td class="n">127</td><td class="n">4.7</td><td class="n">2,338</td></tr>
+            <tr><td>陶醉馆（创意粤菜）</td><td class="n">133</td><td class="n">4.7</td><td class="n">1,445</td></tr>
+            <tr><td>RockyBro 西餐&amp;酒吧</td><td class="n">134</td><td class="n">4.8</td><td class="n">1,334</td></tr>
+            <tr><td>潮粤楼江景餐厅</td><td class="n">131</td><td class="n">4.8</td><td class="n">416</td></tr>
+          </table>
+          <p style="margin-top:8px">这 8 家人均 111–160、评分 4.4–4.8，是<span class="hl">扬州食集必须挤进去的那一格</span>。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>圈层为累计口径（内圈含于外圈）</span><span>08 / 20</span></div>
+</section>
+
+<!-- ============ 09 空白位 ============ -->
+<section class="slide">
+  <div class="rail"><div class="vt">空 白</div><div class="no">09</div><div class="brand">扬州食集</div></div>
+  <div class="body">
+    <div class="eyebrow">WHITE SPACE · 500 米内五项供给空白</div>
+    <h2>市场空白评估<span class="sub">逐项判断供给缺口的形成原因、进入价值与执行可行性</span></h2>
+    <div class="rule"></div>
+    <table>
+      <tr><th style="width:16%">空白</th><th style="width:20%">证据</th><th style="width:22%">为什么至今没人做</th><th style="width:22%">扬州食集做得动吗</th><th style="width:12%">优先级</th></tr>
+      <tr>
+        <td><b>中式夜宵热食</b></td>
+        <td>500m 内仅破店肥哈（烤串 85 元）一家；21 家西餐酒吧无中式热食</td>
+        <td>西餐酒吧的厨房不做中餐；中餐正餐 21:30 就收灶</td>
+        <td class="win">做得动。27 支夜宵 SKU 已备，浇头+汤面结构出餐快、损耗低</td>
+        <td class="win"><b>P0</b></td>
+      </tr>
+      <tr>
+        <td><b>江浙／淮扬</b></td>
+        <td>四层圈带全部为 0；17 家中餐全是粤／潮／顺德系</td>
+        <td>广州对江浙认知薄、价格锚低（南京大牌档 65 元）</td>
+        <td class="win">做得动，但需绕开「江浙菜」标签，用「扬州食集」的市集语言讲</td>
+        <td class="win"><b>P0</b></td>
+      </tr>
+      <tr>
+        <td><b>50–80 元档正餐</b></td>
+        <td>500m 内该带仅 3 家，效率 0.15</td>
+        <td>租金高，低客单撑不住</td>
+        <td class="warn">不建议进入；该价格带竞争效率较低</td>
+        <td class="dim">不做</td>
+      </tr>
+      <tr>
+        <td><b>正经商务午市</b></td>
+        <td>场内人均 80–130 的中式午餐为 0（米仓 101 元是快餐、3.6 分）</td>
+        <td>园区午市客流不稳，商家不愿备料</td>
+        <td class="win">具备执行基础：面点 13 支＋浇头 4 支＋时蔬 6 支可形成快出餐组合</td>
+        <td class="win"><b>P1</b></td>
+      </tr>
+      <tr>
+        <td><b>可外带的江南熟食</b></td>
+        <td>500m 内无一家做正餐外带熟食</td>
+        <td>正餐门店不愿分心；快餐店没有值得带的东西</td>
+        <td>做得动。肴肉／盐水鹅／金陵烧鸭／熏鲽鱼／醉毛豆，都是天生适合真空外带的品</td>
+        <td>P2</td>
+      </tr>
+    </table>
+    <div class="grid3" style="margin-top:20px">
+      <div class="card"><h4>一个反直觉的判断</h4><p>500m 内「西餐 18 家」看起来是红海，但<span class="hl">它对扬州食集不是竞争，是流量来源</span>。喝到 22 点的人需要吃热的、咸的、有汤的东西——这正是夜宵板块的定义。</p></div>
+      <div class="card"><h4>夜宵时段的竞争效率更高</h4><p>正餐时段需面对 8 家评分 4.4–4.8 的成熟门店；夜宵时段的直接对手仅 1 家烤串店。<span class="hl">在厨房与人员配置不变的情况下，夜宵竞争强度约为正餐的 1/8。</span></p></div>
+      <div class="card"><h4>但夜宵有个前提</h4><p>必须拿到<b>营业至 24:00 以后</b>的许可与排烟条件，且要谈下园区夜间通行与外摆。<span class="warn">这一条不落实，27 支夜宵 SKU 就是废纸。</span></p></div>
+    </div>
+  </div>
+  <div class="foot"><span>空白位判断＝供给证据 ＋ 成因分析 ＋ 自身能力三重校验</span><span>09 / 20</span></div>
+</section>
+
+<!-- ============ 10 君臣佐使 ============ -->
+<section class="slide">
+  <div class="rail"><div class="vt">结 构</div><div class="no">10</div><div class="brand">扬州食集</div></div>
+  <div class="body">
+    <div class="eyebrow">PRODUCT MISSION · 菜品角色校准</div>
+    <h2>107 支菜品的功能结构<span class="sub">健康度检查：君类偏低、臣类偏薄、使类过厚，价值锚点与引流菜比例失衡</span></h2>
+    <div class="rule"></div>
+    <div class="grid-7-5">
+      <div>
+        <table>
+          <tr><th>使命</th><th class="n">支数</th><th class="n">占比</th><th class="n">理论占比</th><th class="n">价格重心</th><th>代表</th><th class="n">诊断</th></tr>
+          <tr><td><b>君</b> 建立认知</td><td class="n">7</td><td class="n">6.5%</td><td class="n">5–10%</td><td class="n">58–168</td><td>朱砂狮子头 58／韵·红烧肉鲍鱼 98／河豚三做 288／手打年糕家烧大黄鱼 168／梅干菜黑蒜长江河鳗 168</td><td class="warn">数量够<br>价格散</td></tr>
+          <tr><td><b>臣</b> 贡献销售</td><td class="n">24</td><td class="n">22.4%</td><td class="n">25–35%</td><td class="n">78–128</td><td>鸡头米河虾仁 88／手拆蟹粉虾仁豆腐 82／沙葱小炒鲜吊龙 98／九层塔罗氏虾 108／扬州全家福 128</td><td class="warn">偏薄</td></tr>
+          <tr><td><b>佐</b> 丰富餐桌</td><td class="n">37</td><td class="n">34.6%</td><td class="n">35–45%</td><td class="n">32–72</td><td>18 支凉菜／6 支时蔬／蒸菜 4 支／宵夜凉菜 6 支</td><td>合格</td></tr>
+          <tr><td><b>使</b> 降低门槛</td><td class="n">39</td><td class="n">36.4%</td><td class="n">15–25%</td><td class="n">16–38</td><td>面点 13／甜品 5／宵夜面 5／浇头 4／粥 1／低价凉菜</td><td class="warn">严重过厚</td></tr>
+        </table>
+        <div class="card" style="margin-top:16px"><h4>「使类过厚」意味着什么</h4>
+          <p>使类 39 支、占 36.4%，是理论上限的 1.5 倍。其优势是降低点单门槛并覆盖夜宵与午市；<span class="warn">风险是后厨 SKU 负担较重，且低价菜集中点单可能使客单低于 90 元。</span></p>
+          <p style="margin-top:8px"><b>处理方式不是删，是「分单」</b>——把使类的大部分收进夜宵单与午市单，正餐主单只保留 12–14 支面点甜品。<span class="hl">一张菜单变三张，问题自动消失。</span></p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card"><h4>君类的三个问题</h4>
+          <ul>
+            <li><b>价格断裂。</b>58 / 98 / 168 / 288，跨度 5 倍，形不成「这家的招牌大概多少钱」的锚。</li>
+            <li><b>河豚三做占了三个君位。</b>红烧／白汁／酸汤都是 288 元时价，<span class="warn">三支君类挤在同一个食材、同一个价位</span>，浪费了两个君位。</li>
+            <li><b>认知基础最强的菜品定价偏低。</b>朱砂狮子头 58 元（位）、清炖蟹粉狮子头 52 元（位）——均为既有门店高推荐度菜品，在本菜单中处于中价位。</li>
+          </ul>
+        </div>
+        <div class="card"><h4>建议的君类六支</h4>
+          <table style="font-size:11.5px">
+            <tr><th>菜</th><th class="n">现价</th><th class="n">建议</th></tr>
+            <tr><td>朱砂狮子头（位）</td><td class="n">58</td><td class="n win">68</td></tr>
+            <tr><td>韵·红烧肉鲍鱼（位）</td><td class="n">98</td><td class="n">98</td></tr>
+            <tr><td>手打年糕家烧大黄鱼</td><td class="n">168</td><td class="n win">128 小／198 大</td></tr>
+            <tr><td>江南胭脂糟蟹</td><td class="n">88</td><td class="n">88</td></tr>
+            <tr><td>本帮响油笔杆青手包饼</td><td class="n">62</td><td class="n win">78</td></tr>
+            <tr><td>河豚（三做合一，标注做法可选）</td><td class="n">288×3</td><td class="n win">288×1</td></tr>
+          </table>
+          <p style="margin-top:8px">六支落在 <b class="hl">68–198</b>，重心 88–128，正对黄金带。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>归位依据：既有门店点评推荐菜排序 ＋ 价格 ＋ 品类使命</span><span>10 / 20</span></div>
+</section>
+
+<!-- ============ 11 夜宵战场 ============ -->
+<section class="slide dark">
+  <div class="rail"><div class="vt">夜 场</div><div class="no">11</div><div class="brand">扬州食集</div></div>
+  <div class="body">
+    <div class="eyebrow">NIGHT · 夜宵时段机会</div>
+    <h2>夜宵是菜单最具增长潜力的时段<span class="sub">21 家酒吧延续深夜客流，但中式热食的持续供给接近空白</span></h2>
+    <div class="rule"></div>
+    <div class="grid-5-7">
+      <div>
+        <div class="tags" style="flex-direction:column;gap:12px">
+          <div class="tag dark" style="min-width:auto"><span class="k">21</span><span class="l">500m 内的西餐／酒吧／派对餐吧<br>人均中位 129 元，评分中位 4.45</span></div>
+          <div class="tag dark" style="min-width:auto"><span class="k">1</span><span class="l">500m 内提供中式夜宵热食的门店<br>破店肥哈·海鲜烧烤（85 元／4.6 分）</span></div>
+          <div class="tag dark" style="min-width:auto"><span class="k">27<small>支</small></span><span class="l">扬州食集的夜宵 SKU<br>凉菜 6／热菜 8／面 5／浇头 4／甜品 3／粥 1</span></div>
+          <div class="tag dark" style="min-width:auto"><span class="k">64.6<small>%</small></span><span class="l">夜宵板块毛利率<br><b style="color:#E8B04B">高于正餐板块的 62.6%</b></span></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:13px">
+        <div class="card"><h4>时段竞争矩阵</h4>
+          <table style="font-size:11.5px">
+            <tr><th>时段</th><th>500m 内主要供给</th><th class="n">竞争强度</th><th>扬州食集的位置</th></tr>
+            <tr><td>午 11:30–14:00</td><td>13 家小吃快餐（19 元）＋11 家咖啡；无中式正餐午市</td><td class="n" style="color:#7FBF9B">低</td><td>面点＋浇头＋时蔬做套餐</td></tr>
+            <tr><td>晚 17:00–21:30</td><td>8 家人均 111–160、评分 4.4–4.8 的成熟江景店</td><td class="n" style="color:#E06B5F">高</td><td>靠品类差异（唯一非粤系）</td></tr>
+            <tr style="background:rgba(192,50,43,.14)"><td><b>夜 21:30–01:00</b></td><td><b>21 家西餐酒吧（只有酒与轻食）＋1 家烤串</b></td><td class="n" style="color:#7FBF9B"><b>极低</b></td><td class="win"><b>唯一的中式热食与汤面</b></td></tr>
+          </table>
+        </div>
+        <div class="card"><h4>夜宵产品线的三层设计（基于现有 27 支）</h4>
+          <table style="font-size:11.5px">
+            <tr><th>层</th><th>组合</th><th class="n">人均</th><th>场景</th></tr>
+            <tr><td><b>解酒层</b></td><td>软兜长鱼面 38／雪菜肉丝面 22＋美龄粥 18</td><td class="n">40–60</td><td>喝完了，来碗热的</td></tr>
+            <tr><td><b>延续层</b></td><td>糟卤三味（醉毛豆 28＋青荚 26＋肴肉 48）＋花雕醉大虾 72</td><td class="n">90–120</td><td>延续聚会与社交</td></tr>
+            <tr><td><b>重口层</b></td><td>吮指香辣蟹 128／赤焰罗氏虾 98／红油肥肠煲 68＋米饭</td><td class="n">120–160</td><td>正经吃一顿夜宵</td></tr>
+          </table>
+          <p style="margin-top:9px">这三层<span style="color:#E8B04B">共用同一个厨房、同一批食材</span>，边际成本极低，却覆盖了 40–160 元的完整夜间客单谱系。</p>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:14px;border-left:3px solid var(--zhu)"><p style="font-size:13px"><b style="color:#E8B04B">优先行动：</b>将夜宵单独立呈现，21:30 切换菜单，并在园区酒吧周边投放「江边最后一碗热汤面」传播物料。<span style="color:#E8B04B">该动作投入低、时段竞争弱</span>，有利于建立深夜中式热食认知。</p></div>
+  </div>
+  <div class="foot"><span>夜宵供给判断基于品类与业态推断（数据无营业时间字段）</span><span>11 / 20</span></div>
+</section>
+
+<!-- ============ 12 味型与红色矩阵 ============ -->
+<section class="slide">
+  <div class="rail"><div class="vt">味 型</div><div class="no">12</div><div class="brand">扬州食集</div></div>
+  <div class="body">
+    <div class="eyebrow">FLAVOUR &amp; VISUAL · 味型宽度与红色视觉锤</div>
+    <h2>菜单已补足辣味与酸味维度<span class="sub">此前识别的清淡度偏高、辣味不足与酸甜不足问题已基本改善</span></h2>
+    <div class="rule"></div>
+    <div class="grid2">
+      <div>
+        <div style="font-size:11.5px;color:var(--ink-2);margin-bottom:10px;letter-spacing:.1em">味型覆盖（按菜单标注归并）</div>
+        <div class="bars">
+          <div class="bar"><div class="lb">咸鲜／清鲜</div><div class="tr"><div class="fl" style="width:100%"></div></div><div class="vl">31 支</div></div>
+          <div class="bar"><div class="lb">辣（鲜辣/香辣/麻辣）</div><div class="tr"><div class="fl z" style="width:52%"></div></div><div class="vl win">16 支</div></div>
+          <div class="bar"><div class="lb">糟香／酒香</div><div class="tr"><div class="fl t" style="width:39%"></div></div><div class="vl">12 支</div></div>
+          <div class="bar"><div class="lb">酱红／咸甜</div><div class="tr"><div class="fl" style="width:32%"></div></div><div class="vl">10 支</div></div>
+          <div class="bar"><div class="lb">甜／蜜甜／桂花</div><div class="tr"><div class="fl t" style="width:29%"></div></div><div class="vl">9 支</div></div>
+          <div class="bar"><div class="lb">酸／酸辣／酸爽</div><div class="tr"><div class="fl z" style="width:26%"></div></div><div class="vl win">8 支</div></div>
+          <div class="bar"><div class="lb">融合（芝士/黑松露/椰）</div><div class="tr"><div class="fl g" style="width:26%"></div></div><div class="vl">8 支</div></div>
+          <div class="bar"><div class="lb">卤香／五香</div><div class="tr"><div class="fl g" style="width:23%"></div></div><div class="vl">7 支</div></div>
+          <div class="bar"><div class="lb">椒麻／黄贡椒</div><div class="tr"><div class="fl z" style="width:16%"></div></div><div class="vl">5 支</div></div>
+          <div class="bar"><div class="lb">发酵鲜（臭豆腐等）</div><div class="tr"><div class="fl g" style="width:10%"></div></div><div class="vl">3 支</div></div>
+        </div>
+        <div class="card" style="margin-top:16px"><h4>味型诊断</h4>
+          <p>辣味 16 支（15.0%）、酸味 8 支（7.5%）——<span class="hl">较既有门店的 8% 与 5% 明显补足</span>，达到主报告建议区间下沿。「苏北」6 支承担重口味的差异化任务，<b>以地域风味解释口味强度</b>，同时保持淮扬清鲜的主线。</p>
+          <p style="margin-top:8px"><b class="warn">仍需补：</b>融合菜 8 支里有 4 支用芝士（抹茶椰香青芥虾球、黑松露芝士芋头、妃子笑流心芝士荔枝虾球、火腿芝士沙拉），<span class="warn">芝士浓度偏高，可能稀释「扬州」的正统感</span>。建议减到 2 支。</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card"><h4>红色视觉锤：22 支，成立吗</h4>
+          <table style="font-size:11.5px">
+            <tr><th>维度</th><th>读数</th><th class="n">判定</th></tr>
+            <tr><td>数量</td><td>22 支，占收费菜 20.6%</td><td class="n win">成立</td></tr>
+            <tr><td>价格分布</td><td>22–168 元，中位 63，均价 68</td><td class="n win">覆盖全带</td></tr>
+            <tr><td>品类分布</td><td>凉菜 4／热炒 6／蒸菜 3／面点 1／甜品 2／宵夜 6</td><td class="n win">贯穿全单</td></tr>
+            <tr><td>毛利率</td><td>62.8%，与全单 63.0% 持平</td><td class="n win">基本持平</td></tr>
+            <tr><td>红的来源</td><td>红曲、胭脂、朱砂、红油、洛神花、枣泥——<b>全部是天然食材色</b></td><td class="n win">可信</td></tr>
+            <tr><td>可拍性</td><td>胭脂糟蟹／朱砂狮子头／胭脂米布丁／洛神花冻／公主素蟹粉（朱红盏盛）</td><td class="n win">强</td></tr>
+          </table>
+          <p style="margin-top:9px"><b class="hl">结论：红色菜品具备完整的证据基础。</b>色彩来自红曲、胭脂、朱砂等江南食材，且价格、品类与毛利结构均未因视觉表达而受损。</p>
+        </div>
+        <div class="card"><h4>把红用到底的三个建议</h4>
+          <ul>
+            <li><b>器皿只用一种红。</b>选定一个朱红色号（建议 Pantone 187C 一类的胭脂朱），贯穿盏、碟、筷架、菜单、外带盒。红一多就俗，一种红才是视觉锤。</li>
+            <li><b>红色菜在菜单上不分散。</b>现在 22 支散落在 12 个板块里，建议在菜单首页做一个「朱红十二味」的成组页——<span class="hl">成组的红才有冲击力</span>。</li>
+            <li><b>控制灯光色温。</b>朱红在暖白光下易偏橘、在冷光下易偏紫。就餐区建议 2700–3000K、显色指数 Ra≥90，拍摄区单独配置高显色射灯。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>味型按菜单「味型」列归并，一菜可计多味型</span><span>12 / 20</span></div>
+</section>
+
+<!-- ============ 13 客单模型 ============ -->
+<section class="slide">
+  <div class="rail"><div class="vt">客 单</div><div class="no">13</div><div class="brand">扬州食集</div></div>
+  <div class="body">
+    <div class="eyebrow">SPEND MODEL · 八组场景模拟</div>
+    <h2>典型点单结构对应的客单水平<span class="sub">按品类中位价 × 典型点单份数推演：正餐可进入高效率价格带，2 人桌与夜宵仍偏低</span></h2>
+    <div class="rule"></div>
+    <div class="grid-7-5">
+      <div>
+        <table>
+          <tr><th>场景</th><th>点单结构</th><th class="n">合计</th><th class="n">人均</th><th class="n">落位</th></tr>
+          <tr><td>2 人 · 简餐</td><td>凉菜1＋热炒1＋时蔬1＋面点2</td><td class="n">219</td><td class="n warn">110</td><td class="n warn">区间下限</td></tr>
+          <tr><td>2 人 · 标准</td><td>凉菜1＋热炒1＋蒸菜1＋面点2＋甜品2</td><td class="n">309</td><td class="n win">154</td><td class="n win">高效率带</td></tr>
+          <tr><td>3 人</td><td>凉菜1＋热炒2＋蒸菜1＋时蔬1＋面点2</td><td class="n">390</td><td class="n win">130</td><td class="n win">高效率带</td></tr>
+          <tr style="background:var(--zhu-pale)"><td><b>4 人 · 主力场景</b></td><td>凉菜2＋热炒3＋蒸菜1＋时蔬1＋面点3＋甜品2</td><td class="n"><b>594</b></td><td class="n win"><b>148</b></td><td class="n win"><b>高效率带中部</b></td></tr>
+          <tr><td>6 人</td><td>凉菜3＋热炒4＋蒸菜2＋时蔬2＋面点4＋甜品3</td><td class="n">896</td><td class="n win">149</td><td class="n win">高效率带</td></tr>
+          <tr style="border-top:2px solid var(--zhu)"><td>2 人 · 夜宵轻</td><td>宵夜凉菜1＋面2</td><td class="n">109</td><td class="n warn">54</td><td class="n dim">夜宵带</td></tr>
+          <tr><td>2 人 · 夜宵标准</td><td>宵夜凉菜2＋热菜1＋面2</td><td class="n">192</td><td class="n">96</td><td class="n dim">夜宵带</td></tr>
+          <tr><td>4 人 · 夜宵</td><td>凉菜3＋热菜2＋面2＋浇头2＋甜品2</td><td class="n">363</td><td class="n">91</td><td class="n dim">夜宵带</td></tr>
+        </table>
+        <div class="grid2" style="margin-top:16px">
+          <div class="card"><h4>正餐：达标，但靠份数</h4><p>4–6 人场景稳定落在 <b class="hl">148–149 元</b>，正对 111–140 带上沿。<span class="warn">但 2 人简餐只有 110 元</span>——而 2 人桌在江景餐厅里占比通常 25–35%。</p></div>
+          <div class="card"><h4>夜宵：低客单是设计，不是问题</h4><p>夜宵人均 54–96 元。<span class="hl">别用正餐标准考核它</span>——它的价值在于 21:30 之后的边际收入与全时段坪效，而不是客单。</p></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card"><h4>将 2 人桌客单由 110 元提升至 140 元</h4>
+          <ul>
+            <li><b>双人套餐。</b>做一个 <b class="hl">298 元／2 位</b>的「食集小宴」：凉菜 2＋热炒 1＋蒸菜 1＋面点 2＋甜品 2，人均 149，比散点多 39 元且更省决策。</li>
+            <li><b>蒸菜必推。</b>模型显示，2 人桌加一道蒸菜（中位 83 元），人均立刻从 110 跳到 154。<span class="hl">蒸菜是 2 人桌的客单开关</span>。</li>
+            <li><b>甜品渗透率。</b>甜品仅 18–26 元，但 5 支全在 71% 以上毛利。目标：每桌甜品渗透 ≥40%。</li>
+            <li><b>补充酒水。</b>菜单目前<span class="warn">没有酒水页</span>。花雕、青梅与黄酒温饮与菜品匹配，可直接改善 2 人桌客单。</li>
+          </ul>
+        </div>
+        <div class="card"><h4>全天加权客单预估</h4>
+          <table style="font-size:11.5px">
+            <tr><th>时段</th><th class="n">人次占比</th><th class="n">客单</th><th class="n">营收占比</th></tr>
+            <tr><td>午市</td><td class="n">18%</td><td class="n">98</td><td class="n">13%</td></tr>
+            <tr><td>晚市</td><td class="n">58%</td><td class="n">148</td><td class="n">64%</td></tr>
+            <tr><td>夜宵</td><td class="n">24%</td><td class="n">88</td><td class="n">23%</td></tr>
+            <tr style="border-top:2px solid var(--kiln)"><td><b>加权</b></td><td class="n">100%</td><td class="n win"><b>134</b></td><td class="n">100%</td></tr>
+          </table>
+          <p style="margin-top:8px">加权客单 134 元<span class="warn">略低于 111–140 元区间中值</span>。加入酒水（预估 +12–18 元）与包房服务费后，可达到 <b class="hl">146–152 元</b>，进入高效率价格带。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>模型口径：Σ(品类价格中位 × 份数)，未含酒水与服务费</span><span>13 / 20</span></div>
+</section>
+
+<!-- ============ 14 毛利与成本 ============ -->
+<section class="slide">
+  <div class="rail"><div class="vt">毛 利</div><div class="no">14</div><div class="brand">扬州食集</div></div>
+  <div class="body">
+    <div class="eyebrow">MARGIN · 63.0% 综合毛利评估</div>
+    <h2>毛利结构诊断<span class="sub">综合 63.0% 是健康的，但结构里藏着两个必须盯住的点</span></h2>
+    <div class="rule"></div>
+    <div class="grid2">
+      <div>
+        <div style="font-size:11.5px;color:var(--ink-2);margin-bottom:10px;letter-spacing:.1em">各板块毛利率（横线为全单 63.0%）</div>
+        <div class="bars">
+          <div class="bar"><div class="lb">宵夜粥</div><div class="tr"><div class="fl" style="width:100%"></div></div><div class="vl">72.2%</div></div>
+          <div class="bar"><div class="lb">正餐甜品</div><div class="tr"><div class="fl" style="width:98.9%"></div></div><div class="vl">71.4%</div></div>
+          <div class="bar"><div class="lb">宵夜甜品</div><div class="tr"><div class="fl" style="width:98.1%"></div></div><div class="vl">70.8%</div></div>
+          <div class="bar"><div class="lb">面点主食</div><div class="tr"><div class="fl" style="width:95.8%"></div></div><div class="vl">69.2%</div></div>
+          <div class="bar"><div class="lb">时令时蔬</div><div class="tr"><div class="fl" style="width:91.6%"></div></div><div class="vl">66.1%</div></div>
+          <div class="bar"><div class="lb">宵夜凉菜</div><div class="tr"><div class="fl" style="width:90.0%"></div></div><div class="vl">65.0%</div></div>
+          <div class="bar"><div class="lb">宵夜浇头</div><div class="tr"><div class="fl" style="width:89.5%"></div></div><div class="vl">64.6%</div></div>
+          <div class="bar"><div class="lb">淮扬凉菜</div><div class="tr"><div class="fl t" style="width:88.2%"></div></div><div class="vl">63.7%</div></div>
+          <div class="bar"><div class="lb">宵夜面</div><div class="tr"><div class="fl t" style="width:88.1%"></div></div><div class="vl">63.6%</div></div>
+          <div class="bar"><div class="lb">宵夜热菜</div><div class="tr"><div class="fl t" style="width:87.9%"></div></div><div class="vl">63.5%</div></div>
+          <div class="bar"><div class="lb">淮扬蒸菜</div><div class="tr"><div class="fl z" style="width:85.6%"></div></div><div class="vl">61.8%</div></div>
+          <div class="bar"><div class="lb">淮扬热炒</div><div class="tr"><div class="fl z" style="width:85.0%"></div></div><div class="vl warn">61.4%</div></div>
+        </div>
+        <div class="card" style="margin-top:16px"><h4>结构性判断</h4><p>毛利呈现清晰的<span class="hl">「越轻越赚」</span>梯度：甜品面点粥 69–72%，热炒蒸菜 61–62%。这是正常且健康的——<b>使类高毛利补贴君臣类的低毛利</b>，正是君臣佐使体系应有的样子。</p></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card"><h4><span class="chip">风险一</span>三支河豚吃掉整体毛利的弹性</h4>
+          <p>红烧／白汁／酸汤河豚各 288 元、成本 120 元，毛利率 58.3%，是全单最低的一档，且<span class="warn">标注为时价</span>。三支同料同价，若河豚成为高销量单品，整体毛利率将下降 1.5–2.5 个百分点。</p>
+          <p style="margin-top:8px"><b>建议：</b>三做合并为一支（做法可选），并把释放出的两个高位留给毛利更好的江鲜；同时<span class="hl">河豚经营的资质与备案必须在开业前完成</span>，否则整个君类需要重排。</p>
+        </div>
+        <div class="card"><h4><span class="chip">风险二</span>三支赠送菜没有计成本</h4>
+          <p>餐前赠送泡菜、盐烤花生、陈皮话梅芸豆——表内标注「计入营销成本」但未给数值。按每桌 3 份、单份成本 2.5 元、日均 90 桌估算，<span class="warn">月成本约 2.0 万元，相当于把综合毛利率压低约 1.4 个百分点</span>。</p>
+          <p style="margin-top:8px"><b>建议：</b>改为「三选一」而非三样全上，成本减半且更有仪式感；或改为「点酒水赠送」，把赠送变成引导。</p>
+        </div>
+        <div class="card"><h4>目标食材成本率</h4>
+          <table style="font-size:11.5px">
+            <tr><th></th><th class="n">菜单理论</th><th class="n">含赠送</th><th class="n">含损耗</th><th class="n">目标</th></tr>
+            <tr><td>食材成本率</td><td class="n">37.0%</td><td class="n">38.4%</td><td class="n warn">41–43%</td><td class="n win">≤38%</td></tr>
+          </table>
+          <p style="margin-top:8px">江鲜／活鲜（河豚、大黄鱼、罗氏虾、大闸蟹、甲鱼、黄鳝）损耗 8–15%。<span class="hl">如要将食材成本控制在 38% 以内，必须配置暂养设施并建立每日损耗台账。</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>成本口径：菜单表「成本预估」列；损耗与赠送为本报告估算</span><span>14 / 20</span></div>
+</section>
+
+<!-- ============ 15 定位重述 ============ -->
+<section class="slide dark">
+  <div class="rail"><div class="vt">定 位</div><div class="no">15</div><div class="brand">扬州食集</div></div>
+  <div class="body">
+    <div class="eyebrow">POSITIONING · 基于补录菜单的定位校准</div>
+    <h2>定位表述与四项经营边界<span class="sub">清晰定位既包含核心价值，也需要明确不进入的价格、品类与场景</span></h2>
+    <div class="rule"></div>
+    <div style="background:var(--zhu);padding:26px 32px;margin-bottom:22px">
+      <div style="font-size:11px;letter-spacing:.3em;color:rgba(255,255,255,.72);margin-bottom:12px">POSITIONING STATEMENT</div>
+      <div style="font-family:var(--serif);font-size:29px;color:#fff;line-height:1.6;font-weight:700">
+        在江边的老啤酒厂里，开一个从傍晚亮到深夜的扬州食集——<br>
+        <span style="color:#FFE1A8">一桌红、一锅鲜、一碗热汤面</span>，人均 130–150 元，覆盖晚市与深夜消费。
+      </div>
+    </div>
+    <div class="grid2" style="gap:22px">
+      <div>
+        <div class="card"><h4>三个支点</h4>
+          <table style="font-size:12px">
+            <tr><th>支点</th><th>载体</th><th>凭什么</th></tr>
+            <tr><td><b style="color:#E8B04B">一桌红</b></td><td>22 支朱红视觉锤 ＋ 统一朱红器皿</td><td>红曲／胭脂／朱砂是江南食材本色，非染色；场内 84 家店无人用色彩做锤</td></tr>
+            <tr><td><b style="color:#E8B04B">一锅鲜</b></td><td>河豚／大黄鱼／罗氏虾／大闸蟹／甲鱼／黄鳝</td><td>500m 内 0 家江浙淮扬；江河湖鲜供应链广州本地无替代</td></tr>
+            <tr><td><b style="color:#E8B04B">一碗热汤面</b></td><td>5 支宵夜面 ＋ 4 支浇头 ＋ 1 支粥</td><td>21 家酒吧的溢出流量，只有 1 家烤串店在接</td></tr>
+          </table>
+        </div>
+        <div class="card" style="margin-top:13px"><h4>与场内八强的差异化落点</h4>
+          <p>MR.ROCKY（130）、VINO（160）、JoJos（141）、RockyBro（134）——四家西餐酒吧卖<b>氛围</b>；陶醉馆（133）、潮粤楼（131）、阅江米库（127）、蒸蒸日膳（111）——四家中餐卖<b>粤系品质</b>。</p>
+          <p style="margin-top:8px"><b style="color:#E8B04B">扬州食集卖的是第三种东西：一个可以从 18 点待到 24 点、口味从清鲜到重辣都有、价格从 40 到 160 都能落座的「场」。</b>这是「食集」二字的真正价值，也是它区别于所有对手的地方。</p>
+        </div>
+      </div>
+      <div>
+        <div class="card"><h4>四个明确不做</h4>
+          <table style="font-size:12px">
+            <tr><th>不做</th><th>理由</th></tr>
+            <tr><td><b>不做 50–80 元档正餐</b></td><td>500m 内该带仅 3 家、效率 0.15，属于低效率区间</td></tr>
+            <tr><td><b>不做 181 元以上的高端宴请</b></td><td>该带流量效率仅 0.46；场内两家 274／293 元的店一家已暂停营业</td></tr>
+            <tr><td><b>不打「江浙菜」这个标签</b></td><td>广州的江浙菜价格锚在 65 元（南京大牌档 24,688 条评论）。用「扬州食集」讲市集，不用「江浙菜」讲菜系</td></tr>
+            <tr><td><b>不与酒吧抢酒</b></td><td>21 家西餐酒吧的酒单与运营能力不可撼动。我们要的是它们散场后的那批人</td></tr>
+          </table>
+        </div>
+        <div class="card" style="margin-top:13px"><h4>门头与首图的三行字</h4>
+          <div style="border:1px solid #4A413A;padding:14px 16px;margin-top:6px;background:#1F1B1A">
+            <div style="font-family:var(--serif);font-size:22px;color:#fff;letter-spacing:.06em">韵1980 · 扬州食集</div>
+            <div style="font-size:13px;color:#E8B04B;margin-top:7px;letter-spacing:.08em">江鲜 · 糟卤 · 热汤面 　营业至 01:00</div>
+            <div style="font-size:11.5px;color:#8E837B;margin-top:5px">梅兰芳梅府家宴第三代传人 成伟 主理</div>
+          </div>
+          <p style="margin-top:10px"><b style="color:#E8B04B">建议在门头明确标示「营业至 01:00」。</b>在 21 家酒吧集中的园区内，这一信息具有明确的时段识别价值。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>定位校准基于补录的 110 支菜单 ＋ 85 家近距供给</span><span>15 / 20</span></div>
+</section>
+
+<!-- ============ 16 开业策略 ============ -->
+<section class="slide">
+  <div class="rail"><div class="vt">开 业</div><div class="no">16</div><div class="brand">扬州食集</div></div>
+  <div class="body">
+    <div class="eyebrow">LAUNCH · 开业 60 天行动重点</div>
+    <h2>三张菜单、两个重点时段、一个视觉识别<span class="sub">开业期控制动作数量，将资源集中于确定性较高的环节</span></h2>
+    <div class="rule"></div>
+    <div class="grid3" style="margin-bottom:18px">
+      <div class="card" style="border-top:3px solid var(--zhu)"><h4>第一件事 · 拆成三张单</h4>
+        <table style="font-size:11.5px">
+          <tr><th>单</th><th class="n">支数</th><th>时段</th><th class="n">目标客单</th></tr>
+          <tr><td>正餐主单</td><td class="n">62</td><td>11:30–21:30</td><td class="n">148</td></tr>
+          <tr><td>午市套餐单</td><td class="n">2 套＋12 散</td><td>11:30–14:00</td><td class="n">98/128</td></tr>
+          <tr><td><b>夜宵单</b></td><td class="n"><b>27</b></td><td><b>21:30–01:00</b></td><td class="n">88</td></tr>
+        </table>
+        <p style="margin-top:9px">一张 110 支的单会让客人无从下手、让后厨崩溃。<span class="hl">拆单是零成本的最大优化。</span></p>
+      </div>
+      <div class="card" style="border-top:3px solid var(--qing)"><h4>第二件事 · 只打两个时段</h4>
+        <ul>
+          <li><b>晚市</b>（主战场）：以「一桌红」与江鲜建立差异，与场内 8 家高评分门店竞争。</li>
+          <li><b>夜宵</b>（奇兵）：21:30 切换菜单，建立园区中式深夜热食供给。<span class="hl">该时段最有利于形成开业期认知。</span></li>
+          <li><span class="dim">午市第 31 天再启动</span>——前 30 天集中火力，不分散。</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top:3px solid var(--tong)"><h4>第三件事 · 把红做成一件事</h4>
+        <ul>
+          <li>首图与门头统一朱红色号；</li>
+          <li>菜单首页「朱红十二味」成组页；</li>
+          <li>器皿只用一种红；</li>
+          <li>出片位单独打高显色射灯（Ra≥90 / 2700–3000K）。</li>
+        </ul>
+        <p style="margin-top:8px">场内 84 家店<span class="hl">没有一家用色彩做记忆点</span>——这是最省钱的差异化。</p>
+      </div>
+    </div>
+    <table>
+      <tr><th style="width:12%">周次</th><th style="width:26%">重点动作</th><th style="width:32%">具体做法</th><th style="width:16%">KPI</th><th style="width:14%">负责</th></tr>
+      <tr><td>T-14 ~ T-1</td><td>三张单定稿 ＋ 话术考核 ＋ 首图拍摄</td><td>朱红十二味成组页；每支君臣菜一句 ≤25 字买点；首图＝江景＋朱红菜同框</td><td class="n">话术 100% 通过</td><td>店长／市场</td></tr>
+      <tr><td>W1</td><td>稳出品，不冲量</td><td>限量放号；每日复盘出餐时长；<b>不接团购</b></td><td class="n">评分 ≥4.5</td><td>店长</td></tr>
+      <tr><td>W2</td><td><b class="hl">夜宵单上线</b></td><td>21:30 换单；园区 21 家酒吧门口投放「江边最后一碗热汤面」卡片；夜宵专属短视频</td><td class="n">夜宵日均 ≥25 人次</td><td>运营／市场</td></tr>
+      <tr><td>W3–W4</td><td>红色内容集中投放</td><td>小红书 20 位腰部达人，命题只给一个：<b>「一桌红」</b>；抖音 15 条，主角是胭脂糟蟹与朱砂狮子头</td><td class="n">笔记 ≥50／评论 ≥300</td><td>市场</td></tr>
+      <tr><td>W5–W6</td><td>双人套餐 ＋ 酒水单补位</td><td>298 元／2 位「食集小宴」；花雕青梅黄酒温饮上单</td><td class="n">2 人桌客单 ≥140</td><td>产品</td></tr>
+      <tr><td>W7–W8</td><td>午市启动 ＋ 首次九宫格复盘</td><td>周边写字楼定向地推；按千单点击 ＋ 额量比识别待删菜</td><td class="n">午市日均 ≥40 人次</td><td>运营／产品</td></tr>
+    </table>
+  </div>
+  <div class="foot"><span>开业期原则：先赢一个时段，再赢第二个</span><span>16 / 20</span></div>
+</section>
+
+<!-- ============ 17 运营优化 12 条 ============ -->
+<section class="slide">
+  <div class="rail"><div class="vt">优 化</div><div class="no">17</div><div class="brand">扬州食集</div></div>
+  <div class="body">
+    <div class="eyebrow">OPTIMISATION · 按投入产出比排序</div>
+    <h2>十二项运营优化<span class="sub">前六项投入较低，后六项需要预算，建议按优先级依次执行</span></h2>
+    <div class="rule"></div>
+    <table>
+      <tr><th style="width:4%">#</th><th style="width:20%">动作</th><th style="width:30%">怎么做</th><th style="width:22%">解决什么问题</th><th style="width:12%">投入</th><th style="width:12%">预期</th></tr>
+      <tr><td>1</td><td><b>菜单拆三张</b></td><td>正餐 62／午市 14／夜宵 27，21:30 换单</td><td>使类过厚（36.4%）导致客单偏低；后厨 SKU 负担</td><td class="win">近乎为零</td><td class="win">客单 +8~12</td></tr>
+      <tr><td>2</td><td><b>蒸菜必推话术</b></td><td>2–3 人桌点单时必推一道蒸菜（中位 83 元）</td><td>2 人桌人均只有 110，加一道蒸菜跳到 154</td><td class="win">零</td><td class="win">2人桌 +40%</td></tr>
+      <tr><td>3</td><td><b>河豚三做合一</b></td><td>合并为一支，做法可选；释放两个君位给大黄鱼与糟蟹</td><td>三个君位挤在同一食材同一价位；毛利最低档</td><td class="win">零</td><td class="win">毛利 +1.5pt</td></tr>
+      <tr><td>4</td><td><b>赠送菜改三选一</b></td><td>泡菜／盐烤花生／话梅芸豆，上桌时让客人选一样</td><td>三样全上月耗约 2 万，压低毛利 1.4pt；且失去仪式感</td><td class="win">零</td><td class="win">毛利 +0.7pt</td></tr>
+      <tr><td>5</td><td><b>朱红十二味成组页</b></td><td>菜单首页把 22 支红菜里最上镜的 12 支成组呈现</td><td>红色菜散落 12 个板块，视觉锤打不响</td><td class="win">印刷成本</td><td class="win">出片率 ↑</td></tr>
+      <tr><td>6</td><td><b>门头加「营业至 01:00」</b></td><td>门头、首图、点评简介三处同步</td><td>21 家酒吧的溢出流量不知道我们还开着</td><td class="win">极低</td><td class="win">夜宵 ↑</td></tr>
+      <tr style="border-top:2px solid var(--line)"><td>7</td><td><b>酒水单补位</b></td><td>花雕／青梅／黄酒温饮／无醇饮，8–12 支</td><td>菜单目前无酒水页，客单少 12–18 元</td><td>低</td><td class="win">客单 +12~18</td></tr>
+      <tr><td>8</td><td><b>双人套餐 298 元</b></td><td>凉菜2＋热炒1＋蒸菜1＋面点2＋甜品2，人均 149</td><td>2 人桌占比高但客单最低</td><td>低</td><td class="win">2人桌 +39</td></tr>
+      <tr><td>9</td><td><b>统一朱红器皿</b></td><td>选定一个色号，贯穿盏碟筷架菜单外带盒</td><td>红色不统一＝没有视觉锤</td><td>中（约 8–12 万）</td><td>记忆点</td></tr>
+      <tr><td>10</td><td><b>暂养与损耗台账</b></td><td>活鲜暂养设施＋每日损耗记录＋备选供应商</td><td>江鲜损耗 8–15%，会把成本率从 38% 推到 43%</td><td>中</td><td class="win">成本 -3~5pt</td></tr>
+      <tr><td>11</td><td><b>芝士类减到 2 支</b></td><td>保留妃子笑荔枝虾球与黑松露芋头，其余下架</td><td>4 支芝士菜稀释「扬州」正统感</td><td>低</td><td>定位纯度</td></tr>
+      <tr><td>12</td><td><b>就餐区灯光调校</b></td><td>2700–3000K、Ra≥90；出片位单独射灯</td><td>朱红在错误色温下发橘或发紫，视觉锤失效</td><td>中</td><td>出片率 ↑</td></tr>
+    </table>
+    <div class="card" style="margin-top:16px;border-left:3px solid var(--zhu)"><p style="font-size:12.5px"><b class="hl">前六条合计投入不到一万元，预期把客单从 134 抬到 146–152，把综合毛利率从 63.0% 抬到 65.2%。</b>如果只能做一件事，做第 1 条——拆单。</p></div>
+  </div>
+  <div class="foot"><span>排序依据：投入产出比 ＋ 可执行速度</span><span>17 / 20</span></div>
+</section>
+
+<!-- ============ 18 下一步策略 ============ -->
+<section class="slide dark">
+  <div class="rail"><div class="vt">路 线</div><div class="no">18</div><div class="brand">扬州食集</div></div>
+  <div class="body">
+    <div class="eyebrow">ROADMAP · 未来 18 个月</div>
+    <h2>下一步策略<span class="sub">四个阶段，每个阶段只解决一个问题，并给出进入下一阶段的门槛</span></h2>
+    <div class="rule"></div>
+    <table>
+      <tr><th style="width:12%">阶段</th><th style="width:14%">唯一目标</th><th style="width:30%">关键动作</th><th style="width:22%">通过门槛</th><th style="width:22%">若不达标</th></tr>
+      <tr>
+        <td><b style="color:#E8B04B">S1 · 站住</b><br><span class="dim">T+1 ~ T+3</span></td>
+        <td>把评分与出品稳住</td>
+        <td>三张单拆分上线；夜宵单打开；红色内容集中投放；不接团购、不冲量</td>
+        <td>评分 ≥4.5<br>评论 ≥300<br>夜宵日均 ≥25 人次</td>
+        <td>回到限量放号，压缩 SKU 至 70 支，先修出品</td>
+      </tr>
+      <tr>
+        <td><b style="color:#E8B04B">S2 · 增长</b><br><span class="dim">T+4 ~ T+9</span></td>
+        <td>将客单提升至 111–140 元区间</td>
+        <td>酒水单上线；双人套餐；蒸菜必推；午市启动；首次九宫格淘汰</td>
+        <td>加权客单 ≥146<br>2 人桌客单 ≥140<br>午市日均 ≥40 人次</td>
+        <td>检查使类占比是否仍然偏高；考虑再精简正餐单 8–10 支</td>
+      </tr>
+      <tr>
+        <td><b style="color:#E8B04B">S3 · 占位</b><br><span class="dim">T+10 ~ T+15</span></td>
+        <td>拿下「琶醍夜宵」这个词</td>
+        <td>夜宵单独立品牌化（子招牌／独立点评页）；与园区酒吧做互推券；夜宵外带上线</td>
+        <td>夜宵营收占比 ≥25%<br>进入琶洲商圈相关榜单<br>评论 ≥1,500</td>
+        <td>把夜宵收缩为「晚市延长」，不再单独投入</td>
+      </tr>
+      <tr>
+        <td><b style="color:#E8B04B">S4 · 复制</b><br><span class="dim">T+16 ~ T+18</span></td>
+        <td>把这套模型变成可复制的文档</td>
+        <td>SOP 与培训包沉淀；三店会员打通；评估第四店选址模型</td>
+        <td>综合毛利率 ≥65%<br>月营收稳定 ≥110 万<br>复购率 ≥20%</td>
+        <td>停止扩张，回到单店优化</td>
+      </tr>
+    </table>
+    <div class="grid3" style="margin-top:20px">
+      <div class="card"><h4>三个必须提前锁定的前置条件</h4>
+        <ul>
+          <li><b style="color:#E8B04B">夜间经营许可</b>——营业至 01:00 的许可、排烟与噪声条件、园区夜间通行。<span style="color:#E8B04B">不落实，S3 整个阶段作废。</span></li>
+          <li><b style="color:#E8B04B">河豚资质与备案</b>——三支君类菜依赖它。</li>
+          <li><b style="color:#E8B04B">品类独占条款</b>——园区内不再引入第二家江浙／淮扬。</li>
+        </ul>
+      </div>
+      <div class="card"><h4>四个领先指标（周度）</h4>
+        <table style="font-size:11.5px">
+          <tr><th>指标</th><th class="n">预警线</th><th class="n">领先</th></tr>
+          <tr><td>近 30 日滚动评分</td><td class="n" style="color:#E06B5F">&lt;4.5</td><td class="n">8 周</td></tr>
+          <tr><td>2 人桌客单</td><td class="n" style="color:#E06B5F">&lt;125</td><td class="n">4 周</td></tr>
+          <tr><td>夜宵时段人次</td><td class="n" style="color:#E06B5F">&lt;20/日</td><td class="n">4 周</td></tr>
+          <tr><td>蒸菜渗透率</td><td class="n" style="color:#E06B5F">&lt;45%</td><td class="n">4 周</td></tr>
+        </table>
+        <p style="margin-top:8px">任一指标连续 2 周触线 → 周度复盘会；三项同时触线 → 菜单小改版。</p>
+      </div>
+      <div class="card"><h4>最需要警惕的一件事</h4>
+        <p>场内 85 家中已有 <b style="color:#E8B04B">4 家暂停营业</b>，覆盖 27／87／92／274 四个价位，<span style="color:#E8B04B">说明琶醍市场容错率较低</span>。</p>
+        <p style="margin-top:8px">主要失败因素是：<b>评分低于 4.3</b>、<b>定位模糊</b>、<b>价格与价值不匹配</b>。任一因素持续存在，都可能显著提高两年内退出风险。</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>阶段门槛为「通过才进入下一阶段」的硬约束</span><span>18 / 20</span></div>
+</section>
+
+<!-- ============ 19 风险 ============ -->
+<section class="slide">
+  <div class="rail"><div class="vt">风 险</div><div class="no">19</div><div class="brand">扬州食集</div></div>
+  <div class="body">
+    <div class="eyebrow">RISK · 补录菜单识别出的经营风险</div>
+    <h2>八条风险与对策<span class="sub">按风险值（概率 × 影响）排序。前三条与菜单形态直接相关</span></h2>
+    <div class="rule"></div>
+    <table>
+      <tr><th style="width:4%">#</th><th style="width:20%">风险</th><th style="width:8%">概率</th><th style="width:8%">影响</th><th style="width:28%">为什么会发生</th><th style="width:32%">对策</th></tr>
+      <tr>
+        <td>1</td><td><b>客单低于 110 元</b></td><td class="warn">高</td><td class="warn">高</td>
+        <td>使类 39 支占 36.4%，价格中位 48 元。客人很容易点出一桌 22–38 元的东西</td>
+        <td class="win">拆三张单（第 1 条优化）＋蒸菜必推＋双人套餐＋酒水单</td>
+      </tr>
+      <tr>
+        <td>2</td><td><b>夜宵许可拿不到</b></td><td>中</td><td class="warn">极高</td>
+        <td>营业至 01:00 需要许可、排烟与噪声条件、园区夜间通行三项同时满足</td>
+        <td class="win">T-90 就启动谈判，写入租约；备用方案是收缩到 23:00</td>
+      </tr>
+      <tr>
+        <td>3</td><td><b>110 支菜单导致后厨负荷过高</b></td><td class="warn">高</td><td>中</td>
+        <td>正餐 80 支＋夜宵 27 支同时在线，热炒 30 支集中在同一组灶</td>
+        <td class="win">分单即分灶：夜宵单以凉菜／面／浇头为主，21:30 后炒灶只留 8 支</td>
+      </tr>
+      <tr>
+        <td>4</td><td><b>江鲜损耗失控</b></td><td>中</td><td class="warn">高</td>
+        <td>河豚、大黄鱼、罗氏虾、大闸蟹、甲鱼、黄鳝均为活鲜，损耗 8–15%</td>
+        <td>暂养设施＋每日损耗台账＋备选供应商＋按到货量控放号</td>
+      </tr>
+      <tr>
+        <td>5</td><td><b>河豚资质不合规</b></td><td>低</td><td class="warn">极高</td>
+        <td>三支君类菜依赖河豚，且为时价商品</td>
+        <td>开业前完成资质与备案；不合规则由大黄鱼与糟蟹顶替君位</td>
+      </tr>
+      <tr>
+        <td>6</td><td><b>「食集」被理解成大排档</b></td><td>中</td><td>中</td>
+        <td>价格中位 48 元＋市集命名＋夜宵，容易被归入低端</td>
+        <td class="win">通过器皿、灯光、朱红体系与「梅府家宴第三代」署名强化品质感</td>
+      </tr>
+      <tr>
+        <td>7</td><td><b>包房失去价格支撑</b></td><td>中</td><td>中</td>
+        <td>181 元以上仅 4 支，散点撑不起宴请客单</td>
+        <td>做包房专属套餐 1,288／6 位与 2,288／10 位，不靠散点</td>
+      </tr>
+      <tr>
+        <td>8</td><td><b>评分掉到 4.3 以下</b></td><td>中</td><td class="warn">高</td>
+        <td>SKU 多、新店、出餐压力大，前 60 天最容易出问题</td>
+        <td class="win">W1 限量放号、不接团购；评分列为一级 KPI，&lt;4.5 连续 2 周即一级警报</td>
+      </tr>
+    </table>
+    <div class="grid2" style="margin-top:18px">
+      <div class="card"><h4>三条风险的共同根因</h4><p>风险 1、3、6 都指向同一件事：<span class="hl">110 支是一份「什么都想要」的菜单</span>。它的丰富度是优点（覆盖全时段、全价位、全味型），也是负担（客单不稳、后厨吃力、调性模糊）。</p><p style="margin-top:8px"><b>拆单是同时化解这三条风险的唯一动作。</b></p></div>
+      <div class="card"><h4>一项容易被低估的风险</h4><p>风险 6。「食集／市集」在中文语境中带有平价、热闹与随意的联想；当它与 48 元价格中位及深夜营业同时出现时，品牌可能被误读为大排档。</p><p style="margin-top:8px">建议通过<b class="hl">器皿、灯光、服务与署名建立品质约束</b>，形成「市集的松弛感 ＋ 家宴的讲究」，避免价格感知向低端偏移。</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>风险值＝概率 × 影响；前三条与菜单形态直接相关</span><span>19 / 20</span></div>
+</section>
+
+<!-- ============ 20 收束 ============ -->
+<section class="slide dark">
+  <div class="rail"><div class="vt">收 束</div><div class="no">20</div><div class="brand">扬州食集</div></div>
+  <div class="body">
+    <div class="eyebrow">SUMMARY · 结论摘要</div>
+    <h2>核心结论<span class="sub">按重要性排序</span></h2>
+    <div class="rule"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px 26px">
+      <div class="card" style="border-left:3px solid var(--zhu)"><h4>1 · 补录菜单支持场景化定位</h4><p>菜单价格中位为 48 元、≤50 元菜品占比 52.3%，并配置 27 支夜宵 SKU。与既有门店菜牌相比，<b style="color:#E8B04B">其结构更适合琶醍的休闲聚会与夜间消费场景</b>。</p></div>
+      <div class="card" style="border-left:3px solid var(--zhu)"><h4>2 · 夜宵是最具增长潜力的时段</h4><p>500m 内有 21 家西餐酒吧，但仅 1 家提供中式夜宵热食。<b style="color:#E8B04B">在厨房配置不变的情况下，夜宵竞争强度约为正餐的 1/8</b>，毛利率高约 2 个百分点。</p></div>
+      <div class="card" style="border-left:3px solid var(--zhu)"><h4>3 · 客单结构是主要风险</h4><p>4 人桌可达到 148 元，但 2 人桌仅 110 元，加权客单为 134 元，<b style="color:#E8B04B">处于 111–140 元高效率价格带的下沿</b>。改善重点是点单份数与蒸菜渗透，而非直接提价。</p></div>
+      <div class="card" style="border-left:3px solid var(--zhu)"><h4>4 · 菜单拆分是优先行动</h4><p>正餐 62 / 午市 14 / 夜宵 27。该动作投入较低，可同时改善客单偏低、后厨过载与定位模糊。<b style="color:#E8B04B">建议作为开业前的第一优先级。</b></p></div>
+      <div class="card" style="border-left:3px solid var(--zhu)"><h4>5 · 红色菜品具备完整的差异化基础</h4><p>22 支、占比 20.6%，覆盖 22–168 元价格带，毛利与全单持平，颜色来自红曲、胭脂与朱砂等食材。<b style="color:#E8B04B">场内 84 家门店尚未形成同类色彩识别。</b>建议成组呈现并统一器皿。</p></div>
+      <div class="card" style="border-left:3px solid var(--zhu)"><h4>6 · 品类空白依然是最大的护城河</h4><p>商场内、100m、300m、500m 四层圈带，江浙淮扬门店数<b style="color:#E8B04B">全部为 0</b>。17 家中餐正餐清一色粤／潮／顺德系。这个空白在租约里要用「品类独占条款」锁住。</p></div>
+      <div class="card" style="border-left:3px solid var(--tong);grid-column:span 2"><h4>7 · 琶醍市场容错率较低</h4><p>85 家中已有 4 家暂停营业，覆盖 27–274 元多个价位。主要风险集中在<b style="color:#E8B04B">评分低于 4.3、定位模糊、价格与价值不匹配</b>。扬州食集需守住三项底线：<b style="color:#E8B04B">评分 ≥4.5、菜单功能清晰、加权客单 ≥146 元</b>。</p></div>
+    </div>
+    <div style="margin-top:22px;display:flex;justify-content:space-between;align-items:flex-end">
+      <div style="font-family:var(--serif);font-size:20px;color:#E8B04B;letter-spacing:.08em">一桌红 · 一锅鲜 · 一碗热汤面</div>
+      <div style="font-size:11px;color:#6E635C;letter-spacing:.1em">韵1980 扬州食集 · 珠江琶醍补充分析 · 补充册 S1 · 2026.08</div>
+    </div>
+  </div>
+  <div class="foot"><span></span><span>20 / 20</span></div>
+</section>
+
+</div>
+<div class="nav">导出 PDF：⌘/Ctrl + P → 目标「另存为 PDF」→ 布局「横向」→ 边距「无」→ 勾选「背景图形」</div>
+</body>
+</html>

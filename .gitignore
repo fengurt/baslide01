@@ -10,3 +10,8 @@ output/
 .idea/
 .vscode/
 .dev-url
+.work/
+tmp/
+var/
+export/
+preview/

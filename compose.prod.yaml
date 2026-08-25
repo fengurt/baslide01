@@ -1,0 +1,28 @@
+name: tiansight-baslide
+
+services:
+  app:
+    build:
+      context: .
+      args:
+        PYTHON_IMAGE: mirror.ccs.tencentyun.com/library/python:3.13-slim
+        PIP_INDEX_URL: https://mirrors.cloud.tencent.com/pypi/simple
+    restart: unless-stopped
+    env_file:
+      - /etc/tiansight-baslide/app.env
+    environment:
+      BASLIDE_ROOT: /app
+      ASSET_STORE: /app/var/assets
+      PYTHONPATH: /app
+    ports:
+      - 127.0.0.1:8765:8765
+    volumes:
+      - assets:/app/var/assets
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/healthz', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+volumes:
+  assets:

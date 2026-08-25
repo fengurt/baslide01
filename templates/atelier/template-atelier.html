@@ -720,7 +720,9 @@ window.addEventListener('message',e=>{
   if(e.data?.type==='atelier-low-power'&&typeof e.data.on==='boolean')window.__setLowPowerMode(e.data.on);
 });
 const hashMatch=location.hash.match(/^#(\d+)$/);
-if(hashMatch)go(parseInt(hashMatch[1],10)-1);
+const initialSlideParam=new URLSearchParams(location.search).get('slide');
+if(initialSlideParam && Number.isFinite(Number(initialSlideParam))) go(Number(initialSlideParam)-1);
+else if(hashMatch)go(parseInt(hashMatch[1],10)-1);
 addEventListener('hashchange',()=>{
   const m=location.hash.match(/^#(\d+)$/);
   if(m)go(parseInt(m[1],10)-1);
@@ -818,7 +820,7 @@ addEventListener('touchend',e=>{
   }
 },{passive:true});
 
-if(!hashMatch)go(0);
+if(!hashMatch && !initialSlideParam)go(0);
 </script>
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <script>lucide.createIcons();</script>

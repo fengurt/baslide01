@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>韵·1980 · 报告真实图形索引</title>
+<style>
+:root{
+  --sd-primary:#EFE6D2;--sd-surface:#F4F0E7;--sd-accent:#76551F;--sd-secondary:#8C3228;
+  --sd-ink:#17130D;--sd-paper:#FBF8F2;--sd-ink-100:#17130D;--sd-ink-72:rgba(23,19,13,.72);
+  --sd-ink-60:rgba(23,19,13,.60);--sd-ink-45:rgba(23,19,13,.45);--sd-ink-28:rgba(23,19,13,.28);
+  --sd-ink-14:rgba(23,19,13,.14);--sd-ink-07:rgba(23,19,13,.07);--sd-status-ready:#1B8F5A;
+  --sd-status-ready-text:#157A4B;--sd-status-degraded:#C0862A;--sd-status-degraded-text:#8A5F1E;
+  --sd-status-blocked:#8C3228;--sd-status-blocked-text:#8C3228;--sd-cat-1:#96591A;--sd-cat-2:#0F8A76;
+  --sd-cat-3:#8C3228;--sd-cat-4:#4F8A3E;--sd-cat-5:#3D5FA6;--sd-cat-6:#C0862A;--sd-cat-7:#14749E;
+  --sd-cat-8:#96436F;--sd-seq-100:#C9A24C;--sd-seq-200:#AD832B;--sd-seq-300:#8F6820;
+  --sd-seq-400:#76551F;--sd-seq-500:#5B4319;--sd-seq-600:#3E2D0F;--sd-div-neg-2:#8C3228;
+  --sd-div-neg-1:#B4665A;--sd-div-mid:#D8D2C4;--sd-div-pos-1:#5AAE96;--sd-div-pos-2:#0F8A76;
+  --sd-font-serif:"Noto Serif SC","Songti SC","STSong",serif;--sd-font-mono:"IBM Plex Mono",monospace;
+  --gf-paper:#FFFDF8;--gf-muted:#706758;--line:rgba(118,85,31,.28)
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--sd-surface);color:var(--sd-ink);font:15px/1.55 var(--sd-font-serif)}
+a{color:inherit}.wrap{max-width:1460px;margin:auto;padding:42px 28px 90px}.hero{border-bottom:1px solid var(--sd-accent);padding-bottom:26px}
+.cap,.meta,.badge,.actions{font:11px/1.4 var(--sd-font-mono);letter-spacing:.08em}.cap{color:var(--sd-accent);text-transform:uppercase}
+h1{font-size:clamp(38px,6vw,76px);line-height:.98;margin:9px 0 16px}.lede{max-width:780px;color:var(--sd-ink-72);font-size:17px}
+.stats{display:flex;gap:28px;flex-wrap:wrap;margin-top:22px}.stat b{display:block;font:600 30px/1 var(--sd-font-mono);color:var(--sd-secondary)}.stat span{color:var(--sd-ink-60)}
+.tools{position:sticky;top:0;z-index:4;display:flex;gap:8px;flex-wrap:wrap;padding:13px 0;background:color-mix(in srgb,var(--sd-surface) 94%,transparent);backdrop-filter:blur(10px)}
+button,input{font:12px var(--sd-font-mono);border:1px solid var(--line);background:var(--sd-paper);color:var(--sd-ink);padding:9px 11px}
+button{cursor:pointer}button.on{background:var(--sd-ink);color:var(--sd-paper);border-color:var(--sd-ink)}input{flex:1;min-width:220px}.status{padding:32px 0;color:var(--sd-ink-60)}
+.grid{display:grid;grid-template-columns:1fr;gap:14px;max-width:1180px;margin:auto}.card{min-width:0;background:var(--sd-paper);border:1px solid var(--line);padding:18px;scroll-margin-top:72px}.card:target{outline:3px solid rgba(140,50,40,.22);border-color:var(--sd-secondary)}
+.card-head{display:flex;align-items:start;justify-content:space-between;gap:14px;margin-bottom:10px}.card h2{font-size:20px;line-height:1.35;margin:3px 0}.badge{color:var(--sd-accent);white-space:nowrap}.figure{width:100%;min-height:440px;border:1px solid var(--sd-ink-14);background:#fffdf8;padding:10px;display:grid;place-items:center;overflow-x:auto}
+.sd-v2-figure{width:100%;height:100%;margin:0;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:5px}.sd-v2-figure>svg{min-height:0;width:100%;height:100%;display:block}.sd-v2-figure svg text{font-weight:500;paint-order:stroke;stroke:var(--gf-paper);stroke-width:3px;stroke-linejoin:round}.sd-v2-figure>figcaption{font:11px/1.35 var(--sd-font-mono);color:var(--gf-muted)}
+.redesigned{display:block;width:100%;min-width:760px;height:auto;font-family:var(--sd-font-mono)}.redesigned text{paint-order:normal;stroke:none}.r-axis{stroke:#b8b1a5;stroke-width:1}.r-grid{stroke:#ded9cf;stroke-width:1;stroke-dasharray:4 6}.r-label{fill:#17130d;font-size:16px}.r-small{fill:#706758;font-size:13px}.r-value{fill:#17130d;font-size:16px;font-weight:700}.r-accent{fill:#8c3228;stroke:#8c3228}.r-gold{fill:#76551f;stroke:#76551f}.r-green{fill:#157a4b;stroke:#157a4b}
+.card-meta{margin-top:11px;color:var(--sd-ink-60);font-size:12px}.actions{display:flex;gap:12px;margin-top:9px}.actions a,.actions button{padding:0;border:0;background:none;text-decoration:underline;text-underline-offset:3px;color:var(--sd-accent)}.empty{display:none;padding:50px 0;color:var(--sd-ink-60)}
+.use{margin:7px 0 12px;color:var(--sd-ink-72)}details{margin-top:11px;border-top:1px solid var(--line);padding-top:9px}summary{cursor:pointer;color:var(--sd-accent);font:12px var(--sd-font-mono)}.examples{display:grid;gap:5px;margin-top:9px}.example{display:flex;justify-content:space-between;gap:12px;color:var(--sd-ink-60);font-size:12px}.example a{color:var(--sd-accent);white-space:nowrap}
+footer{margin-top:42px;padding-top:15px;border-top:1px solid var(--line);color:var(--sd-ink-60);font-size:12px}@media(max-width:600px){.wrap{padding:25px 15px 65px}.card{padding:12px}.figure{min-height:390px;padding:4px;place-items:start}.tools{align-items:stretch}.tools input{order:-1;flex-basis:100%}}
+</style>
+</head>
+<body><main class="wrap">
+  <header class="hero"><div class="cap">YUN·1980 / REDESIGNED FIGURE TYPES</div><h1>同类不重复画，<br>每一类都重新设计。</h1><p class="lede">从 382 页报告归并图形方法。保留真实数据与来源页，重新选择正确图形，解决标签碰撞、裁切和错误编码。</p><div class="stats"><div class="stat"><b id="typeCount">-</b><span>图形方法类型</span></div><div class="stat"><b id="labelCount">-</b><span>不同图题</span></div><div class="stat"><b id="instanceCount">-</b><span>原报告实例</span></div></div></header>
+  <div class="tools"><input id="search" type="search" placeholder="搜索图形类型、用途、图题或页码"></div>
+  <div id="status" class="status">正在读取真实报告…</div><div id="grid" class="grid"></div><div id="empty" class="empty">没有匹配的图形。</div>
+  <footer>数据源：<a href="../decks/yun1980-opportunity-v6/presentation.html">韵·1980 双店经营报告</a> / 类型卡片只展示一个重设计图，展开即可查看同类实例。</footer>
+</main>
+<script>
+const SOURCE='../decks/yun1980-opportunity-v6/presentation.html';
+const $=s=>document.querySelector(s), esc=s=>String(s??'').replace(/[—–]/g,'-').replace(/·/g,' / ').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const TYPES={
+  'heatmap':['分面热力图 / Faceted Heatmap','单位不同的数据必须分面；颜色只在同一量纲内比较'],
+  'diverging-bar':['比较条形图 / Comparison Bar','直接比较两店退菜额率，并突出百分点差值'],
+  'pareto':['帕累托组合图 / Pareto','用柱形排序贡献，并用累计线识别关键少数'],
+  'slope':['坡度图 / Slope','比较两个时点或两组之间的增减方向与幅度'],
+  'hist-cdf':['直方图＋累计分布 / Histogram CDF','同时观察分布形状、计数与累计份额'],
+  'calendar':['分层规则矩阵 / Classification Matrix','定义、价格带与商业职能应按层级并排阅读'],
+  'waterfall':['情景比较图 / Scenario Comparison','三个独立情景不是累加关系，应并列比较结果'],
+  'venn':['优先级矩阵 / Priority Matrix','收益与执行难度组成 3×3 决策空间'],
+  'network':['基准区间图 / Benchmark Range','把两店实绩放入行业健康区间，直接判断偏离程度']
+};
+let figures=[];
+const chart=body=>`<svg class="redesigned" viewBox="0 0 1000 440" role="img" aria-label="重设计数据图">${body}</svg>`;
+function redesign(type){
+  if(type==='diverging-bar')return chart(`<text class="r-label" x="40" y="35">退菜额率</text><text class="r-small" x="960" y="35" text-anchor="end">越低越好 / 单位 %</text>${[0,1,2,3,4,5].map((v,i)=>`<line class="r-grid" x1="${210+i*142}" y1="80" x2="${210+i*142}" y2="275"/><text class="r-small" x="${210+i*142}" y="300" text-anchor="middle">${v}</text>`).join('')}<text class="r-label" x="40" y="150">老店</text><rect x="210" y="120" width="586" height="42" rx="3" fill="#8c3228"/><text class="r-value" x="812" y="147">4.13%</text><text class="r-label" x="40" y="245">新店</text><rect x="210" y="215" width="382" height="42" rx="3" fill="#76551f"/><text class="r-value" x="608" y="242">2.69%</text><path d="M592 340H796" stroke="#17130d"/><path d="M592 334V346M796 334V346" stroke="#17130d"/><text class="r-value" x="694" y="375" text-anchor="middle">新店低 1.44 个百分点</text>`);
+  if(type==='slope')return chart(`<text class="r-label" x="40" y="35">午市包间使用率</text><text class="r-small" x="960" y="35" text-anchor="end">当前 → 目标 · 单位 %</text><line class="r-axis" x1="240" y1="80" x2="240" y2="365"/><line class="r-axis" x1="760" y1="80" x2="760" y2="365"/><text class="r-small" x="240" y="65" text-anchor="middle">当前</text><text class="r-small" x="760" y="65" text-anchor="middle">目标</text><path d="M240 300L760 238" stroke="#8c3228" stroke-width="4"/><circle cx="240" cy="300" r="7" fill="#8c3228"/><circle cx="760" cy="238" r="7" fill="#8c3228"/><text class="r-label" x="220" y="306" text-anchor="end">老店 23.7%</text><text class="r-value" x="780" y="244">30.9%  +7.2</text><path d="M240 215L760 143" stroke="#76551f" stroke-width="4"/><circle cx="240" cy="215" r="7" fill="#76551f"/><circle cx="760" cy="143" r="7" fill="#76551f"/><text class="r-label" x="220" y="221" text-anchor="end">新店 35.4%</text><text class="r-value" x="780" y="149">43.8%  +8.4</text>`);
+  if(type==='hist-cdf'){const vals=[2,3,3,3,2],labs=['18-36','46-68','88-128','188-228','388-588'],cum=[15.4,38.5,61.5,84.6,100];return chart(`<text class="r-label" x="40" y="35">建议新增 SKU 的价格带分布</text><text class="r-small" x="960" y="35" text-anchor="end">柱：SKU 数 · 线：累计份额</text><line class="r-axis" x1="90" y1="355" x2="930" y2="355"/>${vals.map((v,i)=>{const x=115+i*164,h=v*72,y=355-h;return `<rect x="${x}" y="${y}" width="128" height="${h}" rx="3" fill="${i===2?'#8c3228':'#76551f'}" opacity="${i===2?1:.88}"/><text x="${x+64}" y="${y+28}" fill="#fffdf8" font-size="18" font-weight="700" text-anchor="middle">${v}</text><text class="r-small" x="${x+64}" y="382" text-anchor="middle">${labs[i]} 元</text>`}).join('')}<polyline points="${cum.map((v,i)=>`${179+i*164},${350-v*2.55}`).join(' ')}" fill="none" stroke="#17130d" stroke-width="3"/>${cum.map((v,i)=>`<circle cx="${179+i*164}" cy="${350-v*2.55}" r="5" fill="#17130d"/>`).join('')}<text class="r-value" x="930" y="88" text-anchor="end">100%</text>`)}
+  if(type==='heatmap')return chart(`<text class="r-label" x="40" y="35">门店空间使用效率</text><text class="r-small" x="960" y="35" text-anchor="end">不同量纲分面，不跨面比较颜色</text><text class="r-label" x="80" y="85">包间使用率 %</text><text class="r-label" x="565" y="85">大厅翻台轮</text>${[['老店',23.7,47.4],['新店',35.4,57.5]].map((r,j)=>`<text class="r-small" x="80" y="${145+j*92}">${r[0]}</text>${r.slice(1).map((v,i)=>`<rect x="${170+i*145}" y="${112+j*92}" width="125" height="62" rx="3" fill="#8c3228" opacity="${.25+v/80}"/><text x="${232+i*145}" y="${150+j*92}" text-anchor="middle" font-size="18" font-weight="700" fill="#fffdf8">${v}%</text>`).join('')}`).join('')}${[['老店',.69,.93],['新店',1.06,1.27]].map((r,j)=>`<text class="r-small" x="565" y="${145+j*92}">${r[0]}</text>${r.slice(1).map((v,i)=>`<rect x="${650+i*145}" y="${112+j*92}" width="125" height="62" rx="3" fill="#76551f" opacity="${.22+v/1.6}"/><text x="${712+i*145}" y="${150+j*92}" text-anchor="middle" font-size="18" font-weight="700" fill="#fffdf8">${v}</text>`).join('')}`).join('')}<text class="r-small" x="232" y="332" text-anchor="middle">午市</text><text class="r-small" x="377" y="332" text-anchor="middle">晚市</text><text class="r-small" x="712" y="332" text-anchor="middle">午市</text><text class="r-small" x="857" y="332" text-anchor="middle">晚市</text>`);
+  if(type==='calendar')return chart(`<text class="r-label" x="40" y="35">君臣佐使的量化定义</text><text class="r-small" x="960" y="35" text-anchor="end">价格带决定结构角色</text><text class="r-small" x="70" y="86">角色</text><text class="r-small" x="190" y="86">中位售价</text><text class="r-small" x="420" y="86">商业职能</text>${[['君','≥150 元','招牌、认知锚点、口碑传播'],['臣','80-149 元','撑起客单与桌面丰富度'],['佐','40-79 元','佐配、时蔬、冷碟、调节节奏'],['使','<40 元','主食、点心、汤羹、性价比感知']].map((r,i)=>`<rect x="40" y="${105+i*72}" width="920" height="58" rx="3" fill="${i===0?'#efe6d2':'#f7f3eb'}"/><text x="82" y="${141+i*72}" font-size="22" font-weight="700" fill="#8c3228">${r[0]}</text><text class="r-value" x="190" y="${141+i*72}">${r[1]}</text><text class="r-label" x="420" y="${141+i*72}">${r[2]}</text>`).join('')}`);
+  if(type==='pareto'){const v=[35.4,35.4,31.8,25.1,18.8,13.3],l=['新店 / 鱼头皇','新店 / 大黄鱼','新店 / 片皮鸭','老店 / 鱼头皇','新店 / 白汁河豚','老店 / 白汁江中鲜'],sum=v.reduce((a,b)=>a+b,0);let run=0,pts=[];const bars=v.map((n,i)=>{run+=n;const y=75+i*48,w=n*15.5,x=250+run/sum*675;pts.push(`${x},${y+15}`);return `<text class="r-small" x="40" y="${y+21}">${l[i]}</text><rect x="250" y="${y}" width="${w}" height="30" rx="2" fill="${i<3?'#8c3228':'#76551f'}"/><text class="r-value" x="${260+w}" y="${y+21}">${n.toFixed(1)}</text><circle cx="${x}" cy="${y+15}" r="5" fill="#17130d"/>`}).join('');return chart(`<text class="r-label" x="40" y="35">每提升 1% 渗透率的年化收入</text><text class="r-small" x="960" y="35" text-anchor="end">万元 / 由高到低排序</text><line class="r-axis" x1="250" y1="385" x2="925" y2="385"/>${bars}<polyline points="${pts.join(' ')}" fill="none" stroke="#17130d" stroke-width="2"/><line x1="790" y1="65" x2="790" y2="370" stroke="#17130d" stroke-dasharray="5 5"/><text class="r-small" x="790" y="410" text-anchor="middle">累计 80%</text>`)}
+  if(type==='waterfall')return chart(`<text class="r-label" x="40" y="35">收益提升情景</text><text class="r-small" x="960" y="35" text-anchor="end">独立情景并列比较 · 年化增量</text><line class="r-axis" x1="105" y1="360" x2="930" y2="360"/>${[['悲观',52.8,'3.1%'],['基准',181.9,'10.7%'],['乐观',387.6,'22.8%']].map((r,i)=>{const x=180+i*265,h=r[1]*.72,y=360-h;return `<rect x="${x}" y="${y}" width="150" height="${h}" rx="3" fill="${i===1?'#8c3228':'#76551f'}" opacity="${i===1?1:.78}"/><text class="r-value" x="${x+75}" y="${y-14}" text-anchor="middle">${r[1]} 万</text><text x="${x+75}" y="${y+28}" text-anchor="middle" fill="#fffdf8" font-size="16" font-weight="700">${r[2]}</text><text class="r-label" x="${x+75}" y="392" text-anchor="middle">${r[0]}</text>`}).join('')}`);
+  if(type==='venn'){const cells=[['④ 服务费修复','③ 大厅人均','① 包间午市 / ② 团购转化'],['⑥ 茶位覆盖','⑤ 酒水 / ⑦ 退菜','⑧ 会员'],['同菜双码','SKU 瘦身','-']];return chart(`<text class="r-label" x="40" y="35">机会优先级矩阵</text><text class="r-small" x="960" y="35" text-anchor="end">先做左上，再验证右侧</text><text class="r-small" x="260" y="80" text-anchor="middle">低难度</text><text class="r-small" x="535" y="80" text-anchor="middle">中难度</text><text class="r-small" x="810" y="80" text-anchor="middle">高难度</text>${['高收益','中收益','低收益'].map((x,i)=>`<text class="r-small" x="105" y="${145+i*95}" text-anchor="middle">${x}</text>`).join('')}${cells.map((row,i)=>row.map((x,j)=>`<rect x="${145+j*275}" y="${100+i*95}" width="255" height="78" rx="3" fill="${i===0&&j===0?'#8c3228':i===0?'#efe6d2':'#f7f3eb'}"/><text x="${272+j*275}" y="${145+i*95}" text-anchor="middle" font-size="14" fill="${i===0&&j===0?'#fffdf8':'#17130d'}">${x}</text>`).join('')).join('')}`);}
+  return chart(`<text class="r-label" x="40" y="35">SKU 结构与行业健康区间</text><text class="r-small" x="960" y="35" text-anchor="end">点：门店 / 带：行业参考</text>${[['有销售 SKU',468,465,120,180,500],['80% 收入 SKU',133,77,60,90,160],['TOP10 收入占比',24.3,39.7,30,45,50],['尾部 25% 收入占比',4.15,.71,0,2,5]].map((r,i)=>{const y=105+i*78,scale=700/r[5],a=180+r[3]*scale,b=180+r[4]*scale,x1=180+r[1]*scale,x2=180+r[2]*scale;return `<text class="r-small" x="40" y="${y+6}">${r[0]}</text><line class="r-axis" x1="180" y1="${y}" x2="880" y2="${y}"/><rect x="${a}" y="${y-12}" width="${Math.max(8,b-a)}" height="24" rx="12" fill="#d8d2c4"/><circle cx="${x1}" cy="${y-7}" r="7" fill="#8c3228"/><circle cx="${x2}" cy="${y+7}" r="7" fill="#76551f"/><text class="r-value" x="880" y="${y+6}" text-anchor="end">${r[1]} / ${r[2]}</text>`}).join('')}<circle cx="180" cy="405" r="6" fill="#8c3228"/><text class="r-small" x="195" y="410">老店</text><circle cx="270" cy="405" r="6" fill="#76551f"/><text class="r-small" x="285" y="410">新店</text><rect x="360" y="398" width="40" height="14" rx="7" fill="#d8d2c4"/><text class="r-small" x="410" y="410">行业健康区间</text>`);
+}
+function quality(fig){
+  const svg=fig.querySelector('svg'),texts=[...svg.querySelectorAll('text')].map(t=>{
+    const x=+t.getAttribute('x')||0,y=+t.getAttribute('y')||0,size=+t.getAttribute('font-size')||16,anchor=t.getAttribute('text-anchor')||'start';
+    const width=[...t.textContent].reduce((n,c)=>n+(/[\u2E80-\u9FFF]/.test(c)?size:size*.58),0),height=size*1.15;
+    const left=anchor==='end'?x-width:anchor==='middle'?x-width/2:x;return{left,right:left+width,top:y-height,bottom:y};
+  });
+  let overlaps=0,clips=0;
+  texts.forEach((a,i)=>{if(a.left<0||a.right>1170||a.top<0||a.bottom>500)clips++;texts.slice(i+1).forEach(b=>{if(Math.min(a.right,b.right)-Math.max(a.left,b.left)>2&&Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top)>2)overlaps++})});
+  return{overlaps,clips,score:overlaps*10000+clips*100+texts.length};
+}
+function draw(){
+  const q=$('#search').value.trim().toLowerCase(),groups=Object.entries(Object.groupBy(figures,x=>x.type));
+  const visible=groups.filter(([type,items])=>!q||`${type} ${TYPES[type]?.join(' ')} ${items.map(x=>`${x.label} ${x.title} ${x.page}`).join(' ')}`.toLowerCase().includes(q));
+  $('#grid').innerHTML=visible.map(([type,items])=>{
+    const rep=[...items].sort((a,b)=>a.score-b.score)[0],[name,use]=TYPES[type]||[type,'报告原生图形方法'];
+    const labels=Object.entries(Object.groupBy(items,x=>x.label));
+    const examples=labels.map(([label,list])=>`<div class="example"><span>${esc(label)} · ${list.length} 张</span><a href="${SOURCE}#p=${list[0].page}">P.${list[0].page} ↗</a></div>`).join('');
+    return `<article class="card" id="type-${esc(type)}"><div class="card-head"><div><div class="badge">${items.length} INSTANCES / ${labels.length} LABELS / REDESIGNED</div><h2>${esc(name)}</h2></div><span class="badge">P.${rep.page}</span></div><p class="use">${esc(use)}</p><div class="figure">${redesign(type)}</div><div class="card-meta">数据来源：${esc(rep.label)}<br>${esc(rep.title)}</div><div class="actions"><button data-copy="type-${esc(type)}">复制类型 URL</button><a href="${SOURCE}#p=${rep.page}">来源报告页 ↗</a></div><details><summary>查看 ${items.length} 个同类实例（${labels.length} 个图题）</summary><div class="examples">${examples}</div></details></article>`;
+  }).join('');
+  $('#empty').style.display=visible.length?'none':'block';return groups.length;
+}
+fetch(SOURCE).then(r=>{if(!r.ok)throw Error(`${r.status} ${r.statusText}`);return r.text()}).then(html=>{
+  const doc=new DOMParser().parseFromString(html,'text/html');
+  let n=0;
+  [...doc.querySelectorAll('section.sd-slide')].forEach((slide,pageIndex)=>{
+    let data={};try{data=JSON.parse(slide.querySelector('script.sd-data')?.textContent||'{}')}catch{}
+    [...slide.querySelectorAll('figure.sd-v2-figure')].forEach(fig=>{
+      const label=fig.getAttribute('aria-label')||fig.querySelector('figcaption')?.textContent||'未命名图形';
+      const svg=fig.querySelector('svg'); if(!svg)return;
+      const q=quality(fig);figures.push({index:++n,page:pageIndex+1,pageId:slide.dataset.pageId||'',title:data.title||slide.querySelector('.sd-h2')?.textContent||'',label,type:slide.dataset.fill||'other',...q});
+    });
+  });
+  const labels=new Set(figures.map(x=>x.label)),types=new Set(figures.map(x=>x.type));
+  $('#instanceCount').textContent=figures.length;$('#labelCount').textContent=labels.size;$('#typeCount').textContent=types.size;$('#status').remove();draw();
+  console.assert(figures.length===152,`expected 152 figures, got ${figures.length}`);
+  console.assert(types.size===9,`expected 9 figure types, got ${types.size}`);
+  console.assert(figures.every(x=>x.type&&x.label), 'every source figure must be classified');
+}).catch(err=>{$('#status').textContent=`无法读取报告：${err.message}`;$('#status').style.color='var(--sd-secondary)'});
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-copy]');if(!b)return;const url=`${location.origin}${location.pathname}#${b.dataset.copy}`;navigator.clipboard?.writeText(url);history.replaceState(null,'',`#${b.dataset.copy}`);b.textContent='已复制';setTimeout(()=>b.textContent='复制 URL',900);
+});
+$('#search').addEventListener('input',draw);
+</script></body></html>

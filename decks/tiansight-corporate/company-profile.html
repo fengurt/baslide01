@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>侍天 TIANSIGHT 企业介绍</title>
+<style>
+@page { size: A4 portrait; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+:root{
+  --cream:#F4F0E7; --cream2:#FFFDF8;
+  --navy:#17130D; --navy2:#211D16;
+  --ink-primary:#EFE6D2;
+  --gold:#76551F; --gold-lt:#D4A862; --gold-pale:#EFE6D2;
+  --ink:#17130D; --ink-soft:#706758; --verm:#8C3228;
+  --line:#D5CEC1; --rule:#A48C64;
+}
+html{ background:#D8D1C4; }
+body{ min-height:100vh; font-family:'Noto Serif CJK SC','Noto Serif SC','Source Han Serif SC','Songti SC','STSong',serif; color:var(--ink); }
+.serif{ font-family:inherit; }
+.page{
+  width:210mm; height:297mm; position:relative; overflow:hidden;
+  background-color:var(--cream);
+  background-image:
+    linear-gradient(var(--line) 0.4px, transparent 0.4px),
+    linear-gradient(90deg, var(--line) 0.4px, transparent 0.4px);
+  background-size:11mm 11mm;
+  page-break-after:always;
+  padding:14mm 16mm 16mm 16mm;
+}
+.page:last-child{ page-break-after:auto; }
+
+/* header / footer */
+.hd{ display:flex; justify-content:space-between; align-items:baseline;
+  font-size:8.5pt; letter-spacing:0.14em; color:var(--gold); font-weight:700; }
+.hd .l b{ color:var(--gold); }
+.hd-rule{ border-bottom:1px solid var(--rule); margin:4mm 0 0 0; }
+.ft{ position:absolute; left:16mm; right:16mm; bottom:10mm;
+  border-top:1px solid var(--rule); padding-top:3mm;
+  display:flex; justify-content:space-between; font-size:7.5pt;
+  letter-spacing:0.12em; color:var(--gold); font-weight:700; }
+.ft .pg{ color:var(--navy); }
+
+/* common atoms */
+.kicker{ font-size:8.5pt; letter-spacing:0.32em; color:var(--gold); font-weight:800; text-transform:uppercase; }
+.h1{ font-family:'Noto Serif CJK SC',serif; font-size:26pt; color:var(--navy); font-weight:700; line-height:1.25; }
+.h2{ font-family:'Noto Serif CJK SC',serif; font-size:17pt; color:var(--navy); font-weight:700; line-height:1.35; }
+.lede{ font-size:10.5pt; color:var(--ink-soft); line-height:1.85; }
+.goldbar{ width:9mm; height:1.2mm; background:var(--gold); margin:4mm 0; }
+
+.card{ background:var(--cream2); border:1px solid var(--line); padding:5mm 5.5mm; }
+.card .lab{ font-size:7.5pt; letter-spacing:0.18em; color:var(--gold); font-weight:800; margin-bottom:2mm; }
+.card .val{ font-family:'Noto Serif CJK SC',serif; font-size:12.5pt; color:var(--navy); font-weight:700; line-height:1.45; }
+.card p{ font-size:9pt; line-height:1.75; color:var(--ink-soft); }
+
+.navy-band{ background:var(--navy); color:#F4F0E7; padding:9mm 10mm; }
+.navy-band .k{ font-size:8pt; letter-spacing:0.3em; color:var(--gold-lt); font-weight:800; margin-bottom:3mm;}
+.navy-band .t{ font-family:'Noto Serif CJK SC',serif; font-size:22pt; font-weight:700; line-height:1.3; }
+
+.quoteblock{ border-left:1.4mm solid var(--verm); background:var(--cream2); padding:5mm 6mm; font-size:10pt; line-height:1.9; color:var(--ink); }
+
+table.tb{ width:100%; border-collapse:collapse; font-size:9pt; }
+table.tb th{ background:var(--navy); color:#F4F0E7; font-weight:700; padding:2.6mm 3mm; text-align:left; font-size:8.5pt; letter-spacing:0.05em;}
+table.tb td{ border:1px solid var(--line); background:var(--cream2); padding:2.6mm 3mm; line-height:1.6; vertical-align:top;}
+table.tb td.em{ color:var(--navy); font-weight:700; }
+
+.tag{ display:inline-block; border:1px solid var(--gold-lt); color:var(--gold); font-size:7.5pt; letter-spacing:0.1em; padding:0.8mm 2.4mm; font-weight:700; margin:0 1mm 1mm 0;}
+
+ul.dash{ list-style:none; }
+ul.dash li{ font-size:9.5pt; line-height:1.8; color:var(--ink-soft); padding-left:5mm; position:relative; margin-bottom:1.2mm;}
+ul.dash li::before{ content:""; position:absolute; left:0; top:3.2mm; width:2.6mm; height:0.55mm; background:var(--gold); }
+ul.dash li b{ color:var(--navy); }
+
+.grid2{ display:grid; grid-template-columns:1fr 1fr; gap:5mm; }
+.grid3{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:4.5mm; }
+.grid4{ display:grid; grid-template-columns:repeat(4,1fr); gap:4mm; }
+
+.stat{ text-align:left; }
+.stat .n{ font-family:'Noto Serif CJK SC',serif; font-size:22pt; color:var(--gold); font-weight:700; line-height:1.1;}
+.stat .d{ font-size:8pt; letter-spacing:0.12em; color:var(--navy); font-weight:700; margin-top:1mm; }
+
+.pricebox{ border:1px solid var(--rule); background:var(--cream2); }
+.pricebox .ph{ background:var(--navy); color:#F4F0E7; font-size:9pt; font-weight:700; padding:2.5mm 4mm; letter-spacing:0.08em;}
+.pricebox .pb{ padding:4mm; }
+.big-price{ font-family:'Noto Serif CJK SC',serif; font-size:20pt; color:var(--navy); font-weight:700;}
+.big-price small{ font-size:9pt; color:var(--ink-soft); font-weight:400;}
+
+.stepnum{ font-family:'Noto Serif CJK SC',serif; font-size:15pt; color:var(--gold); font-weight:700; }
+.footnote{ font-size:7.8pt; color:#706758; line-height:1.65; }
+@media screen{
+  body{ display:flex; flex-direction:column; align-items:center; gap:12mm; padding:12mm 0; overflow-x:auto; }
+  .page{ flex:0 0 auto; box-shadow:0 5mm 16mm rgba(23,19,13,.16); }
+}
+@media print{
+  html,body{ background:transparent; }
+  body{ display:block; }
+  .page{ box-shadow:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ======================= P1 封面 ======================= -->
+<div class="page" style="padding:0;">
+  <div style="position:absolute; inset:0; padding:14mm 16mm;">
+    <div class="hd"><span class="l">侍天｜ A Member of Table AI Alliance</span><span>TIANSIGHT&nbsp;&nbsp;企业介绍</span></div>
+    <div class="hd-rule"></div>
+  </div>
+  <div style="position:absolute; left:16mm; top:44mm; width:70mm; bottom:44mm; background:var(--navy); padding:10mm 8mm; display:flex; flex-direction:column; justify-content:space-between;">
+    <div>
+      <div style="font-size:8pt; letter-spacing:0.3em; color:var(--gold-lt); font-weight:800;">WISDOM NAVIGATOR</div>
+      <div style="width:26mm; height:26mm; background:var(--ink-primary); margin-top:10mm; padding:2.4mm; display:flex; align-items:center; justify-content:center;">
+        <img src="assets/tiansight-logo.png" alt="侍天" style="display:block; width:100%; height:100%; object-fit:contain;">
+      </div>
+      <div class="serif" style="font-size:30pt; color:#F4F0E7; font-weight:700; margin-top:6mm; line-height:1.2;">侍天</div>
+      <div style="font-size:11pt; letter-spacing:0.35em; color:var(--gold-lt); font-weight:700; margin-top:2mm;">TIANSIGHT</div>
+      <div style="font-size:8pt; letter-spacing:0.18em; color:#D9D2BC; margin-top:2mm;">智慧领航者 · 智慧餐饮</div>
+    </div>
+    <div>
+      <div style="display:flex; gap:8mm;">
+        <div><div class="serif" style="font-size:19pt; color:var(--gold-lt); font-weight:700;">100+</div><div style="font-size:7pt; letter-spacing:0.15em; color:#D9D2BC; font-weight:700;">BRANDS</div></div>
+        <div><div class="serif" style="font-size:19pt; color:var(--gold-lt); font-weight:700;">TOP50</div><div style="font-size:7pt; letter-spacing:0.15em; color:#D9D2BC; font-weight:700;">COVERAGE 60%</div></div>
+      </div>
+      <div style="border-top:1px solid rgba(200,170,110,.45); margin-top:6mm; padding-top:4mm; font-size:8pt; color:#D9D2BC; line-height:1.7;">素墨为纸 · 玄墨为字 · 土金为骨<br>沉稳敢言 · 有据可依</div>
+    </div>
+  </div>
+  <div style="position:absolute; left:96mm; right:16mm; top:60mm;">
+    <div class="kicker">ENTERPRISE INTRODUCTION</div>
+    <div class="serif" style="font-size:24pt; color:var(--navy); font-weight:700; line-height:1.45; margin-top:6mm;">餐饮老板的<br>AI 第二大脑</div>
+    <div class="goldbar"></div>
+    <div class="lede" style="font-size:10.5pt;">把繁杂零碎的经营数据，<br>变成可执行、可追溯、可复盘的下一步。</div>
+    <div style="margin-top:14mm; border-left:1mm solid var(--gold); padding-left:5mm;">
+      <div style="font-size:9.5pt; line-height:2; color:var(--ink-soft);">
+        专家 + AI 经营决策支持<br>
+        运营托管<br>
+        AI 第二大脑与看板中台<br>
+        AI 原生组织转型
+      </div>
+    </div>
+    <div style="margin-top:14mm; font-size:8.5pt; color:var(--gold); letter-spacing:0.12em; font-weight:700;">2026 · 08</div>
+  </div>
+  <div class="ft"><span>Table AI Alliance | Second Brain | Decision System | Restaurant Growth</span><span>侍天｜Table AI Alliance&nbsp;&nbsp;<span class="pg">01</span></span></div>
+</div>
+
+<!-- ======================= P2 核心判断 ======================= -->
+
+<!-- ======================= P2 方法论地图 ======================= -->
+<div class="page">
+  <div class="hd"><span class="l"><b>侍天</b>｜ A Member of Table AI Alliance</span><span>TIANSIGHT 企业介绍</span></div>
+  <div class="hd-rule"></div>
+  <div style="margin-top:9mm;">
+    <div class="kicker">METHODOLOGY MAP</div>
+    <div class="h1" style="margin-top:2.5mm;">方法论地图</div>
+    <div class="goldbar"></div>
+    <div class="lede" style="max-width:150mm;">方法从哪里来、如何变成分析、如何被治理：一张图讲清楚。验证与门禁贯穿三层，每一条结论都有出处、可证伪。</div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 27mm; gap:5mm; margin-top:7mm;">
+    <!-- 左：三层 -->
+    <div>
+      <!-- 来源层 -->
+      <div style="border:1px solid var(--rule); background:var(--cream2);">
+        <div style="display:flex;">
+          <div style="width:26mm; background:var(--navy); color:#F4F0E7; padding:4mm 3.5mm;">
+            <div style="font-size:7pt; letter-spacing:0.22em; color:var(--gold-lt); font-weight:800;">LAYER 1</div>
+            <div class="serif" style="font-size:12pt; font-weight:700; margin-top:1.5mm; line-height:1.4;">来源层</div>
+            <div style="font-size:7.5pt; color:#D9D2BC; margin-top:1mm; line-height:1.5;">方法从哪里来</div>
+          </div>
+          <div style="flex:1; padding:3.5mm 4mm;">
+            <div style="font-size:8.5pt; color:var(--ink-soft); line-height:1.6; margin-bottom:2mm;"><b style="color:var(--navy);">12 家国际对标 · 7 种结构模式</b>：研究其结构，提炼为侍天自己的方法与商业设计。</div>
+            <div>
+              <span class="tag">Gartner · 双边中介</span><span class="tag">MSCI · 标准计费</span><span class="tag">Datassential · 餐饮情报</span><span class="tag">STR · 酒店基准</span><span class="tag">Nielsen · 联合数据</span><span class="tag">Bloomberg · 工作流锁定</span><span class="tag">米其林 · 权威评价</span><span class="tag">麦肯锡/BCG · 知识前置</span><span class="tag">Palantir · 驻场共建</span><span class="tag">Stripe · 写作壁垒</span><span class="tag">华与华 · 方法公开</span><span class="tag">黑珍珠 · 反面样本</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; color:var(--gold); font-size:11pt; line-height:1; margin:1.6mm 0;">↓</div>
+
+      <!-- 引擎层 -->
+      <div style="border:1px solid var(--rule); background:var(--cream2);">
+        <div style="display:flex;">
+          <div style="width:26mm; background:var(--navy); color:#F4F0E7; padding:4mm 3.5mm;">
+            <div style="font-size:7pt; letter-spacing:0.22em; color:var(--gold-lt); font-weight:800;">LAYER 2</div>
+            <div class="serif" style="font-size:12pt; font-weight:700; margin-top:1.5mm; line-height:1.4;">引擎层</div>
+            <div style="font-size:7.5pt; color:#D9D2BC; margin-top:1mm; line-height:1.5;">怎么变成分析</div>
+          </div>
+          <div style="flex:1; padding:3.5mm 4mm;">
+            <div style="font-size:8.5pt; color:var(--ink-soft); line-height:1.6;"><b style="color:var(--navy);">58 个分析点 × 13 个模块 × 6+9 个维度族</b>，双口径（标准价 A / 账单实收 B），主辅佐引 Load×Reach。</div>
+            <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1.2mm; margin-top:2.2mm; font-size:7.3pt; color:var(--ink-soft);">
+              <div><b style="color:var(--gold);">M1</b> 认知层</div><div><b style="color:var(--gold);">M2</b> 经营基本盘</div><div><b style="color:var(--gold);">M3</b> 主辅佐引角色</div><div><b style="color:var(--gold);">M4</b> ABC 与二八</div>
+              <div><b style="color:var(--gold);">M5</b> 四大单品指标</div><div><b style="color:var(--gold);">M6</b> 结构树</div><div><b style="color:var(--gold);">M7</b> 品类倾向与价格</div><div><b style="color:var(--gold);">M8</b> 客单组合与小票</div>
+              <div><b style="color:var(--gold);">M9</b> 复购与客户资产</div><div><b style="color:var(--gold);">M10</b> 九宫格</div><div><b style="color:var(--gold);">M11</b> 季节性与生命周期</div><div><b style="color:var(--gold);">M12</b> 商圈与竞品</div>
+              <div><b style="color:var(--gold);">M13</b> 行动与效益</div>
+              <div style="grid-column:span 3; color:#706758;">维度族：D1 产品 · D2 角色 · D3 属性 · D4 时空 · D5 交易 · D6 顾客（+9 族待启用）</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; color:var(--gold); font-size:11pt; line-height:1; margin:1.6mm 0;">↓</div>
+
+      <!-- 治理层 -->
+      <div style="border:1px solid var(--rule); background:var(--cream2);">
+        <div style="display:flex;">
+          <div style="width:26mm; background:var(--navy); color:#F4F0E7; padding:4mm 3.5mm;">
+            <div style="font-size:7pt; letter-spacing:0.22em; color:var(--gold-lt); font-weight:800;">LAYER 3</div>
+            <div class="serif" style="font-size:12pt; font-weight:700; margin-top:1.5mm; line-height:1.4;">治理层</div>
+            <div style="font-size:7.5pt; color:#D9D2BC; margin-top:1mm; line-height:1.5;">如何被治理</div>
+          </div>
+          <div style="flex:1; padding:3.5mm 4mm;">
+            <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:2mm;">
+              <div><div class="serif" style="font-size:15pt; color:var(--gold); font-weight:700;">47</div><div style="font-size:7.3pt; color:var(--navy); font-weight:700; letter-spacing:0.06em;">方法论卡<br>（快照发布口径）</div></div>
+              <div><div class="serif" style="font-size:15pt; color:var(--gold); font-weight:700;">382</div><div style="font-size:7.3pt; color:var(--navy); font-weight:700; letter-spacing:0.06em;">标准字段</div></div>
+              <div><div class="serif" style="font-size:15pt; color:var(--gold); font-weight:700;">596</div><div style="font-size:7.3pt; color:var(--navy); font-weight:700; letter-spacing:0.06em;">有效字段映射</div></div>
+              <div><div class="serif" style="font-size:15pt; color:var(--gold); font-weight:700;">121</div><div style="font-size:7.3pt; color:var(--navy); font-weight:700; letter-spacing:0.06em;">决策资源映射</div></div>
+            </div>
+            <div style="margin-top:2.2mm;"><span class="tag">数字槽位化</span><span class="tag">全链路血缘 PROV</span><span class="tag">版本化快照</span><span class="tag">口径统一后再分析</span></div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; color:var(--gold); font-size:11pt; line-height:1; margin:1.6mm 0;">↓</div>
+
+      <!-- 输出 -->
+      <div style="background:var(--navy); color:#F4F0E7; padding:4.5mm 5mm; display:flex; align-items:center; justify-content:space-between;">
+        <div>
+          <div style="font-size:7pt; letter-spacing:0.24em; color:var(--gold-lt); font-weight:800;">OUTPUT</div>
+          <div class="serif" style="font-size:13pt; font-weight:700; margin-top:1mm;">沉淀为「经营谱」· AI 第二大脑</div>
+        </div>
+        <div style="font-size:8pt; color:#D9D2BC; text-align:right; line-height:1.6;">静态报告 →<br>自我进化的决策体系</div>
+      </div>
+    </div>
+
+    <!-- 右：验证与门禁 竖轨 -->
+    <div style="border:1px solid var(--verm); background:var(--cream2); padding:3.5mm 2.8mm; display:flex; flex-direction:column;">
+      <div style="writing-mode:vertical-rl; letter-spacing:0.3em; font-size:8.5pt; color:var(--verm); font-weight:800; align-self:center; margin-bottom:3mm;">验证与门禁 · 贯穿三层</div>
+      <div style="font-size:7.3pt; line-height:1.55; color:var(--ink-soft); border-top:1px solid var(--verm); padding-top:2mm; margin-top:auto;"><b style="color:var(--navy);">三路对账</b><br>行合计=单合计=日汇总</div>
+      <div style="font-size:7.3pt; line-height:1.55; color:var(--ink-soft); border-top:1px solid var(--line); padding-top:2mm; margin-top:2mm;"><b style="color:var(--navy);">结论 L3 门禁</b><br>主张·量级·机制·边界</div>
+      <div style="font-size:7.3pt; line-height:1.55; color:var(--ink-soft); border-top:1px solid var(--line); padding-top:2mm; margin-top:2mm;"><b style="color:var(--navy);">证伪登记</b><br>错了就修订并留痕</div>
+      <div style="font-size:7.3pt; line-height:1.55; color:var(--ink-soft); border-top:1px solid var(--line); padding-top:2mm; margin-top:2mm;"><b style="color:var(--navy);">样本不足不出数</b><br>不硬给结论</div>
+    </div>
+  </div>
+
+  <div class="ft"><span>Table AI Alliance | Second Brain | Decision System | Restaurant Growth</span><span>侍天｜Table AI Alliance&nbsp;&nbsp;<span class="pg">02</span></span></div>
+</div>
+
+<div class="page">
+  <div class="hd"><span class="l">侍天｜ A Member of Table AI Alliance</span><span>TIANSIGHT&nbsp;&nbsp;企业介绍</span></div>
+  <div class="hd-rule"></div>
+  <div style="margin-top:9mm;">
+    <div class="kicker">OUR BELIEF</div>
+    <div class="h1" style="margin-top:3mm;">AI 时代，什么替代不了</div>
+    <div class="goldbar"></div>
+  </div>
+
+  <div class="quoteblock serif" style="font-size:12pt; margin-top:2mm;">
+    AI 替代不了的，是<b style="color:var(--navy);">专家的判断力</b>，和<b style="color:var(--navy);">最终决策的审美</b>。
+  </div>
+
+  <div class="grid2" style="margin-top:6mm;">
+    <div class="card">
+      <div class="lab">01 · 判断力 JUDGMENT</div>
+      <div class="val">数据告诉你发生了什么，<br>专家告诉你这意味着什么</div>
+      <p style="margin-top:2.5mm;">同一张报表，看过一千家店的人和只看过自己店的人，读出的东西完全不同。哪个异常值得追、哪个建议先做、哪个动作代价太高：这是长年在场子里练出来的判断，不是算法输出。</p>
+    </div>
+    <div class="card">
+      <div class="lab">02 · 审美 TASTE</div>
+      <div class="val">最终拍板的那一下，<br>是对生意的审美</div>
+      <p style="margin-top:2.5mm;">菜单删哪三道菜、价格带留几档、品牌往哪个方向走：正确答案往往不止一个。分出高下的，是决策者对品牌、顾客与时机的整体审美。我们让 AI 把事实备齐，把这一下留给人。</p>
+    </div>
+  </div>
+
+  <div style="margin-top:7mm;" class="navy-band">
+    <div class="k">WHAT WE ARE BUILDING · 我们正在做的事</div>
+    <div class="t" style="font-size:15.5pt;">让 AI 在我们开发的体系中做<span style="color:var(--gold-lt);">精准、可控、可追溯</span>的决策支持</div>
+    <div style="font-size:9.5pt; line-height:1.9; color:#EFE6D2; margin-top:4mm;">
+      不让数据不准或模型幻觉带偏经营判断。我们不靠"相信 AI"，而是靠工程机制：每个数字有出处、每条结论可证伪、算不了的直接说算不了：用一整套决策体系把幻觉挡在报告之外。
+    </div>
+  </div>
+
+  <div class="grid3" style="margin-top:6mm;">
+    <div class="card"><div class="lab">实现路径 · 一</div><div class="val" style="font-size:11pt;">决策体系</div><p style="margin-top:1.5mm;">口径、对账、分析、结论、复盘的完整纪律，而不是一堆孤立报表。</p></div>
+    <div class="card"><div class="lab">实现路径 · 二</div><div class="val" style="font-size:11pt;">第二大脑</div><p style="margin-top:1.5mm;">融合专家知识库、国内外方法论与论文中经实践验证的增益方法。</p></div>
+    <div class="card"><div class="lab">最终目的</div><div class="val" style="font-size:11pt;">AI 原生餐饮运营体系</div><p style="margin-top:1.5mm;">帮餐饮老板把运营专业度提上来，建立面向未来的经营组织。</p></div>
+  </div>
+
+  <div class="ft"><span>Table AI Alliance | Second Brain | Decision System | Restaurant Growth</span><span>侍天｜Table AI Alliance&nbsp;&nbsp;<span class="pg">03</span></span></div>
+</div>
+
+<!-- ======================= P3 行业问题 ======================= -->
+<div class="page">
+  <div class="hd"><span class="l">侍天｜ A Member of Table AI Alliance</span><span>TIANSIGHT&nbsp;&nbsp;企业介绍</span></div>
+  <div class="hd-rule"></div>
+  <div style="margin-top:9mm;">
+    <div class="kicker">THE PROBLEM</div>
+    <div class="h1" style="margin-top:3mm;">系统很多，决策仍然断裂</div>
+    <div class="goldbar"></div>
+    <div class="lede">收银记录交易，会员系统记录顾客，采购系统记录进货，点评平台记录体验，财务系统记录结果：数据各自存在，却没有自动变成一致的经营判断。</div>
+  </div>
+
+  <div class="grid3" style="margin-top:7mm;">
+    <div class="card">
+      <div class="lab">断裂 · 口径</div>
+      <div class="val" style="font-size:11.5pt;">同一个"毛利率"，<br>三个部门三个算法</div>
+      <p style="margin-top:2mm;">财务、运营、门店各说各话；同名指标定义不同，会议先吵口径、再谈生意。</p>
+    </div>
+    <div class="card">
+      <div class="lab">断裂 · 判断</div>
+      <div class="val" style="font-size:11.5pt;">报表越来越多，<br>该做什么越来越模糊</div>
+      <p style="margin-top:2mm;">老板每天收到很多数字，仍难判断哪里在漏钱、哪个动作有效、哪个异常值得追。</p>
+    </div>
+    <div class="card">
+      <div class="lab">断裂 · 复制</div>
+      <div class="val" style="font-size:11.5pt;">经验留在人脑里，<br>换个店就失灵</div>
+      <p style="margin-top:2mm;">样板店的有效做法难以稳定复制到其他门店；能人一走，方法跟着走。</p>
+    </div>
+  </div>
+
+  <div style="margin-top:7mm;">
+    <div class="h2" style="font-size:13pt;">通用 AI 解决不了这件事，反而可能更糟</div>
+    <table class="tb" style="margin-top:3.5mm;">
+      <tr><th style="width:26%;">直接把数据丢给大模型</th><th>后果</th><th style="width:34%;">侍天的做法</th></tr>
+      <tr><td class="em">数据本身不准、口径混乱</td><td>垃圾进、垃圾出，越智能越错得自信</td><td>先对账、先质检，质量不达标不出结论</td></tr>
+      <tr><td class="em">模型会编造数字和因果</td><td>幻觉混进经营报告，无从分辨</td><td>数字槽位化取数，结论过门禁，来源可追溯</td></tr>
+      <tr><td class="em">结论无法验证</td><td>做错了不知道为什么，做对了无法复制</td><td>每条结论写明证伪条件，登记复盘</td></tr>
+    </table>
+  </div>
+
+  <div class="quoteblock" style="margin-top:7mm;">
+    <span class="serif" style="font-size:11.5pt; color:var(--navy); font-weight:700;">餐饮交易端已经产生了大量数据，缺的是一套把数据、口径、专业判断、责任动作和结果反馈连接起来的日常决策系统。</span><br>
+    <span style="font-size:9pt; color:var(--ink-soft);">这正是侍天要补上的一环：不替代你现有的收银、会员、供应链系统，而是站在它们之上做决策层。</span>
+  </div>
+
+  <div class="ft"><span>Table AI Alliance | Second Brain | Decision System | Restaurant Growth</span><span>侍天｜Table AI Alliance&nbsp;&nbsp;<span class="pg">04</span></span></div>
+</div>
+
+<!-- ======================= P4 第二大脑机制 ======================= -->
+<div class="page">
+  <div class="hd"><span class="l">侍天｜ A Member of Table AI Alliance</span><span>TIANSIGHT&nbsp;&nbsp;企业介绍</span></div>
+  <div class="hd-rule"></div>
+  <div style="margin-top:9mm;">
+    <div class="kicker">THE SECOND BRAIN</div>
+    <div class="h1" style="margin-top:3mm;">"第二大脑"不是聊天机器人</div>
+    <div class="goldbar"></div>
+    <div class="lede">它是一套受治理的经营循环：像大脑一样感知、记忆、判断、行动、学习，每一层都有明确机制和人审边界。</div>
+  </div>
+
+  <table class="tb" style="margin-top:6mm;">
+    <tr><th style="width:14%;">大脑功能</th><th>侍天对应机制</th><th style="width:32%;">谁负责</th></tr>
+    <tr><td class="em">感知</td><td>按授权接入收银、点餐、会员、美团点评、预订及经营文件等内外部数据</td><td>系统采集 · 专家确认覆盖</td></tr>
+    <tr><td class="em">记忆</td><td>数据字典、指标口径、血缘、异常库与长期经营资产账本</td><td>数据治理体系</td></tr>
+    <tr><td class="em">判断</td><td>盈亏、菜品结构、复购、多店对标、异常预警与趋势建议</td><td>AI 初判 · <b>专家复核</b></td></tr>
+    <tr><td class="em">行动</td><td>执行清单、责任人、期限、提醒与线下工作坊</td><td>客户团队 · <b>老板拍板</b></td></tr>
+    <tr><td class="em">学习</td><td>结果回流、复盘、错误库与规则更新，体系持续自我进化</td><td>专家 + 系统共同迭代</td></tr>
+  </table>
+
+  <div style="margin-top:7mm;">
+    <div class="h2" style="font-size:13pt;">六步工作路径</div>
+    <div class="grid3" style="margin-top:3.5mm;">
+      <div class="card" style="padding:4mm;"><span class="stepnum">01</span><div class="val" style="font-size:10.5pt; margin-top:1mm;">数据接入</div><p>授权范围内接入并清洗多源经营数据</p></div>
+      <div class="card" style="padding:4mm;"><span class="stepnum">02</span><div class="val" style="font-size:10.5pt; margin-top:1mm;">口径统一</div><p>三路对账、质量门禁，全公司说同一种数字语言</p></div>
+      <div class="card" style="padding:4mm;"><span class="stepnum">03</span><div class="val" style="font-size:10.5pt; margin-top:1mm;">问题识别</div><p>利润漏点、结构错配、复购异常逐项定位</p></div>
+      <div class="card" style="padding:4mm;"><span class="stepnum">04</span><div class="val" style="font-size:10.5pt; margin-top:1mm;">专家判断</div><p>专家复核结论、排优先级、给出方向</p></div>
+      <div class="card" style="padding:4mm;"><span class="stepnum">05</span><div class="val" style="font-size:10.5pt; margin-top:1mm;">落地执行</div><p>执行清单绑定责任人、期限与验证指标</p></div>
+      <div class="card" style="padding:4mm;"><span class="stepnum">06</span><div class="val" style="font-size:10.5pt; margin-top:1mm;">结果回流</div><p>对照基线复盘，更新规则与经营资产</p></div>
+    </div>
+  </div>
+
+  <div class="quoteblock" style="margin-top:6mm; font-size:9.5pt;">
+    知识来源三条线并行：<b>专家二十余年实战知识库</b> × <b>国内外最新方法论</b> × <b>论文中经实践验证可提升收益的方法</b>：全部经过口径化改写后才进入体系，可引用、可追溯、可淘汰。
+  </div>
+
+  <div class="ft"><span>Table AI Alliance | Second Brain | Decision System | Restaurant Growth</span><span>侍天｜Table AI Alliance&nbsp;&nbsp;<span class="pg">05</span></span></div>
+</div>
+
+<!-- ======================= P5 方法论底座 ======================= -->
+<div class="page">
+  <div class="hd"><span class="l">侍天｜ A Member of Table AI Alliance</span><span>TIANSIGHT&nbsp;&nbsp;企业介绍</span></div>
+  <div class="hd-rule"></div>
+  <div style="margin-top:9mm;">
+    <div class="kicker">KNOWLEDGE BASE</div>
+    <div class="h1" style="margin-top:3mm;">已经建成的方法论底座</div>
+    <div class="goldbar"></div>
+    <div class="lede">这不是 PPT 上的概念，是已在治理系统中登记、编号、可调用的知识资产（快照日期 2026-08）。</div>
+  </div>
+
+  <div class="grid4" style="margin-top:7mm;">
+    <div class="card"><div class="stat"><div class="n">47</div><div class="d">知识方法论</div></div><p style="margin-top:2mm;">从 Prime Cost、菜单工程学到 JTBD 九场景，每条含来源、适用场景、所需数据、局限</p></div>
+    <div class="card"><div class="stat"><div class="n">58</div><div class="d">分析点 × 13 模块</div></div><p style="margin-top:2mm;">从数据资产盘点到证伪登记的完整分析体系，按业态裁剪</p></div>
+    <div class="card"><div class="stat"><div class="n">382</div><div class="d">标准字段</div></div><p style="margin-top:2mm;">统一数据语言，596 条字段映射已生效，接入新系统不再从零开始</p></div>
+    <div class="card"><div class="stat"><div class="n">121</div><div class="d">决策资源映射</div></div><p style="margin-top:2mm;">方法论直接挂接到具体经营决策，知识为决策服务而非陈列</p></div>
+  </div>
+
+  <div style="margin-top:7mm;">
+    <div class="h2" style="font-size:13pt;">方法论从哪里来</div>
+    <table class="tb" style="margin-top:3.5mm;">
+      <tr><th style="width:22%;">来源</th><th>示例</th></tr>
+      <tr><td class="em">全球经典方法论</td><td>菜单工程学（Cornell 1982）、RevPASH 收益管理（Kimes 1998）、约束理论、精益厨房、RFM、NPS、Kano、服务利润链……</td></tr>
+      <tr><td class="em">标杆企业实践</td><td>麦当劳 QSC、丽思卡尔顿黄金标准、迪士尼五要素、Danny Meyer 开明款待、四堵墙营销……</td></tr>
+      <tr><td class="em">侍天原创方法论</td><td>主辅佐引 Load×Reach 角色体系、双口径三路对账、季节分析集选择、JTBD 九场景、结论 L3 门禁、十二分析主体全景……</td></tr>
+    </table>
+  </div>
+
+  <div style="margin-top:6mm;" class="grid3">
+    <div class="card"><div class="lab">纪律 · 一</div><div class="val" style="font-size:11pt;">口径先行</div><p style="margin-top:1.5mm;">双口径（标准价 / 账单实收）分开算，结构决策与定价决策不混用。</p></div>
+    <div class="card"><div class="lab">纪律 · 二</div><div class="val" style="font-size:11pt;">样本不足不出数</div><p style="margin-top:1.5mm;">缺成本则毛利结论降级，会员识别不足则复购章不做：诚实降级，不虚构。</p></div>
+    <div class="card"><div class="lab">纪律 · 三</div><div class="val" style="font-size:11pt;">结论可证伪</div><p style="margin-top:1.5mm;">每条结论写明证伪条件并登记；错了公开修订，这是行业里少有人敢做的事。</p></div>
+  </div>
+
+  <div class="ft"><span>Table AI Alliance | Second Brain | Decision System | Restaurant Growth</span><span>侍天｜Table AI Alliance&nbsp;&nbsp;<span class="pg">06</span></span></div>
+</div>
+
+<!-- ======================= P6 无幻觉机制 ======================= -->
+<div class="page">
+  <div class="hd"><span class="l">侍天｜ A Member of Table AI Alliance</span><span>TIANSIGHT&nbsp;&nbsp;企业介绍</span></div>
+  <div class="hd-rule"></div>
+  <div style="margin-top:9mm;">
+    <div class="kicker">ZERO-HALLUCINATION ENGINEERING</div>
+    <div class="h1" style="margin-top:3mm;">"无幻觉"靠机制，不靠口号</div>
+    <div class="goldbar"></div>
+    <div class="lede">通用大模型会编数字、编因果。侍天用五道工程闸门，把幻觉挡在每一份报告之外。</div>
+  </div>
+
+  <div style="margin-top:6mm;">
+    <table class="tb">
+      <tr><th style="width:20%;">闸门</th><th>机制</th><th style="width:30%;">挡住什么</th></tr>
+      <tr><td class="em">① 三路对账</td><td>账单、明细、汇总三条路径互相校验，日对账 + 质量门禁前置于一切分析</td><td>数据本身不准</td></tr>
+      <tr><td class="em">② 数字槽位化</td><td>报告中的每个数字由查询引擎填入固定槽位，模型不允许自己"取数"</td><td>AI 编造数字</td></tr>
+      <tr><td class="em">③ 结论 L3 门禁</td><td>合格结论 = 主张 + 量级 + 机制 + 边界；八问门禁任一项失败不得进报告</td><td>空话、伪结论</td></tr>
+      <tr><td class="em">④ 全链路血缘</td><td>数据血缘、方法血缘、决策血缘三层可定位（PROV / OpenLineage 标准），任何数字可回溯到原始记录</td><td>无法追责与复现</td></tr>
+      <tr><td class="em">⑤ 证伪登记</td><td>每条结论登记证伪条件，结果回流后复检；无决策贡献的方法按季淘汰</td><td>错了不认、对了不知为何</td></tr>
+    </table>
+  </div>
+
+  <div class="navy-band" style="margin-top:7mm;">
+    <div class="k">TRACEABILITY · 可追溯到什么程度</div>
+    <div style="font-size:10pt; line-height:2; color:#EFE6D2;">
+      报告里写"招牌菜 A 渗透率下滑 6 个百分点"：你可以问：<b style="color:var(--gold-lt);">数据来自哪几张账单？口径是哪一版？用了哪条方法论？谁复核的？如果错了，什么证据能推翻它？</b><br>每一问都有登记在案的答案。这就是我们与"AI 生成一份漂亮报告"的区别。
+    </div>
+  </div>
+
+  <div class="grid2" style="margin-top:6mm;">
+    <div class="card">
+      <div class="lab">对经营者意味着</div>
+      <p>你可以放心把报告拿到店长会上用：被质疑时，每个数字都经得起追问；执行清单上的每个动作，都有可验证的预期。</p>
+    </div>
+    <div class="card">
+      <div class="lab">对行业意味着</div>
+      <p>方法论完全公开、样本不足不出数、结论登记可证伪：我们用做金融数据的纪律做餐饮数据，让"专业"重新有标准。</p>
+    </div>
+  </div>
+
+  <div class="ft"><span>Table AI Alliance | Second Brain | Decision System | Restaurant Growth</span><span>侍天｜Table AI Alliance&nbsp;&nbsp;<span class="pg">07</span></span></div>
+</div>
+
+<!-- ======================= P7 参考看板 ======================= -->
+<div class="page">
+  <div class="hd"><span class="l">侍天｜ A Member of Table AI Alliance</span><span>TIANSIGHT&nbsp;&nbsp;企业介绍</span></div>
+  <div class="hd-rule"></div>
+  <div style="margin-top:9mm;">
+    <div class="kicker">SAMPLE DASHBOARD</div>
+    <div class="h1" style="margin-top:3mm;">决策维度</div>
+    <div class="goldbar"></div>
+    <div class="lede">以下为示例数据的参考看板。真实交付中，每张图的口径、期间、分析集都在页脚声明，每个结论附证伪条件。</div>
+  </div>
+
+  <div class="grid2" style="margin-top:6mm;">
+    <!-- Chart 1: 主辅佐引四象限 -->
+    <div class="card" style="padding:4mm;">
+      <div class="lab">A17 · 菜品角色四象限（Load × Reach）</div>
+      <svg viewBox="0 0 300 200" style="width:100%; margin-top:2mm;">
+        <rect x="40" y="10" width="250" height="160" fill="#FFFDF8" stroke="#D5CEC1"/>
+        <line x1="165" y1="10" x2="165" y2="170" stroke="#A48C64" stroke-dasharray="3,3"/>
+        <line x1="40" y1="90" x2="290" y2="90" stroke="#A48C64" stroke-dasharray="3,3"/>
+        <text x="52" y="24" font-size="9" fill="#76551F" font-weight="700">辅（守盘）</text>
+        <text x="230" y="24" font-size="9" fill="#17130D" font-weight="700">主（招牌）</text>
+        <text x="52" y="164" font-size="9" fill="#706758">引（试探）</text>
+        <text x="230" y="164" font-size="9" fill="#706758">佐（搭配）</text>
+        <circle cx="235" cy="45" r="9" fill="#17130D"/><text x="228" y="35" font-size="8" fill="#17130D">招牌A</text>
+        <circle cx="205" cy="62" r="7" fill="#17130D" opacity="0.8"/>
+        <circle cx="110" cy="55" r="8" fill="#76551F"/><text x="96" y="44" font-size="8" fill="#76551F">热销B</text>
+        <circle cx="80" cy="70" r="6" fill="#76551F" opacity="0.75"/>
+        <circle cx="225" cy="125" r="6" fill="#D4A862"/>
+        <circle cx="195" cy="140" r="5" fill="#D4A862" opacity="0.8"/>
+        <circle cx="90" cy="130" r="5" fill="#B6AB98"/><text x="76" y="148" font-size="8" fill="#706758">长尾C</text>
+        <circle cx="120" cy="145" r="4" fill="#B6AB98" opacity="0.8"/>
+        <text x="150" y="192" font-size="9" fill="#706758">触达度 Reach（渗透率）→</text>
+        <text x="14" y="120" font-size="9" fill="#706758" transform="rotate(-90 14 120)">承重度 Load →</text>
+      </svg>
+      <p style="margin-top:1mm; font-size:8pt;">用桌单占比 × 渗透率给每道菜定角色，禁止用单价拍脑袋：角色错配一眼可见。</p>
+    </div>
+    <!-- Chart 2: ABC -->
+    <div class="card" style="padding:4mm;">
+      <div class="lab">A10 · ABC 贡献分析（销售额累计）</div>
+      <svg viewBox="0 0 300 200" style="width:100%; margin-top:2mm;">
+        <rect x="40" y="10" width="250" height="160" fill="#FFFDF8" stroke="#D5CEC1"/>
+        <rect x="52" y="60" width="22" height="110" fill="#17130D"/>
+        <rect x="80" y="85" width="22" height="85" fill="#17130D"/>
+        <rect x="108" y="105" width="22" height="65" fill="#211D16" opacity="0.85"/>
+        <rect x="136" y="122" width="22" height="48" fill="#76551F"/>
+        <rect x="164" y="135" width="22" height="35" fill="#76551F" opacity="0.85"/>
+        <rect x="192" y="146" width="22" height="24" fill="#D4A862"/>
+        <rect x="220" y="155" width="22" height="15" fill="#D4A862" opacity="0.8"/>
+        <rect x="248" y="161" width="22" height="9" fill="#B6AB98"/>
+        <polyline points="63,58 91,44 119,35 147,29 175,25 203,22 231,20 259,19" fill="none" stroke="#76551F" stroke-width="2"/>
+        <circle cx="119" cy="35" r="3" fill="#76551F"/>
+        <text x="126" y="33" font-size="9" fill="#76551F" font-weight="700">A 类 · 前 20% 菜品贡献 78%</text>
+        <text x="150" y="192" font-size="9" fill="#706758">菜品（按贡献排序）</text>
+      </svg>
+      <p style="margin-top:1mm; font-size:8pt;">二八结构 + S1/S2 四分类，判断精简空间；季节品按分析集规则单独处理，不误杀。</p>
+    </div>
+    <!-- Chart 3: 时段 RevPASH -->
+    <div class="card" style="padding:4mm;">
+      <div class="lab">A32 · 分时段坪效热力（RevPASH）</div>
+      <svg viewBox="0 0 300 176" style="width:100%; margin-top:2mm;">
+        <text x="8" y="34" font-size="9" fill="#706758">周一至四</text>
+        <text x="8" y="76" font-size="9" fill="#706758">周五</text>
+        <text x="8" y="118" font-size="9" fill="#706758">周末</text>
+        <g>
+          <rect x="60" y="16" width="52" height="28" fill="#EFE6D2"/><rect x="116" y="16" width="52" height="28" fill="#D4A862"/><rect x="172" y="16" width="52" height="28" fill="#EFE6D2"/><rect x="228" y="16" width="52" height="28" fill="#D9CFB8"/>
+          <rect x="60" y="58" width="52" height="28" fill="#D9CFB8"/><rect x="116" y="58" width="52" height="28" fill="#76551F"/><rect x="172" y="58" width="52" height="28" fill="#D4A862"/><rect x="228" y="58" width="52" height="28" fill="#17130D"/>
+          <rect x="60" y="100" width="52" height="28" fill="#D4A862"/><rect x="116" y="100" width="52" height="28" fill="#17130D"/><rect x="172" y="100" width="52" height="28" fill="#76551F"/><rect x="228" y="100" width="52" height="28" fill="#17130D"/>
+        </g>
+        <text x="72" y="150" font-size="9" fill="#706758">午市</text>
+        <text x="124" y="150" font-size="9" fill="#706758">午高峰</text>
+        <text x="186" y="150" font-size="9" fill="#706758">下午</text>
+        <text x="240" y="150" font-size="9" fill="#706758">晚市</text>
+        <text x="60" y="170" font-size="8" fill="#706758">深色 = 座位小时产出高；浅色时段即增量收入机会</text>
+      </svg>
+      <p style="margin-top:1mm; font-size:8pt;">收入 = 餐位 × 小时 × 上座 × 周转 × 人均：弱时段一格格找出来，逐个设计动作。</p>
+    </div>
+    <!-- Chart 4: 行动优先级 -->
+    <div class="card" style="padding:4mm;">
+      <div class="lab">A56 · 行动优先级矩阵（本月）</div>
+      <svg viewBox="0 0 300 176" style="width:100%; margin-top:2mm;">
+        <rect x="10" y="12" width="280" height="34" fill="#8C3228"/>
+        <text x="20" y="33" font-size="9.5" fill="#F4F0E7" font-weight="700">P0 · 招牌A渗透回补</text><text x="196" y="33" font-size="9" fill="#D4A862">预期 +2.1% 营收</text>
+        <rect x="10" y="52" width="280" height="34" fill="#211D16" opacity="0.9"/>
+        <text x="20" y="73" font-size="9.5" fill="#F4F0E7" font-weight="700">P1 · 午市套餐重组</text><text x="196" y="73" font-size="9" fill="#D4A862">预期 +1.4% 营收</text>
+        <rect x="10" y="92" width="280" height="34" fill="#76551F" opacity="0.9"/>
+        <text x="20" y="113" font-size="9.5" fill="#FFFDF8" font-weight="700">P2 · 长尾 6 SKU 下架评审</text><text x="196" y="113" font-size="9" fill="#FFFDF8">损耗 −0.8pp</text>
+        <rect x="10" y="132" width="280" height="34" fill="#EFE6D2"/>
+        <text x="20" y="153" font-size="9.5" fill="#706758" font-weight="700">P3 · 会员唤醒（观察）</text><text x="196" y="153" font-size="9" fill="#706758">证据待补</text>
+      </svg>
+      <p style="margin-top:1mm; font-size:8pt;">每个动作绑定责任人、期限、验证指标；效益测算做归因去重，不重复计功。</p>
+    </div>
+  </div>
+  <div class="footnote" style="margin-top:3.5mm;">※ 本页全部为示例数据，仅示意看板形态。正式交付以客户真实数据与签署口径为准。</div>
+
+  <div class="ft"><span>Table AI Alliance | Second Brain | Decision System | Restaurant Growth</span><span>侍天｜Table AI Alliance&nbsp;&nbsp;<span class="pg">08</span></span></div>
+</div>
+
+<!-- ======================= P8 服务体系总览 ======================= -->
+<div class="page">
+  <div class="hd"><span class="l">侍天｜ A Member of Table AI Alliance</span><span>TIANSIGHT&nbsp;&nbsp;企业介绍</span></div>
+  <div class="hd-rule"></div>
+  <div style="margin-top:9mm;">
+    <div class="kicker">SERVICE SYSTEM</div>
+    <div class="h1" style="margin-top:3mm;">四层服务，一条阶梯</div>
+    <div class="goldbar"></div>
+    <div class="lede">从一份报告开始，到共建 AI 原生组织。每一层都建立在上一层验证过的信任之上：不要求一次性大投入。</div>
+  </div>
+
+  <div style="margin-top:7mm; display:flex; flex-direction:column; gap:4mm;">
+    <div style="display:flex; align-items:stretch;">
+      <div style="width:34mm; background:var(--navy); color:#F4F0E7; padding:4mm; display:flex; flex-direction:column; justify-content:center;">
+        <div style="font-size:7.5pt; letter-spacing:0.2em; color:var(--gold-lt); font-weight:800;">LEVEL 1</div>
+        <div class="serif" style="font-size:12.5pt; font-weight:700; margin-top:1mm;">基础服务</div>
+      </div>
+      <div style="flex:1; background:var(--cream2); border:1px solid var(--line); border-left:none; padding:4mm 5mm;">
+        <div style="font-size:10.5pt; color:var(--navy); font-weight:700;">专家 + AI 经营决策支持</div>
+        <div style="font-size:9pt; color:var(--ink-soft); line-height:1.7; margin-top:1mm;">基于流水数据的运营业绩增长报告：核心是专家的经验与判断力。单份 2 万元起，从一份报告验证价值。</div>
+      </div>
+    </div>
+    <div style="display:flex; align-items:stretch;">
+      <div style="width:34mm; background:#2B2820; color:#F4F0E7; padding:4mm; display:flex; flex-direction:column; justify-content:center;">
+        <div style="font-size:7.5pt; letter-spacing:0.2em; color:var(--gold-lt); font-weight:800;">LEVEL 2</div>
+        <div class="serif" style="font-size:12.5pt; font-weight:700; margin-top:1mm;">增值服务</div>
+      </div>
+      <div style="flex:1; background:var(--cream2); border:1px solid var(--line); border-left:none; padding:4mm 5mm;">
+        <div style="font-size:10.5pt; color:var(--navy); font-weight:700;">运营托管</div>
+        <div style="font-size:9pt; color:var(--ink-soft); line-height:1.7; margin-top:1mm;">把"建议"变成"有人替你做"：品牌营销、社媒账号、私域会员托管，加上成本与组织力建设建议。</div>
+      </div>
+    </div>
+    <div style="display:flex; align-items:stretch;">
+      <div style="width:34mm; background:var(--gold); color:#FFFDF8; padding:4mm; display:flex; flex-direction:column; justify-content:center;">
+        <div style="font-size:7.5pt; letter-spacing:0.2em; color:#F0E6C9; font-weight:800;">LEVEL 3</div>
+        <div class="serif" style="font-size:12.5pt; font-weight:700; margin-top:1mm;">进阶服务</div>
+      </div>
+      <div style="flex:1; background:var(--cream2); border:1px solid var(--line); border-left:none; padding:4mm 5mm;">
+        <div style="font-size:10.5pt; color:var(--navy); font-weight:700;">AI 第二大脑与看板中台</div>
+        <div style="font-size:9pt; color:var(--ink-soft); line-height:1.7; margin-top:1mm;">打通收银、美团等内外部系统，建立专属经营模型与决策看板：静态报告升级为持续自我进化的决策体系。</div>
+      </div>
+    </div>
+    <div style="display:flex; align-items:stretch;">
+      <div style="width:34mm; background:#5F4318; color:#FFFDF8; padding:4mm; display:flex; flex-direction:column; justify-content:center;">
+        <div style="font-size:7.5pt; letter-spacing:0.2em; color:#F0E6C9; font-weight:800;">LEVEL 4</div>
+        <div class="serif" style="font-size:12.5pt; font-weight:700; margin-top:1mm;">战略服务</div>
+      </div>
+      <div style="flex:1; background:var(--cream2); border:1px solid var(--line); border-left:none; padding:4mm 5mm;">
+        <div style="font-size:10.5pt; color:var(--navy); font-weight:700;">AI 原生组织转型</div>
+        <div style="font-size:9pt; color:var(--ink-soft); line-height:1.7; margin-top:1mm;">与老板共同打造 AI 原生的餐饮组织：转型现有组织，或从零建立以 AI 原生标准运作的新品牌。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid3" style="margin-top:6mm;">
+    <div class="card" style="padding:3.5mm 4mm;"><div class="lab">阶梯逻辑 · 一</div><p><b>先看见，再托管，再装系统，最后换组织</b>：每一步都以上一步的可验证结果为前提。</p></div>
+    <div class="card" style="padding:3.5mm 4mm;"><div class="lab">阶梯逻辑 · 二</div><p><b>专家始终在场</b>：四层服务里 AI 的角色越来越重，但判断与审美始终由人负责。</p></div>
+    <div class="card" style="padding:3.5mm 4mm;"><div class="lab">阶梯逻辑 · 三</div><p><b>资产逐层沉淀</b>：口径、模型、看板、组织能力留在你的企业里，不随服务结束而消失。</p></div>
+  </div>
+
+  <div class="ft"><span>Table AI Alliance | Second Brain | Decision System | Restaurant Growth</span><span>侍天｜Table AI Alliance&nbsp;&nbsp;<span class="pg">09</span></span></div>
+</div>
+
+<!-- ======================= P9 基础服务 ======================= -->
+<div class="page">
+  <div class="hd"><span class="l">侍天｜ A Member of Table AI Alliance</span><span>TIANSIGHT&nbsp;&nbsp;企业介绍</span></div>
+  <div class="hd-rule"></div>
+  <div style="margin-top:9mm;">
+    <div class="kicker">LEVEL 1 · 基础服务</div>
+    <div class="h1" style="margin-top:3mm; font-size:22pt;">专家 + AI 经营决策支持</div>
+    <div class="goldbar"></div>
+    <div class="lede">用你已有的流水数据，换一份看得懂、可追溯、能执行的增长报告。AI 负责把数据算准算全，专家负责判断"这意味着什么、先做什么"。</div>
+  </div>
+
+  <div class="grid2" style="margin-top:6mm;">
+    <div class="card">
+      <div class="lab">交付内容</div>
+      <ul class="dash" style="margin-top:1mm;">
+        <li><b>专家深度讲解</b>：一次线下面对面，把报告讲透，回答你的具体问题</li>
+        <li><b>可追溯原始数据的分析报告</b>：每个数字有出处，经得起店长会上的追问</li>
+        <li><b>分析洞察与趋势建议</b>：不止"发生了什么"，还有"接下来怎么办"</li>
+        <li><b>门店运营体系优化方案</b>：针对你的门店给出结构性改进方向</li>
+        <li><b>逻辑执行清单</b>：动作、责任人、期限、验证指标，拿来就能排</li>
+        <li><b>线上陪跑</b>：执行期随时在线答疑，不是交完报告就消失</li>
+      </ul>
+    </div>
+    <div>
+      <div class="pricebox">
+        <div class="ph">单次购买</div>
+        <div class="pb">
+          <div class="big-price" style="color:var(--verm);">¥ 20,000 <small>/ 份报告</small></div>
+          <p style="font-size:8.5pt; color:var(--ink-soft); line-height:1.7; margin-top:1.5mm;">含一次线下讲解、数据分析报告、逻辑执行清单及线上陪跑</p>
+        </div>
+      </div>
+      <div class="pricebox" style="margin-top:4mm; border-color:var(--gold);">
+        <div class="ph" style="background:var(--gold);">季度购买 · 全年优惠</div>
+        <div class="pb">
+          <div class="big-price" style="color:var(--verm);">¥ 72,000 <small>/ 年（原价 ¥80,000）</small></div>
+          <p style="font-size:8.5pt; color:var(--ink-soft); line-height:1.7; margin-top:1.5mm;">每季度一份完整交付，全年四次；经营节奏与季节换菜单同频，趋势可对照</p>
+        </div>
+      </div>
+      <div class="footnote" style="margin-top:3.5mm;">多门店说明：连锁超过 3 家门店，每家门店额外收取 1,000 元数据清洗费：多店数据口径不一是常态，清洗是保证结论可信的必要工序。</div>
+    </div>
+  </div>
+
+  <div style="margin-top:6mm;">
+    <div class="h2" style="font-size:12.5pt;">一次交付的完整流程</div>
+    <div style="display:flex; gap:0; margin-top:3.5mm; align-items:stretch;">
+      <div style="flex:1; background:var(--cream2); border:1px solid var(--line); padding:3.5mm;"><div class="stepnum" style="font-size:12pt;">01</div><div style="font-size:9pt; font-weight:700; color:var(--navy); margin-top:1mm;">流水数据授权与清洗</div></div>
+      <div style="width:5mm; display:flex; align-items:center; justify-content:center; color:var(--gold); font-weight:700;">→</div>
+      <div style="flex:1; background:var(--cream2); border:1px solid var(--line); padding:3.5mm;"><div class="stepnum" style="font-size:12pt;">02</div><div style="font-size:9pt; font-weight:700; color:var(--navy); margin-top:1mm;">口径统一与三路对账</div></div>
+      <div style="width:5mm; display:flex; align-items:center; justify-content:center; color:var(--gold); font-weight:700;">→</div>
+      <div style="flex:1; background:var(--cream2); border:1px solid var(--line); padding:3.5mm;"><div class="stepnum" style="font-size:12pt;">03</div><div style="font-size:9pt; font-weight:700; color:var(--navy); margin-top:1mm;">58 分析点按业态裁剪运行</div></div>
+      <div style="width:5mm; display:flex; align-items:center; justify-content:center; color:var(--gold); font-weight:700;">→</div>
+      <div style="flex:1; background:var(--cream2); border:1px solid var(--line); padding:3.5mm;"><div class="stepnum" style="font-size:12pt;">04</div><div style="font-size:9pt; font-weight:700; color:var(--navy); margin-top:1mm;">专家复核 · 线下讲解</div></div>
+      <div style="width:5mm; display:flex; align-items:center; justify-content:center; color:var(--gold); font-weight:700;">→</div>
+      <div style="flex:1; background:var(--cream2); border:1px solid var(--line); padding:3.5mm;"><div class="stepnum" style="font-size:12pt;">05</div><div style="font-size:9pt; font-weight:700; color:var(--navy); margin-top:1mm;">执行清单 · 线上陪跑</div></div>
+    </div>
+  </div>
+
+  <div class="quoteblock" style="margin-top:6mm; font-size:9.5pt;">
+    适合谁：有收银流水、想先看清"哪里漏钱、什么有效、什么可复制"的单店与连锁：<b>从 2 万元的一份报告开始验证我们，而不是从一个大合同开始相信我们。</b>
+  </div>
+
+  <div class="ft"><span>Table AI Alliance | Second Brain | Decision System | Restaurant Growth</span><span>侍天｜Table AI Alliance&nbsp;&nbsp;<span class="pg">10</span></span></div>
+</div>
+
+<!-- ======================= P10 增值服务 ======================= -->
+<div class="page">
+  <div class="hd"><span class="l">侍天｜ A Member of Table AI Alliance</span><span>TIANSIGHT&nbsp;&nbsp;企业介绍</span></div>
+  <div class="hd-rule"></div>
+  <div style="margin-top:9mm;">
+    <div class="kicker">LEVEL 2 · 增值服务</div>
+    <div class="h1" style="margin-top:3mm; font-size:22pt;">运营托管</div>
+    <div class="goldbar"></div>
+    <div class="lede">报告告诉你该做什么，但很多老板缺的不是方向，是执行的人手和专业度。增值服务在基础服务之上，提供更深入的专家建议与托管支持：把"建议"变成"有人替你做"。</div>
+  </div>
+
+  <div class="grid2" style="margin-top:7mm;">
+    <div class="card">
+      <div class="lab">托管 · A</div>
+      <div class="val">品牌营销运营托管</div>
+      <p style="margin-top:2mm;">从品牌定位、营销日历到活动执行，由服务过百余品牌的团队操盘。营销动作与经营数据打通：每次活动都有基线、有观测、有复盘，不做"热闹但说不清效果"的营销。</p>
+    </div>
+    <div class="card">
+      <div class="lab">托管 · B</div>
+      <div class="val">社交媒体账号运营托管</div>
+      <p style="margin-top:2mm;">代运营大众点评、小红书、抖音等阵地：内容策划、发布节奏、口碑维护。内容方向不靠感觉，来自你菜单数据里真实的记忆点与顾客画像。</p>
+    </div>
+    <div class="card">
+      <div class="lab">托管 · C</div>
+      <div class="val">私域会员运营托管</div>
+      <p style="margin-top:2mm;">会员分层（RFM）、沉睡唤醒、精准触达、复购经营。每一波触达有明确的转化定义和观察周期，会员资产逐月沉淀为你自己的数据。</p>
+    </div>
+    <div class="card">
+      <div class="lab">建议 · D</div>
+      <div class="val">成本优化与组织力建设</div>
+      <p style="margin-top:2mm;">主成本（食材 + 人力）逐项体检、损耗稽核方法落地；同时给出组织力与人才体系建设建议：训练体系、晋升路径、店长能力模型，让好做法能被复制。</p>
+    </div>
+  </div>
+
+  <div style="margin-top:7mm;">
+    <table class="tb">
+      <tr><th style="width:26%;">与普通代运营的区别</th><th>说明</th></tr>
+      <tr><td class="em">数据同源</td><td>托管动作与你的经营数据在同一套口径下：营销花的每一分钱，能对回流水看效果</td></tr>
+      <tr><td class="em">专家带队</td><td>操盘的是做过海底捞、东来顺、奈雪级别项目的团队，不是外包写手</td></tr>
+      <tr><td class="em">资产归你</td><td>账号、会员、内容库、SOP 全部沉淀在你的企业内；托管结束，能力留下</td></tr>
+    </table>
+  </div>
+
+  <div class="quoteblock" style="margin-top:6mm; font-size:9.5pt;">
+    适合谁：已通过基础服务看清问题、缺专业团队落地的品牌。<b>托管范围与费用按品牌现状定制</b>，在基础服务复盘时一并规划。
+  </div>
+
+  <div class="ft"><span>Table AI Alliance | Second Brain | Decision System | Restaurant Growth</span><span>侍天｜Table AI Alliance&nbsp;&nbsp;<span class="pg">11</span></span></div>
+</div>
+
+<!-- ======================= P11 进阶服务 ======================= -->
+<div class="page">
+  <div class="hd"><span class="l">侍天｜ A Member of Table AI Alliance</span><span>TIANSIGHT&nbsp;&nbsp;企业介绍</span></div>
+  <div class="hd-rule"></div>
+  <div style="margin-top:9mm;">
+    <div class="kicker">LEVEL 3 · 进阶服务</div>
+    <div class="h1" style="margin-top:3mm; font-size:22pt;">AI 第二大脑与看板中台</div>
+    <div class="goldbar"></div>
+    <div class="lede">基础服务是"我们替你分析一次"；进阶服务是"把分析能力装进你的企业"：打通收银系统到美团等内外部系统，打造专属的运营模型与决策看板。</div>
+  </div>
+
+  <div class="grid2" style="margin-top:6mm;">
+    <div class="card">
+      <div class="lab">建设 · 一</div>
+      <div class="val">本体论梳理 × 本地数据体系</div>
+      <p style="margin-top:2mm;">先把你的生意"说清楚"：菜品、规格、角色、场景、门店、渠道之间的关系，用本体论方法逐一定义：这是 382 个标准字段与 596 条字段映射的用武之地。在此之上构建本地数据体系与采集系统，数据留在你自己的环境里，授权、权限、留痕、退出全程可控。</p>
+    </div>
+    <div class="card">
+      <div class="lab">建设 · 二</div>
+      <div class="val">静态报告 → 自我进化的决策体系</div>
+      <p style="margin-top:2mm;">季度报告变成持续在线的决策看板：日对账自动跑、异常自动预警、结论自动过门禁，专家按月复盘校准。每次"建议 → 执行 → 结果"的循环都会回流成训练数据，体系越用越懂你的生意：这就是"持续迭代、高效智能的自我进化"。</p>
+    </div>
+  </div>
+
+  <div style="margin-top:6mm;">
+    <div class="h2" style="font-size:12.5pt;">系统打通范围（按授权逐项接入）</div>
+    <div style="margin-top:3mm;">
+      <span class="tag">收银 / POS</span><span class="tag">点餐系统</span><span class="tag">会员 / CRM</span><span class="tag">美团 / 大众点评</span><span class="tag">外卖平台</span><span class="tag">预订系统</span><span class="tag">采购 / 供应链</span><span class="tag">财务经营文件</span><span class="tag">私域 / 小程序</span>
+    </div>
+  </div>
+
+  <div style="margin-top:5mm;">
+    <table class="tb">
+      <tr><th style="width:30%;">对比</th><th style="width:35%;">静态报告（Level 1）</th><th>第二大脑中台（Level 3）</th></tr>
+      <tr><td class="em">更新频率</td><td>按次 / 按季</td><td>持续在线，日对账、周预警、月复盘</td></tr>
+      <tr><td class="em">发现问题</td><td>复盘时发现</td><td>发生时预警</td></tr>
+      <tr><td class="em">知识沉淀</td><td>报告与清单</td><td>口径、模型、错误库、经营资产账本长期累积</td></tr>
+      <tr><td class="em">能力归属</td><td>侍天代跑</td><td>装进你的企业，成为自有能力</td></tr>
+    </table>
+  </div>
+
+  <div class="quoteblock" style="margin-top:6mm; font-size:9.5pt;">
+    适合谁：3 家店以上、已用基础服务验证过价值、准备把数据决策变成日常制度的连锁品牌。<b>按门店规模与系统现状定制方案</b>，从有限门店试点开始。
+  </div>
+
+  <div class="ft"><span>Table AI Alliance | Second Brain | Decision System | Restaurant Growth</span><span>侍天｜Table AI Alliance&nbsp;&nbsp;<span class="pg">12</span></span></div>
+</div>
+
+<!-- ======================= P12 战略服务 ======================= -->
+<div class="page">
+  <div class="hd"><span class="l">侍天｜ A Member of Table AI Alliance</span><span>TIANSIGHT&nbsp;&nbsp;企业介绍</span></div>
+  <div class="hd-rule"></div>
+  <div style="margin-top:9mm;">
+    <div class="kicker">LEVEL 4 · 战略服务</div>
+    <div class="h1" style="margin-top:3mm; font-size:22pt;">AI 原生组织转型</div>
+    <div class="goldbar"></div>
+    <div class="lede">工具会过时，组织能力不会。战略服务是与老板共同打造 AI 原生的餐饮组织：这是四层服务的终点，也是我们创立侍天的初衷。</div>
+  </div>
+
+  <div class="grid2" style="margin-top:6mm;">
+    <div class="card">
+      <div class="lab">路径 · A</div>
+      <div class="val">现有组织的 AI 原生转型</div>
+      <p style="margin-top:2mm;">不是"给员工发个 AI 账号"，而是重新设计组织的工作方式：哪些工作交给系统持续跑、哪些判断必须由人负责、店长和总部按什么口径对话、经验如何回流成组织资产。转型以第二大脑为技术底座，以训练体系与权责重构为抓手，分阶段推进。</p>
+    </div>
+    <div class="card">
+      <div class="lab">路径 · B</div>
+      <div class="val">从零建立 AI 原生新品牌</div>
+      <p style="margin-top:2mm;">新品牌没有历史包袱，可以从第一天起按 AI 原生标准运作：开业即有统一口径与决策看板，SOP 与训练体系与数据体系同步搭建，组织从小到大都长在同一套决策纪律上：这是"面向未来的餐饮运营体系"最纯粹的形态。</p>
+    </div>
+  </div>
+
+  <div style="margin-top:6mm;">
+    <div class="h2" style="font-size:12.5pt;">AI 原生组织，原生在哪里</div>
+    <table class="tb" style="margin-top:3mm;">
+      <tr><th style="width:24%;">维度</th><th style="width:36%;">传统组织</th><th>AI 原生组织</th></tr>
+      <tr><td class="em">事实</td><td>各部门各有一套数字</td><td>一套受治理的经营事实层，全员同一语言</td></tr>
+      <tr><td class="em">分工</td><td>人做所有事，重复劳动占大半</td><td>系统承担持续、重复、可记录的工作；人专注判断与顾客</td></tr>
+      <tr><td class="em">决策</td><td>靠经验与层层汇报</td><td>数据备好事实，专家与老板做判断，全程留痕可复盘</td></tr>
+      <tr><td class="em">传承</td><td>经验在能人脑中，人走艺失</td><td>方法进知识库，口径进系统，新店新人可继承</td></tr>
+    </table>
+  </div>
+
+  <div class="navy-band" style="margin-top:6mm;">
+    <div class="k">CO-CREATION · 共创方式</div>
+    <div style="font-size:10pt; line-height:1.95; color:#EFE6D2;">
+      战略服务以<b style="color:var(--gold-lt);">长期共创</b>方式进行：侍天专家深度驻场，与老板共同设计组织蓝图、共同带队伍、共同对结果负责。合作范围、周期与方式一事一议：因为每个组织的起点都不同。
+    </div>
+  </div>
+
+  <div class="ft"><span>Table AI Alliance | Second Brain | Decision System | Restaurant Growth</span><span>侍天｜Table AI Alliance&nbsp;&nbsp;<span class="pg">13</span></span></div>
+</div>
+
+<!-- ======================= P13 团队 ======================= -->
+<div class="page">
+  <div class="hd"><span class="l">侍天｜ A Member of Table AI Alliance</span><span>TIANSIGHT&nbsp;&nbsp;企业介绍</span></div>
+  <div class="hd-rule"></div>
+  <div style="margin-top:9mm;">
+    <div class="kicker">THE TEAM</div>
+    <div class="h1" style="margin-top:3mm;">国际视野的实战派专家团队</div>
+    <div class="goldbar"></div>
+    <div class="lede">深入全案服务中国超过 100 个餐饮品牌，中国餐饮排行 TOP50 覆盖 60%：建模的人必须站在场子里。</div>
+  </div>
+
+  <div class="grid2" style="margin-top:6mm;">
+    <div style="border:1px solid var(--line); background:var(--cream2);">
+      <div style="background:var(--navy); padding:5mm 6mm;">
+        <div style="font-size:7.5pt; letter-spacing:0.22em; color:var(--gold-lt); font-weight:800;">RESTAURANT BRAND STRATEGY</div>
+        <div class="serif" style="font-size:17pt; color:#F4F0E7; font-weight:700; margin-top:1.5mm;">边江 <span style="font-size:9pt; letter-spacing:0.2em; color:var(--gold-lt);">BIAN JIANG</span></div>
+        <div style="font-size:8.5pt; color:#D9D2BC; margin-top:1mm; line-height:1.6;">侍天-智慧餐饮 联合创始人 · Table AI 生态合伙人 · OPC Global 共创教练</div>
+      </div>
+      <div style="padding:4.5mm 6mm;">
+        <ul class="dash">
+          <li>北大经济学背景，原<b>海底捞高级品牌总监</b>，呷哺呷哺、海底捞品牌管理 5 年</li>
+          <li>新浪、网易 6 年互联网品牌传播经验；尖味菜单工作室创始人</li>
+          <li>操盘<b>东来顺</b>品牌重塑（单均销售 +24%）、<b>蒸小皖</b>产品重构（年销 +58%）、杯子红君王系列（午餐客流 +20%）等全案</li>
+          <li>服务覆盖火锅、快餐、小宴、黑珍珠与米其林餐厅九大业态</li>
+        </ul>
+        <div style="margin-top:3mm;"><span class="tag">品牌定位与重塑</span><span class="tag">产品结构与利润模型</span><span class="tag">君王产品设计</span><span class="tag">菜单体系</span><span class="tag">全案落地</span></div>
+      </div>
+    </div>
+    <div style="border:1px solid var(--line); background:var(--cream2);">
+      <div style="background:var(--navy); padding:5mm 6mm;">
+        <div style="font-size:7.5pt; letter-spacing:0.22em; color:var(--gold-lt); font-weight:800;">AI, EDUCATION &amp; ORGANIZATION</div>
+        <div class="serif" style="font-size:17pt; color:#F4F0E7; font-weight:700; margin-top:1.5mm;">郭峰 <span style="font-size:9pt; letter-spacing:0.2em; color:var(--gold-lt);">GUO FENG</span></div>
+        <div style="font-size:8.5pt; color:#D9D2BC; margin-top:1mm; line-height:1.6;">TABLE AI 创始合伙人 · OPC Global 创始人 / 理事会秘书长</div>
+      </div>
+      <div style="padding:4.5mm 6mm;">
+        <ul class="dash">
+          <li>全球 QS 排名第一的瑞士 <b>EHL 集团在华奠基团队成员</b>，完成约 200 万字课程本地化</li>
+          <li>参与并负责 <b>130+ 地标性酒店资产</b>的投资测算与管理咨询</li>
+          <li>主导 TABLE AI 从系统架构到全栈开发的端到端实现，Agent-to-Agent 全球应用架构</li>
+          <li>横跨教育组织发展、品牌体验与酒店资产管理、AI 工程三大领域</li>
+        </ul>
+        <div style="margin-top:3mm;"><span class="tag">AI 系统架构与全栈工程</span><span class="tag">组织发展</span><span class="tag">酒店资产管理</span><span class="tag">原创方法论</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quoteblock" style="margin-top:6mm; font-size:10pt;">
+    <span class="serif" style="color:var(--navy); font-weight:700; font-size:11.5pt;">一位懂餐饮生意的品牌操盘手 × 一位懂组织与教育的 AI 工程实践者。</span><br>
+    <span style="font-size:9pt;">这个组合决定了侍天的独特性：方法论来自真实战场，工程能力足以把方法论变成系统，教育能力足以把系统变成客户组织的自有能力。</span>
+  </div>
+
+  <div class="ft"><span>Table AI Alliance | Second Brain | Decision System | Restaurant Growth</span><span>侍天｜Table AI Alliance&nbsp;&nbsp;<span class="pg">14</span></span></div>
+</div>
+
+<!-- ======================= P14 封底 CTA ======================= -->
+<div class="page" style="background-color:var(--navy); background-image:linear-gradient(rgba(255,255,255,0.03) 0.4px, transparent 0.4px),linear-gradient(90deg, rgba(255,255,255,0.03) 0.4px, transparent 0.4px);">
+  <div class="hd" style="color:var(--gold-lt);"><span class="l" style="color:var(--gold-lt);">侍天｜ A Member of Table AI Alliance</span><span>TIANSIGHT&nbsp;&nbsp;企业介绍</span></div>
+  <div style="border-bottom:1px solid rgba(200,170,110,.4); margin-top:4mm;"></div>
+
+  <div style="margin-top:26mm;">
+    <div class="kicker" style="color:var(--gold-lt);">NEXT STEP</div>
+    <div class="serif" style="font-size:24pt; color:#F4F0E7; font-weight:700; line-height:1.5; margin-top:5mm;">从一份「餐饮专家 + 275 方法论」<br>的经营洞察报告开始：<br>验证我们，而不是相信我们。</div>
+    <div style="width:9mm; height:1.2mm; background:var(--gold-lt); margin:7mm 0;"></div>
+    <div style="font-size:10.5pt; color:#D9D2BC; line-height:2.1; max-width:150mm;">
+      带上你最近 90 天的流水数据，我们用一份可追溯、可执行的经营报告告诉你：哪里在漏钱、什么动作有效、哪些经验可以复制。<br>
+      合适，再谈下一层；不合适，你也带走一份值回票价的诊断。
+    </div>
+  </div>
+
+  <div style="position:absolute; left:16mm; right:16mm; bottom:34mm; display:flex; gap:10mm;">
+    <div style="flex:1; border:1px solid rgba(200,170,110,.5); padding:5mm;">
+      <div style="font-size:7.5pt; letter-spacing:0.2em; color:var(--gold-lt); font-weight:800;">SERVICES</div>
+      <div style="font-size:9pt; color:#EFE6D2; line-height:1.9; margin-top:2mm;">经营决策支持 · 运营托管<br>第二大脑与看板中台 · AI 原生组织转型</div>
+    </div>
+    <div style="flex:1; border:1px solid rgba(200,170,110,.5); padding:5mm;">
+      <div style="font-size:7.5pt; letter-spacing:0.2em; color:var(--gold-lt); font-weight:800;">FOUNDATION</div>
+      <div style="font-size:9pt; color:#EFE6D2; line-height:1.9; margin-top:2mm;">47 项知识方法论 · 58 个分析点<br>382 个标准字段 · 全链路可追溯</div>
+    </div>
+  </div>
+
+  <div class="ft" style="border-top:1px solid rgba(200,170,110,.4); color:var(--gold-lt);"><span>Table AI Alliance | Second Brain | Decision System | Restaurant Growth</span><span style="color:var(--gold-lt);">侍天｜Table AI Alliance&nbsp;&nbsp;14</span></div>
+</div>
+
+</body>
+</html>
