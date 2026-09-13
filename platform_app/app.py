@@ -249,7 +249,7 @@ let snapshot,view='landing',queue=Promise.resolve(),saveError=false;
 const state=document.querySelector('#save-state');
 function preview(){frame.src=`/projects/${PROJECT}/${scenario.options[scenario.selectedIndex].dataset.slug}/${view}?revision=draft&v=${Date.now()}`}
 const escapeHTML=value=>String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;');
-async function load(){const r=await fetch(`/api/v1/projects/${PROJECT}/snapshot?scenario=${scenario.value}&revision=draft`);if(!r.ok)throw Error(await r.text());snapshot=await r.json();document.querySelector('#revision').textContent=snapshot.revision.code;modules.innerHTML=snapshot.modules.map(m=>`<button data-module="${escapeHTML(m.code)}">${escapeHTML(m.name)} · ${m.fields.length}</button>`).join('');fields.innerHTML=snapshot.fields.map(f=>`<article class="field" data-module="${escapeHTML(f.module_code)}"><label><span>${escapeHTML(f.code)}</span><span>${escapeHTML(f.role)}</span></label><textarea data-code="${escapeHTML(f.code)}" data-base-version="${f.base_version}" data-override-version="${f.override_version ?? f.base_version}">${escapeHTML(f.value)}</textarea></article>`).join('');preview()}
+async function load(){const r=await fetch(`/api/v1/projects/${PROJECT}/snapshot?scenario=${scenario.value}&revision=draft`);if(!r.ok)throw Error(await r.text());snapshot=await r.json();document.querySelector('#revision').textContent=snapshot.revision.code;modules.innerHTML=snapshot.modules.map(m=>`<button data-module="${escapeHTML(m.code)}">${escapeHTML(m.name)} · ${m.fields.length}</button>`).join('');fields.innerHTML=snapshot.fields.map(f=>`<article class="field" data-module="${escapeHTML(f.module_code)}"><label><span>${escapeHTML(f.code)}</span><span>${escapeHTML(f.role)}</span></label><textarea data-code="${escapeHTML(f.code)}" data-base-version="${f.base_version}" data-override-version="${f.override_version ?? ''}">${escapeHTML(f.value)}</textarea></article>`).join('');preview()}
 modules.onclick=e=>{const code=e.target.dataset.module;document.querySelector(`.field[data-module="${code}"]`)?.scrollIntoView({behavior:'smooth'})};
 fields.oninput=e=>{
   const el=e.target;if(el.tagName!=='TEXTAREA')return;
@@ -258,7 +258,7 @@ fields.oninput=e=>{
   queue=queue.then(async()=>{
     if(saveError)throw Error('保存失败，请保留当前文本并刷新后重试');
     const key=scope?'overrideVersion':'baseVersion';
-    const r=await fetch(`/api/v1/drafts/${draft}/fields/${el.dataset.code}`,{method:'PATCH',headers:{'Content-Type':'application/json','If-Match':`"${el.dataset[key]}"`},body:JSON.stringify({value,scenario:scope})});
+    const r=await fetch(`/api/v1/drafts/${draft}/fields/${el.dataset.code}`,{method:'PATCH',headers:{'Content-Type':'application/json','If-Match':`"${el.dataset[key] || el.dataset.baseVersion}"`},body:JSON.stringify({value,scenario:scope})});
     if(!r.ok)throw Error(r.status===412?LABELS['admin.conflict']:await r.text());
     const data=await r.json();el.dataset[key]=data.version;state.textContent=LABELS['admin.saved'];
   }).catch(error=>{saveError=true;state.textContent=error.message});
