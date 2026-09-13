@@ -16,6 +16,7 @@ from .store import Conflict, Store
 
 ROOT = Path(os.environ.get("BASLIDE_ROOT", Path(__file__).resolve().parents[1])).resolve()
 ASSET_STORE = Path(os.environ.get("ASSET_STORE", ROOT / "var/assets")).resolve()
+READ_ONLY = os.environ.get("BASLIDE_READ_ONLY", "1") != "0"
 DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql://baslide:baslide-local@127.0.0.1:54329/baslide")
 
 
@@ -46,6 +47,26 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="Baslide Project Publishing", version="1.0.0", lifespan=lifespan)
 
 
+@app.middleware("http")
+async def protect_editor(request: Request, call_next):
+    if READ_ONLY and (request.method not in {"GET", "HEAD", "OPTIONS"}
+                      or request.url.path.startswith("/admin/")
+                      or request.url.path.endswith("/snapshot")
+                      or request.url.path.endswith("/history")
+                      or request.url.path == "/api/v1/events"
+                      or request.query_params.get("revision", "published") not in {"published", "active"}):
+        return JSONResponse({"detail": "Editor access is disabled on this public instance"}, status_code=403)
+    response = await call_next(request)
+    if request.url.path.startswith(("/api/", "/admin/", "/projects/")):
+        response.headers.setdefault("Cache-Control", "no-store")
+    return response
+
+
+@app.exception_handler(KeyError)
+async def missing_content(request: Request, exc: KeyError):
+    return JSONResponse({"detail": "Content not found"}, status_code=404)
+
+
 def db(request: Request) -> Store:
     return request.app.state.store
 
@@ -62,7 +83,7 @@ def api_projects(request: Request):
 
 @app.get("/healthz")
 def healthz(request: Request):
-    return {"status": "ok", "projects": len(db(request).list_projects())}
+    return {"status": "ok", "projects": len(db(request).list_projects()), "release": os.environ.get("BASLIDE_RELEASE", "development")}
 
 
 @app.get("/api/v1/projects/{project}/snapshot")
@@ -88,7 +109,9 @@ def api_patch_field(request: Request, draft: str, field_code: str, patch: FieldP
         return response
     except Conflict as exc:
         raise HTTPException(412, "field version conflict") from exc
-    except (KeyError, ValueError) as exc:
+    except ValueError as exc:
+        raise HTTPException(400, str(exc)) from exc
+    except KeyError as exc:
         raise HTTPException(404, str(exc)) from exc
 
 
@@ -102,7 +125,7 @@ async def api_add_asset(
     title: str = Form(""),
 ):
     try:
-        return db(request).add_asset(draft, module, role, title, file.filename or "asset", file.content_type or "application/octet-stream", await file.read())
+        return db(request).add_asset(draft, module, role, title, file.filename or "asset", file.content_type or "application/octet-stream", await file.read(20 * 1024 * 1024 + 1))
     except (KeyError, ValueError) as exc:
         raise HTTPException(400, str(exc)) from exc
 
@@ -111,6 +134,8 @@ async def api_add_asset(
 def api_publish(request: Request, draft: str):
     try:
         return publish_all(db(request), draft.split(".")[0], draft)
+    except Conflict as exc:
+        raise HTTPException(409, "Draft changed during rendering; retry publishing") from exc
     except (KeyError, ValueError) as exc:
         raise HTTPException(400, str(exc)) from exc
 
@@ -138,6 +163,8 @@ def project_hub(request: Request, project: str):
         scenarios = db(request).scenarios(project)
     except KeyError as exc:
         raise HTTPException(404) from exc
+    p = {k: esc(v) for k, v in p.items()}
+    scenarios = [{k: esc(v) for k, v in item.items()} for item in scenarios]
     strings = db(request).system_strings()
     links = "".join(f'<article><p>{s["code"]}</p><h2>{s["name"]}</h2><a href="/projects/{p["code"]}/{s["slug"]}/landing">Landing</a><a href="/projects/{p["code"]}/{s["slug"]}/slides">Slides</a></article>' for s in scenarios)
     return f"""<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{p['name']}</title><style>{HUB_CSS}</style></head><body><header><p>{p['code']}</p><h1>{p['name']}</h1><p>{p['description']}</p><nav><a href="/admin/projects/{p['code']}">{strings['admin.title']}</a><a href="/projects/{p['code']}/history">{strings['hub.history']}</a></nav></header><main><h2 class="label">{strings['hub.scenarios']}</h2><section>{links}</section></main></body></html>"""
@@ -218,14 +245,49 @@ ADMIN_CSS = """*{box-sizing:border-box}body{margin:0;background:#F4F0E7;color:#1
 
 ADMIN_JS = r"""
 const scenario=document.querySelector('#scenario'),fields=document.querySelector('#fields'),modules=document.querySelector('#modules'),frame=document.querySelector('#preview');
-let snapshot,view='landing',timer;
+let snapshot,view='landing',queue=Promise.resolve(),saveError=false;
+const state=document.querySelector('#save-state');
 function preview(){frame.src=`/projects/${PROJECT}/${scenario.options[scenario.selectedIndex].dataset.slug}/${view}?revision=draft&v=${Date.now()}`}
-async function load(){const r=await fetch(`/api/v1/projects/${PROJECT}/snapshot?scenario=${scenario.value}&revision=draft`);snapshot=await r.json();document.querySelector('#revision').textContent=snapshot.revision.code;modules.innerHTML=snapshot.modules.map(m=>`<button data-module="${m.code}">${m.name} · ${m.fields.length}</button>`).join('');fields.innerHTML=snapshot.fields.map(f=>`<article class="field" data-module="${f.module_code}"><label><span>${f.code}</span><span>${f.role}</span></label><textarea data-code="${f.code}" data-version="${f.version}">${String(f.value).replaceAll('&','&amp;').replaceAll('<','&lt;')}</textarea></article>`).join('');preview()}
+const escapeHTML=value=>String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;');
+async function load(){const r=await fetch(`/api/v1/projects/${PROJECT}/snapshot?scenario=${scenario.value}&revision=draft`);if(!r.ok)throw Error(await r.text());snapshot=await r.json();document.querySelector('#revision').textContent=snapshot.revision.code;modules.innerHTML=snapshot.modules.map(m=>`<button data-module="${escapeHTML(m.code)}">${escapeHTML(m.name)} · ${m.fields.length}</button>`).join('');fields.innerHTML=snapshot.fields.map(f=>`<article class="field" data-module="${escapeHTML(f.module_code)}"><label><span>${escapeHTML(f.code)}</span><span>${escapeHTML(f.role)}</span></label><textarea data-code="${escapeHTML(f.code)}" data-base-version="${f.base_version}" data-override-version="${f.override_version ?? f.base_version}">${escapeHTML(f.value)}</textarea></article>`).join('');preview()}
 modules.onclick=e=>{const code=e.target.dataset.module;document.querySelector(`.field[data-module="${code}"]`)?.scrollIntoView({behavior:'smooth'})};
-fields.oninput=e=>{if(e.target.tagName!=='TEXTAREA')return;clearTimeout(timer);document.querySelector('#save-state').textContent='保存中';timer=setTimeout(()=>save(e.target),420)};
-async function save(el){const r=await fetch(`/api/v1/drafts/${snapshot.revision.code}/fields/${el.dataset.code}`,{method:'PATCH',headers:{'Content-Type':'application/json','If-Match':`"${el.dataset.version}"`},body:JSON.stringify({value:el.value,scenario:document.querySelector('#override').checked?scenario.value:null})});if(r.status===412){document.querySelector('#save-state').textContent=LABELS['admin.conflict'];return}const data=await r.json();el.dataset.version=data.version;document.querySelector('#save-state').textContent=LABELS['admin.saved']}
-scenario.onchange=load;document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>{view=b.dataset.view;preview()});document.querySelector('#publish').onclick=async()=>{const b=document.querySelector('#publish');b.disabled=true;const r=await fetch(`/api/v1/drafts/${snapshot.revision.code}/publish`,{method:'POST'});if(r.ok){await load()}else{alert(await r.text())}b.disabled=false};new EventSource(`/api/v1/events?project=${PROJECT}`).addEventListener('change',()=>preview());load();
+fields.oninput=e=>{
+  const el=e.target;if(el.tagName!=='TEXTAREA')return;
+  const draft=snapshot.revision.code,value=el.value,scope=document.querySelector('#override').checked?snapshot.scenario.code:null;
+  state.textContent='保存中';
+  queue=queue.then(async()=>{
+    if(saveError)throw Error('保存失败，请保留当前文本并刷新后重试');
+    const key=scope?'overrideVersion':'baseVersion';
+    const r=await fetch(`/api/v1/drafts/${draft}/fields/${el.dataset.code}`,{method:'PATCH',headers:{'Content-Type':'application/json','If-Match':`"${el.dataset[key]}"`},body:JSON.stringify({value,scenario:scope})});
+    if(!r.ok)throw Error(r.status===412?LABELS['admin.conflict']:await r.text());
+    const data=await r.json();el.dataset[key]=data.version;state.textContent=LABELS['admin.saved'];
+  }).catch(error=>{saveError=true;state.textContent=error.message});
+};
+async function transition(action){
+  const controls=[...document.querySelectorAll('textarea,header button,header input,header select')];controls.forEach(el=>el.disabled=true);
+  try{await queue;if(saveError)throw Error(state.textContent);await action()}catch(error){alert(error.message)}finally{controls.forEach(el=>el.disabled=false)}
+}
+scenario.onchange=()=>transition(load);
+document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>{view=b.dataset.view;preview()});
+document.querySelector('#publish').onclick=()=>transition(async()=>{const r=await fetch(`/api/v1/drafts/${snapshot.revision.code}/publish`,{method:'POST'});if(!r.ok)throw Error(await r.text());await load()});
+addEventListener('beforeunload',e=>{if(saveError||state.textContent==='保存中'){e.preventDefault();e.returnValue=''}});
+new EventSource(`/api/v1/events?project=${PROJECT}`).addEventListener('change',()=>preview());load().catch(error=>{state.textContent=error.message});
 """
 
 
-app.mount("/", StaticFiles(directory=ROOT, html=True), name="legacy-static")
+class PublicFiles(StaticFiles):
+    async def get_response(self, path, scope):
+        parts = Path(path).parts
+        roots = {"files (10)", "assets", "decks", "previews", "preview", "demos", "templates", "types", "figure-demos", "audit", "prompts"}
+        files = {"index.html", "decks.json", "catalog.json", "page-types.json"}
+        gallery = path == "skills/guizang-ppt/INDEX.html" or path.startswith("skills/guizang-ppt/assets/")
+        if (not gallery and parts and parts[0] not in roots and path not in files and path != ".") or any(
+            (part.startswith(".") and part != ".") or part in {"source", "history", "__pycache__"} for part in parts
+        ) or Path(path).suffix in {".py", ".sh", ".mjs", ".backup"}:
+            raise HTTPException(404)
+        response = await super().get_response(path, scope)
+        response.headers.setdefault("Cache-Control", "public,max-age=0,must-revalidate")
+        return response
+
+
+app.mount("/", PublicFiles(directory=ROOT, html=True), name="legacy-static")

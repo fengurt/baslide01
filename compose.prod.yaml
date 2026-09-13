@@ -5,8 +5,13 @@ services:
     build:
       context: .
       args:
+        RELEASE_SHA: ${RELEASE_SHA:?release SHA required}
         PYTHON_IMAGE: mirror.ccs.tencentyun.com/library/python:3.13-slim
         PIP_INDEX_URL: https://mirrors.cloud.tencent.com/pypi/simple
+    networks:
+      default:
+      edge:
+        aliases: [baslide-app]
     restart: unless-stopped
     env_file:
       - /etc/tiansight-baslide/app.env
@@ -26,3 +31,8 @@ services:
 
 volumes:
   assets:
+
+networks:
+  edge:
+    external: true
+    name: suizhi_default

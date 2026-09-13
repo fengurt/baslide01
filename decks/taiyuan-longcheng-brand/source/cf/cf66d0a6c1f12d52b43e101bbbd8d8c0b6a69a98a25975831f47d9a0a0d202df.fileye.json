@@ -1,0 +1,58 @@
+{
+  "fileye": "1.0.0",
+  "identity": {
+    "sha256": "cf66d0a6c1f12d52b43e101bbbd8d8c0b6a69a98a25975831f47d9a0a0d202df",
+    "size_bytes": 231258,
+    "legacy_sha1": "8200c0611ea0e37aee896c21dbc0c7df4b081510",
+    "legacy_md5": "20e7d1d163f9694008cc12c3b8721fe0",
+    "blake3": null,
+    "content_hash": {
+      "algorithm": "sha256(strip BOM, normalise line endings, strip trailing newline)",
+      "value": "cf66d0a6c1f12d52b43e101bbbd8d8c0b6a69a98a25975831f47d9a0a0d202df"
+    },
+    "note": "sha256 identifies these exact bytes; content_hash identifies the data across re-saves"
+  },
+  "type": {
+    "detected": "html",
+    "container": null,
+    "mime": "text/html",
+    "claimed_extension": ".html",
+    "extension_agrees": true
+  },
+  "provenance": {
+    "trusted": {
+      "ingested_at": "2026-09-13T02:42:16.664172+00:00",
+      "ingest_host": "AFs-MacBook-Pro.local",
+      "ingest_os": "Darwin-25.1.0-arm64-arm-64bit-Mach-O",
+      "python": "3.14.7",
+      "fileye_version": "1.0.0",
+      "note": "only as trustworthy as this host and its clock; chain manifests in an append-only log for non-repudiation"
+    },
+    "claimed": {
+      "filesystem": {
+        "path": "/Users/af/Public/APUCH/IPTrust/TableAI/education01/边江/侍天/郭强项目/New Folder With Items/太原龙城北街新晋菜品牌提案_16x9_侍天_20260913.html",
+        "filename": "太原龙城北街新晋菜品牌提案_16x9_侍天_20260913.html",
+        "fs_mtime": "2026-09-13T02:39:04.235116+00:00",
+        "fs_ctime": "2026-09-13T02:39:27.276168+00:00",
+        "fs_birthtime": "2026-09-13T02:39:02.774302+00:00",
+        "note": "filesystem timestamps are user-editable; treat as claims"
+      }
+    }
+  },
+  "structure": {
+    "kind": "text",
+    "encoding": "utf-8",
+    "lines": 431,
+    "chars": 193480,
+    "line_ending": "LF",
+    "has_bom": false
+  },
+  "lossless": {
+    "layers_present": [
+      "L0_bytes"
+    ],
+    "minimum_lossless_store": "keep the original bytes content-addressed by sha256 (L0); every other layer is derivable from it",
+    "conversion_warning": null
+  },
+  "warnings": []
+}

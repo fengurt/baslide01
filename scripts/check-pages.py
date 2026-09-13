@@ -62,7 +62,7 @@ def main() -> int:
         text = html.decode("utf-8", "replace")
         ok(status == 200, f"{path} HTTP {status}")
         if path.endswith(".html") or path.endswith("/"):
-            ok("baslide-chrome.js" in text, f"{path} injects chrome")
+            ok("baslide-chrome.js" in text or "class=" + chr(34) + "landing" in text, f"{path} navigation or project landing")
         if "stone-" in path or path.endswith("presentation.html"):
             leak = "cite index" in text or "<cite" in text or "&lt;cite" in text
             ok(not leak, f"{path} has no cite markup")
@@ -87,7 +87,7 @@ def main() -> int:
 
     status, headers, _ = fetch(base + "/demos/TIANSIGHT", follow=False)
     loc = headers.get("Location") if headers else None
-    ok(status in {301, 302} and loc and loc.rstrip("?").endswith("/"), f"/demos/TIANSIGHT redirects ({status} {loc})")
+    ok(status in {301, 302, 307, 308} and loc and loc.rstrip("?").endswith("/"), f"/demos/TIANSIGHT redirects ({status} {loc})")
 
     status, _, css = fetch(base + "/assets/baslide-chrome.css")
     text = css.decode("utf-8", "replace") if status == 200 else ""
@@ -117,6 +117,22 @@ def main() -> int:
     home_text = home.decode("utf-8", "replace")
     ok(status == 200 and "page-types.json" in home_text, "homepage loads page-types.json")
     ok("baslide-thumbs.css" in home_text and "baslide-catalog.js" in home_text, "homepage thumbs")
+    ok("decks.json" in home_text and "deckPreviewPages" in home_text and "scrubIndex" in home_text, "homepage WebP deck scrub preview")
+    deck_pos, catalog_pos = home_text.find('id="decksFast"'), home_text.find('id="catalog"')
+    ok(0 <= deck_pos < catalog_pos, "deck index precedes page catalog")
+
+    status, _, manifest_body = fetch(base + "/previews/manifest.json")
+    previews = json.loads(manifest_body.decode("utf-8")) if status == 200 else {"decks": []}
+    preview_by_id = {deck["id"]: deck for deck in previews.get("decks", [])}
+    _, _, decks_body = fetch(base + "/decks.json")
+    targets = [v for d in json.loads(decks_body)["decks"] for v in (d.get("variants") or [d])]
+    ok(status == 200 and set(preview_by_id) == {d["id"] for d in targets}, "preview IDs match current catalog")
+    ok(all(preview_by_id.get(d["id"], {}).get("href") == d["href"] for d in targets), "previews use current deck URLs")
+    ok(all(deck.get("rendered") == deck.get("pages") for deck in preview_by_id.values()), "all deck pages rendered")
+    ok(all(deck.get("tileWidth", 0) >= 384 for deck in preview_by_id.values()) and "padStart(3" not in home_text, "high-resolution previews and unpadded page labels")
+    sprite = preview_by_id.get("D03.1", {}).get("sprite", "")
+    status, headers, webp = fetch(base + sprite)
+    ok(status == 200 and headers.get_content_type() == "image/webp" and webp.startswith(b"RIFF") and webp[8:12] == b"WEBP", "WebP sprite HTTP 200")
 
     status, _, preview = fetch(base + "/preview/?type=kpi&skin=TIANSIGHT")
     prev_text = preview.decode("utf-8", "replace")

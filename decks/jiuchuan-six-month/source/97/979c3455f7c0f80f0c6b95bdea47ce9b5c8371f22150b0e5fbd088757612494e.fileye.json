@@ -1,0 +1,58 @@
+{
+  "fileye": "1.0.0",
+  "identity": {
+    "sha256": "979c3455f7c0f80f0c6b95bdea47ce9b5c8371f22150b0e5fbd088757612494e",
+    "size_bytes": 893056,
+    "legacy_sha1": "bc1dd3a5f02daaa0a372b7ea4226227cda5c7633",
+    "legacy_md5": "6b3ca2584c71877f0b2cd0b4ab13a416",
+    "blake3": null,
+    "content_hash": {
+      "algorithm": "sha256(strip BOM, normalise line endings, strip trailing newline)",
+      "value": "979c3455f7c0f80f0c6b95bdea47ce9b5c8371f22150b0e5fbd088757612494e"
+    },
+    "note": "sha256 identifies these exact bytes; content_hash identifies the data across re-saves"
+  },
+  "type": {
+    "detected": "html",
+    "container": null,
+    "mime": "text/html",
+    "claimed_extension": ".html",
+    "extension_agrees": true
+  },
+  "provenance": {
+    "trusted": {
+      "ingested_at": "2026-09-07T06:04:53.952246+00:00",
+      "ingest_host": "AFs-MacBook-Pro.local",
+      "ingest_os": "Darwin-25.1.0-arm64-arm-64bit-Mach-O",
+      "python": "3.14.7",
+      "fileye_version": "1.0.0",
+      "note": "only as trustworthy as this host and its clock; chain manifests in an append-only log for non-repudiation"
+    },
+    "claimed": {
+      "filesystem": {
+        "path": "/Users/af/Public/APUCH/IPTrust/TableAI/education01/边江/侍天/沧州风竹/九川文化-双店诊断与六个月陪跑方案-V1.2.html",
+        "filename": "九川文化-双店诊断与六个月陪跑方案-V1.2.html",
+        "fs_mtime": "2026-09-07T06:03:52.946254+00:00",
+        "fs_ctime": "2026-09-07T06:04:15.711777+00:00",
+        "fs_birthtime": "2026-09-07T06:03:52.945630+00:00",
+        "note": "filesystem timestamps are user-editable; treat as claims"
+      }
+    }
+  },
+  "structure": {
+    "kind": "text",
+    "encoding": "utf-8",
+    "lines": 821,
+    "chars": 793049,
+    "line_ending": "LF",
+    "has_bom": false
+  },
+  "lossless": {
+    "layers_present": [
+      "L0_bytes"
+    ],
+    "minimum_lossless_store": "keep the original bytes content-addressed by sha256 (L0); every other layer is derivable from it",
+    "conversion_warning": null
+  },
+  "warnings": []
+}

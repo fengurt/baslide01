@@ -278,10 +278,12 @@ class Store:
             return list(conn.execute("SELECT code,slug,name FROM scenario WHERE project_id=%s ORDER BY id", (project["id"],)))
 
     def add_asset(self, draft_code: str, module_code: str, role: str, title: str, filename: str, media_type: str, body: bytes) -> dict:
-        if not body:
-            raise ValueError("empty asset")
+        if not body or len(body) > 20 * 1024 * 1024:
+            raise ValueError("asset must contain 1 byte to 20 MiB")
         sha256 = hashlib.sha256(body).hexdigest()
         safe_name = Path(filename).name
+        if safe_name in {"", ".", ".."}:
+            raise ValueError("invalid filename")
         target = self.asset_store / sha256 / safe_name
         target.parent.mkdir(parents=True, exist_ok=True)
         if not target.exists():
@@ -325,13 +327,15 @@ class Store:
                 sr = conn.execute("SELECT * FROM scenario_revision WHERE id=%s", (scenario["active_revision_id"],)).fetchone()
             else:
                 base = conn.execute("SELECT * FROM project_revision WHERE project_id=%s AND code=%s", (project["id"], revision)).fetchone()
+                if not base:
+                    raise KeyError(revision)
                 sr = conn.execute("SELECT * FROM scenario_revision WHERE scenario_id=%s AND project_revision_id=%s", (scenario["id"], base["id"])).fetchone()
             if not base or not sr:
                 raise KeyError(revision)
             rows = list(conn.execute(
                 """SELECT f.id,f.code,f.role,f.data_type,f.sort_order,f.metadata,m.code AS module_code,m.kind AS module_kind,m.name AS module_name,m.sort_order AS module_order,
                     COALESCE(o.value,v.value) AS value,COALESCE(o.sort_order,f.sort_order) AS effective_order,COALESCE(o.version,v.version) AS version,
-                    COALESCE(o.visible,true) AS visible
+                    v.version AS base_version,o.version AS override_version,COALESCE(o.visible,true) AS visible
                    FROM content_field f JOIN module m ON m.id=f.module_id
                    JOIN content_value v ON v.field_id=f.id AND v.project_revision_id=%s
                    LEFT JOIN scenario_override o ON o.field_id=f.id AND o.scenario_revision_id=%s
@@ -376,8 +380,11 @@ class Store:
             if scenario_code:
                 sr = conn.execute("""SELECT sr.* FROM scenario_revision sr JOIN scenario s ON s.id=sr.scenario_id
                     WHERE s.code=%s AND sr.project_revision_id=%s AND sr.status='draft'""", (scenario_code, draft["id"])).fetchone()
+                if not sr:
+                    raise KeyError(scenario_code)
                 row = conn.execute("SELECT * FROM scenario_override WHERE scenario_revision_id=%s AND field_id=%s", (sr["id"], field["id"])).fetchone()
-                if row and row["version"] != expected_version:
+                base_value = conn.execute("SELECT version FROM content_value WHERE field_id=%s AND project_revision_id=%s", (field["id"], draft["id"])).fetchone()
+                if (row or base_value)["version"] != expected_version:
                     raise Conflict(field_code)
                 if row:
                     version = row["version"] + 1
@@ -412,6 +419,8 @@ class Store:
                 builds = rendered.get(sr["scenario_code"])
                 if not builds or {"landing", "slides", "offline-html", "coverage"} - set(builds):
                     raise ValueError(f"missing artifacts for {sr['scenario_code']}")
+                if builds["coverage"]["coverage"].get("revision_version") != draft["version"]:
+                    raise Conflict(draft_code)
                 for kind, build in builds.items():
                     definition = conn.execute("SELECT * FROM artifact_definition WHERE scenario_id=%s AND kind=%s", (sr["scenario_id"], kind)).fetchone()
                     number = conn.execute("SELECT COALESCE(max(number),0)+1 AS n FROM artifact_build WHERE artifact_definition_id=%s", (definition["id"],)).fetchone()["n"]

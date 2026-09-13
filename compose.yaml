@@ -16,6 +16,7 @@ services:
     build: .
     environment:
       DATABASE_URL: postgresql://baslide:baslide-local@db:5432/baslide
+      BASLIDE_READ_ONLY: "0"
       BASLIDE_ROOT: /app
       ASSET_STORE: /app/var/assets
       PYTHONPATH: /app

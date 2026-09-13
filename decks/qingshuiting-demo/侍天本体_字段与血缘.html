@@ -101,6 +101,20 @@ td.n{font-family:var(--mono);text-align:right;white-space:nowrap}
 @media(max-width:840px){section{padding:30px 20px 26px}.two{grid-template-columns:1fr}
   .detail dl{grid-template-columns:1fr}}
 :focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media print{
+  @page{size:A4 portrait;margin:0}
+  html,body{margin:0!important;background:var(--tape)!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  .sheet{width:210mm;max-width:none;margin:0;box-shadow:none}
+  section{width:210mm;height:297mm;padding:12mm 13mm 10mm;overflow:hidden;break-after:page;page-break-after:always}
+  section+section{border-top:0}
+  section:last-of-type{break-after:auto;page-break-after:auto}
+  .print-fit{transform-origin:top left}
+  .two{grid-template-columns:1fr 1fr}
+  .matrix{columns:2;column-gap:8mm}
+  .mgrp{break-inside:avoid;page-break-inside:avoid}
+  .foot{display:none}
+  .tip{display:none!important}
+}
 </style>
 </head>
 <body>
@@ -114,12 +128,11 @@ td.n{font-family:var(--mono);text-align:right;white-space:nowrap}
     <div class="meta" id="hm"></div>
   </div>
   <div class="eyebrow"><span class="no">00</span><span>本体 · 字段 · 血缘</span></div>
-  <h1>59 个字段，<br>和它们通往利润的路</h1>
-  <p class="lead">本体不是字段清单，是口径的立法。这一页把清水亭 POS 的 59 个源字段、
-    14 个派生字段、12 条校验门禁摊开——重点不是有多少字段可用，
-    而是<b>血缘在哪一段断掉</b>。</p>
+  <h1>59 个源字段的<br>利润分析血缘</h1>
+  <p class="lead">本体用于统一数据口径与分析边界。报告梳理 59 个源字段、
+    14 个派生字段及 12 条校验规则，重点识别<b>数据血缘断点及分析影响</b>。</p>
   <div class="stats" id="st"></div>
-  <p class="note">点击任意字段查看映射详情。思维导图的分组节点可折叠。</p>
+  <p class="note">可查看字段映射详情；语义组支持展开与收起。</p>
 </section>
 
 <section>
@@ -139,10 +152,10 @@ td.n{font-family:var(--mono);text-align:right;white-space:nowrap}
 
 <section>
   <div class="eyebrow"><span class="no">02</span><span>血缘流 · 断点在哪</span></div>
-  <h2>从字段到目标函数，五条路里三条是断的</h2>
+  <h2>五条利润分析路径中，三条存在数据断点</h2>
   <p>四层流向：源字段状态 → 事实表 → 预测线 → 利润目标函数
     <span class="num">Π = R(1−f−l−m) − F</span>。带宽是字段数量，
-    <b>朱砂虚线是断路</b>——那些字段存在，但没有数据流过去。</p>
+    <b>朱砂虚线表示血缘中断</b>：字段存在，但无有效数据输入。</p>
   <svg id="lineage" viewBox="0 0 980 686" role="img"
     aria-label="四层血缘流图：源字段状态、事实表、预测线、利润目标函数项，其中三条路径为断路"></svg>
   <div class="legend">
@@ -150,9 +163,8 @@ td.n{font-family:var(--mono);text-align:right;white-space:nowrap}
     <span><span class="sq" style="background:var(--goldL)"></span>部分可用</span>
     <span><span class="sq" style="background:var(--vermil)"></span>断路</span>
   </div>
-  <p class="note">这张图是定价与服务边界的依据：R 可算，所以能出「毛收入洞察」；
-    f / l / F 断路，所以<b>不能出净利结论</b>。L1 体验价能交付什么、L2 需要客户补什么，
-    答案全在这张图里。</p>
+  <p class="note">收入 R 可计算，当前可支持毛收入分析；
+    食材成本 f、人工成本 l 与固定成本 F 缺失，<b>暂不支持净利结论</b>。</p>
 </section>
 
 <section>
@@ -166,10 +178,9 @@ td.n{font-family:var(--mono);text-align:right;white-space:nowrap}
 
 <section>
   <div class="eyebrow"><span class="no">04</span><span>门禁 · 阻断链</span></div>
-  <h2>三条 FAIL，决定了这份数据的天花板</h2>
-  <p>12 条校验门禁在真实数据上跑出 8 通过、3 警告、3 失败。
-    失败的三条不是「数据质量差」，是<b>本体层在拦住幻觉</b>——
-    没有这道闸，工具会拿「销售单价 − 0」当毛利，交给你一份 100% 毛利率的报告。</p>
+  <h2>三项未通过校验限定了当前分析边界</h2>
+  <p>12 条校验规则中，8 项通过、3 项警告、3 项未通过。
+    未通过项阻断成本、会员与桌位相关分析，避免在缺失关键输入时产生失真结论。</p>
   <svg id="gates" viewBox="0 0 980 430" role="img"
     aria-label="门禁阻断链图：三条失败门禁分别阻断毛利分析、复购建模与翻台分析"></svg>
   <table id="gt"><thead><tr><th>门禁</th><th>规则</th><th>结果</th><th>实测</th></tr></thead><tbody></tbody></table>
@@ -177,9 +188,9 @@ td.n{font-family:var(--mono);text-align:right;white-space:nowrap}
 
 <section>
   <div class="eyebrow"><span class="no">05</span><span>补齐路线 · 内部与外部</span></div>
-  <h2>把断路接上，需要十三个数据集</h2>
-  <p>横轴是补齐后能解锁的层级，纵轴是获取难度的粗略排序。
-    <b>菜品 BOM 与财务台账在左下角</b>——最容易拿到，解锁最多。它们应该是第一优先。</p>
+  <h2>补齐十三项数据资产，完善利润分析能力</h2>
+  <p>横轴表示能力解锁价值，纵轴表示数据获取难度。
+    <b>菜品 BOM 与财务台账</b>获取难度较低、解锁价值最高，应优先补齐。</p>
   <svg id="needs" viewBox="0 0 980 460" role="img"
     aria-label="数据补齐优先级矩阵：内部与外部数据集按获取难度与解锁价值分布"></svg>
   <div class="legend">
@@ -635,6 +646,20 @@ function selectField(std){
   g.append("text").attr("transform",`translate(20,${(m.t+H-m.b)/2}) rotate(-90)`)
     .attr("text-anchor","middle").attr("class","lbl-s").text("获取难度 →");
 })();
+</script>
+<script>
+function fitPrintModules(){
+  document.querySelectorAll("section").forEach(section=>{
+    let box=section.querySelector(":scope > .print-fit");
+    if(!box){box=document.createElement("div");box.className="print-fit";box.append(...section.childNodes);section.append(box)}
+    box.style.transform="none";
+    const cs=getComputedStyle(section);
+    const available=section.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);
+    box.style.transform=`scale(${Math.min(1,available/box.scrollHeight)})`;
+  });
+}
+addEventListener("beforeprint",fitPrintModules);
+matchMedia("print").addEventListener("change",event=>{if(event.matches)requestAnimationFrame(fitPrintModules)});
 </script>
 </body>
 </html>

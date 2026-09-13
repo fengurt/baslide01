@@ -1,0 +1,58 @@
+{
+  "fileye": "1.0.0",
+  "identity": {
+    "sha256": "b97e1c0543df602694f150c7c1156f7924439f2cf3d36fad40321a36f198089c",
+    "size_bytes": 719326,
+    "legacy_sha1": "e3e7cf89589a907916c8c599057a65af27caf046",
+    "legacy_md5": "ac60e03e4811fb21350be8af19643a24",
+    "blake3": null,
+    "content_hash": {
+      "algorithm": "sha256(strip BOM, normalise line endings, strip trailing newline)",
+      "value": "b97e1c0543df602694f150c7c1156f7924439f2cf3d36fad40321a36f198089c"
+    },
+    "note": "sha256 identifies these exact bytes; content_hash identifies the data across re-saves"
+  },
+  "type": {
+    "detected": "html",
+    "container": null,
+    "mime": "text/html",
+    "claimed_extension": ".html",
+    "extension_agrees": true
+  },
+  "provenance": {
+    "trusted": {
+      "ingested_at": "2026-09-06T11:01:13.862335+00:00",
+      "ingest_host": "AFs-MacBook-Pro.local",
+      "ingest_os": "Darwin-25.1.0-arm64-arm-64bit-Mach-O",
+      "python": "3.14.7",
+      "fileye_version": "1.0.0",
+      "note": "only as trustworthy as this host and its clock; chain manifests in an append-only log for non-repudiation"
+    },
+    "claimed": {
+      "filesystem": {
+        "path": "/Users/af/Public/APUCH/IPTrust/TableAI/education01/边江/侍天/沧州风竹/九川文化-双店诊断与六个月陪跑方案-V1.html",
+        "filename": "九川文化-双店诊断与六个月陪跑方案-V1.html",
+        "fs_mtime": "2026-09-06T10:58:31.928618+00:00",
+        "fs_ctime": "2026-09-06T10:59:08.609075+00:00",
+        "fs_birthtime": "2026-09-06T10:58:30.997413+00:00",
+        "note": "filesystem timestamps are user-editable; treat as claims"
+      }
+    }
+  },
+  "structure": {
+    "kind": "text",
+    "encoding": "utf-8",
+    "lines": 741,
+    "chars": 634937,
+    "line_ending": "LF",
+    "has_bom": false
+  },
+  "lossless": {
+    "layers_present": [
+      "L0_bytes"
+    ],
+    "minimum_lossless_store": "keep the original bytes content-addressed by sha256 (L0); every other layer is derivable from it",
+    "conversion_warning": null
+  },
+  "warnings": []
+}

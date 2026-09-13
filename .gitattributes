@@ -1,0 +1,5 @@
+*.pdf binary
+*.webp binary
+*.csv text eol=lf
+# Content-addressed original files must retain their exact bytes.
+decks/**/source/** -text -diff -whitespace

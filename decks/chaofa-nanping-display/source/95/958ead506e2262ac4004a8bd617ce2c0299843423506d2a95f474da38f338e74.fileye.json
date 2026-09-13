@@ -1,0 +1,58 @@
+{
+  "fileye": "1.0.0",
+  "identity": {
+    "sha256": "958ead506e2262ac4004a8bd617ce2c0299843423506d2a95f474da38f338e74",
+    "size_bytes": 1784730,
+    "legacy_sha1": "393b0e2390f233cebc21ec98e24d8aa7acae1120",
+    "legacy_md5": "73ecb7ce03191ad0ec3ba66d066f21c0",
+    "blake3": null,
+    "content_hash": {
+      "algorithm": "sha256(strip BOM, normalise line endings, strip trailing newline)",
+      "value": "ec7672034c19756e7b6d666a8f4e110c11387de8c6e74eaa9f627a79c9137845"
+    },
+    "note": "sha256 identifies these exact bytes; content_hash identifies the data across re-saves"
+  },
+  "type": {
+    "detected": "html",
+    "container": null,
+    "mime": "text/html",
+    "claimed_extension": ".html",
+    "extension_agrees": true
+  },
+  "provenance": {
+    "trusted": {
+      "ingested_at": "2026-09-11T18:16:51.291283+00:00",
+      "ingest_host": "AFs-MacBook-Pro.local",
+      "ingest_os": "Darwin-25.1.0-arm64-arm-64bit-Mach-O",
+      "python": "3.14.7",
+      "fileye_version": "1.0.0",
+      "note": "only as trustworthy as this host and its clock; chain manifests in an append-only log for non-repudiation"
+    },
+    "claimed": {
+      "filesystem": {
+        "path": "/Users/af/Public/APUCH/IPTrust/TableAI/education01/边江/侍天/潮发/升级档口/files (31)/潮发珠海南屏A3002a_展陈升级前瞻洞察报告_V1.1.html",
+        "filename": "潮发珠海南屏A3002a_展陈升级前瞻洞察报告_V1.1.html",
+        "fs_mtime": "2026-09-11T10:05:44+00:00",
+        "fs_ctime": "2026-09-11T18:05:50.334127+00:00",
+        "fs_birthtime": "2026-09-11T10:05:44+00:00",
+        "note": "filesystem timestamps are user-editable; treat as claims"
+      }
+    }
+  },
+  "structure": {
+    "kind": "text",
+    "encoding": "utf-8",
+    "lines": 2377,
+    "chars": 1722281,
+    "line_ending": "LF",
+    "has_bom": false
+  },
+  "lossless": {
+    "layers_present": [
+      "L0_bytes"
+    ],
+    "minimum_lossless_store": "keep the original bytes content-addressed by sha256 (L0); every other layer is derivable from it",
+    "conversion_warning": null
+  },
+  "warnings": []
+}

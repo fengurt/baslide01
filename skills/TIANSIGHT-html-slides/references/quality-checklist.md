@@ -65,3 +65,14 @@ Use this checklist while generating or materially redesigning a deck. The render
 - For long decks, print in resumable chunks: 32 pages normally, 16 pages for 1,000+ page decks, and 8 pages only for an isolated failing range.
 - Reuse already printed valid chunks within the same export run. If Chrome fails, isolate the smallest failing range and resume; do not restart completed chunks.
 - Keep the server on an unoccupied port and verify final folder and file URLs return HTTP 200.
+- Before replacing a published HTML or PDF, preserve the current pair as an immutable, named revision with checksums. Never use the live filename as the only copy.
+- Register every project in the project catalog so the shared revision store and `/projects/<project>/history` view apply uniformly; do not implement deck-specific version logic when the platform history model already covers it.
+
+### Long-form HTML module export
+
+- Treat each top-level semantic module (normally `section`) as an indivisible page unit. PDF page count must equal module count; decorative document footers do not create another page.
+- Give every module an explicit print page size, zero external print margin, `break-after: page`, and a fixed printable content box. Hide interactive controls, tooltips, reveal states, and screen-only ornament during print.
+- `break-inside: avoid` is insufficient: a module taller than the printable box can still be clipped or fragmented. Before print, measure the module's rendered content after fonts, SVG, and charts finish; uniformly scale the module wrapper only when it exceeds the available height.
+- Scale the complete module as one unit. Do not shrink individual labels, tables, or figures independently, and do not change copy, data, chart geometry, or module order merely to make pagination pass.
+- If the fitted module falls below the applicable typography floor, redesign that module's internal layout while preserving its single-page semantic boundary. Do not accept unreadable scale as a successful export.
+- Activate print media, wait for fonts/SVG/charts, run fitting against the print layout, then invoke PDF generation. Also register `beforeprint` as a manual-print fallback; screen-layout measurements are not authoritative. An automated exporter must explicitly emulate print media and call the fitter before `page.pdf()`.

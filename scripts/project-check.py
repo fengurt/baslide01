@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import os
+import json
 from pathlib import Path
 
 from platform_app.importer import p009_bundle
@@ -15,7 +16,7 @@ def main() -> None:
     try:
         expected = p009_bundle(root)["acceptance"]["sales"]
         assert expected == {"text": 105, "a11y": 20, "dom_images": 12, "canvas_images": 5}
-        assert len(store.list_projects()) == 9
+        assert len(store.list_projects()) == len(json.loads((root / "decks.json").read_text())["decks"])
         for scenario in store.scenarios("P009"):
             snapshot = store.snapshot("P009", scenario["code"], "published")
             artifacts = build(snapshot, store.system_strings(), store.asset_store)
@@ -31,7 +32,7 @@ def main() -> None:
                 GROUP BY s.code"""))
             assert len(builds) == 2
             assert all(row["base_revisions"] == 1 and row["scenario_revisions"] == 1 for row in builds)
-        print("project check: 9 projects, P009 counts exact, artifact coverage exact")
+        print("project check: catalog project count exact, P009 counts exact, artifact coverage exact")
     finally:
         store.close()
 

@@ -127,6 +127,22 @@ td b{color:var(--ink)}
 }
 :focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media print{
+  @page{size:A4 portrait;margin:0}
+  html,body{margin:0!important;background:var(--tape)!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  .tape{width:210mm;max-width:none;margin:0;box-shadow:none}
+  .tape::before,.tape::after{display:none}
+  section{width:210mm;height:297mm;padding:12mm 13mm 10mm;overflow:hidden;break-after:page;page-break-after:always}
+  section+section{border-top:0}
+  section+section::before{display:none}
+  section:last-of-type{break-after:auto;page-break-after:auto}
+  .print-fit{transform-origin:top left}
+  .two{grid-template-columns:1fr 1fr}
+  .three{grid-template-columns:repeat(3,1fr)}
+  .foot{display:none}
+  .tip{display:none!important}
+  .reveal{opacity:1!important;transform:none!important}
+}
 </style>
 </head>
 <body>
@@ -146,10 +162,10 @@ td b{color:var(--ink)}
   </div>
 
   <div class="eyebrow"><span class="no">00</span><span>本体建模 · 数据体检</span></div>
-  <h1>一卷小票，读出十二种<br>经营模式</h1>
-  <p class="lead">这份长卷只用一个数据源：门店 POS 导出的「账单多维度明细」。59 个字段、
+  <h1>基于 POS 明细的<br>十二项经营洞察</h1>
+  <p class="lead">本报告基于门店 POS「账单多维度明细」，涵盖 59 个字段、
     <span class="num" id="nBills"></span> 张账单、<span class="num" id="nItems"></span> 条品项明细。
-    下面每一节都是从这一个源头里挖出来的模式，以及为了把它变成决策还缺什么。</p>
+    用于识别核心经营特征、决策含义与数据缺口。</p>
 
   <div class="stat-grid" id="topStats"></div>
   <div class="ledger" id="ledger"></div>
@@ -160,10 +176,9 @@ td b{color:var(--ink)}
 <!-- ============ 01 趋势分解 ============ -->
 <section class="reveal">
   <div class="eyebrow"><span class="no">01</span><span>趋势分解 · 量价背离</span></div>
-  <h2>营收跌 15%，但那不是营收的问题</h2>
-  <p>把日均营收拆成「客流 × 客单价」两条腿，答案就露出来了：客流从 2025 年 10 月的基准掉了
-    <b>22%</b>，客单价反而涨了 <b>10%</b>。营收只跌 15%，是客单价在替客流挡枪。
-    这是典型的<b>缩量提价</b>——短期账面体面，长期客群流失。</p>
+  <h2>营收下降 15%，核心驱动因素为客流减少</h2>
+  <p>相较 2025 年 10 月基准，客流下降 <b>22%</b>，客单价上升 <b>10%</b>，
+    部分对冲客流下滑，使营收净降幅收窄至 15%。当前呈现<b>量减价增</b>特征，客流修复是首要课题。</p>
   <div class="chart"><svg id="cIndex" viewBox="0 0 920 320" role="img"
     aria-label="三指数折线图：营收指数、客流指数、客单价指数按月变化"></svg></div>
   <div class="legend">
@@ -177,10 +192,9 @@ td b{color:var(--ink)}
 <!-- ============ 02 日序列 ============ -->
 <section class="reveal">
   <div class="eyebrow"><span class="no">02</span><span>日序列 · 周节律与斜率</span></div>
-  <h2>周六是周一的 2.2 倍，这条节律比趋势更稳</h2>
-  <p>313 天逐日营收。灰柱是单日，深线是 7 日移动平均。周末峰谷差固定在
-    <b>2.1–2.2 倍</b>——这意味着排班和备货应该按星期分档，而不是按月平均。
-    需求预测模型里，星期是权重最高的单一特征。</p>
+  <h2>周六营收为周一的 2.2 倍，周期性显著</h2>
+  <p>313 天数据显示，周末与工作日营收峰谷差稳定在 <b>2.1–2.2 倍</b>。
+    排班与备货应按星期分层配置；星期应作为需求预测的核心特征。</p>
   <div class="chart"><svg id="cDaily" viewBox="0 0 920 300" role="img"
     aria-label="313 天日营收柱状图与 7 日移动平均线"></svg></div>
   <div class="legend">
@@ -192,18 +206,18 @@ td b{color:var(--ink)}
       客单价 <span class="num">348–363</span></p></div>
     <div><h3>周五</h3><p class="note">日均 <span class="num">4.0 万</span>，转折点</p></div>
     <div><h3>周六 / 周日</h3><p class="note">日均 <span class="num">6.0 / 5.6 万</span>，
-      客单价冲到 <span class="num">380</span></p></div>
+      客单价达 <span class="num">380</span></p></div>
   </div>
 </section>
 
 <!-- ============ 03 渠道 ============ -->
 <section class="reveal">
   <div class="eyebrow"><span class="no">03</span><span>渠道结构 · 单一依赖</span></div>
-  <h2>点评一个渠道，吃掉 79.4% 的钱</h2>
+  <h2>点评系渠道占支付金额 79.4%，集中度过高</h2>
   <p>「结算信息」是一段自由文本，比如「点评现金券 534.00，优惠折扣 66.00，闪惠买单 20.00」。
     把它解析成结构化的渠道流水后，
     <span class="num">85,593</span> 笔支付里，点评系（现金券 + 团购 + 闪惠）占了金额的
-    <b>79.4%</b>。这不是营销渠道，这是<b>单点故障</b>。</p>
+    <b>79.4%</b>，形成显著的<b>单一渠道依赖风险</b>。</p>
   <div class="two">
     <div>
       <h3>渠道金额占比</h3>
@@ -218,18 +232,18 @@ td b{color:var(--ink)}
   </div>
   <table id="tChannel"><thead><tr><th>支付标签</th><th style="text-align:right">笔数</th>
     <th style="text-align:right">金额</th><th style="text-align:right">占支付额</th></tr></thead><tbody></tbody></table>
-  <p class="note">补贴退坡是外部变量，门店无法控制；能控制的是把 79.4% 降到多少。
-    这条模式直接指向<b>会员私域</b>——而会员数据的可用率只有 4.92%（见第 09 节）。</p>
+  <p class="note">补贴政策属外部变量；门店应通过会员与私域渠道降低集中度。
+    当前会员数据可用率仅 4.92%，需同步完善数据基础。</p>
 </section>
 
 <!-- ============ 04 菜单工程 ============ -->
 <section class="reveal">
   <div class="eyebrow"><span class="no">04</span><span>菜单工程 · 渗透率 × 贡献</span></div>
-  <h2>315 个 SKU，63 个撑起八成</h2>
+  <h2>19.9% 的 SKU 贡献 80% 营收</h2>
   <p>横轴是渗透率（多少比例的账单点过它），纵轴是营收占比，对数刻度。右上是明星，
     左上是「高贡献但低渗透」的高价单品，右下是「高频但低贡献」的引流品，左下是长尾。
-    <b>43 个 SKU 十个月总销量不足 5 份</b>，合计只贡献 0.44% 营收——它们占用的是菜单版面、
-    备货位和后厨注意力。</p>
+    <b>43 个 SKU 十个月总销量不足 5 份</b>，合计营收贡献仅 0.44%。
+    建议评估精简，降低菜单、备货与后厨复杂度。</p>
   <div class="chart"><svg id="cMenu" viewBox="0 0 920 470" role="img"
     aria-label="菜单工程散点图：315 个单品按渗透率与营收占比分布"></svg></div>
   <div class="legend" id="lMenu"></div>
@@ -254,11 +268,11 @@ td b{color:var(--ink)}
 <!-- ============ 05 价格带 ============ -->
 <section class="reveal">
   <div class="eyebrow"><span class="no">05</span><span>价格带 · 断层诊断</span></div>
-  <h2>60–80 元这一档，是菜单上的一个洞</h2>
+  <h2>60–80 元价格带存在明显供给断层</h2>
   <p>每一档里，左侧柱是该价格带的 SKU 数量占比，右侧柱是它的营收占比。两者错位越大，
     说明版面投入与产出越不匹配。<b>60–80 元档只有 26 个 SKU、8.9% 营收</b>，
-    而它上下两档（40–60 与 80–120）都更强——中间价格带的产品供给不足，
-    客人从 59 元直接跳到 99 元，没有过渡选择。</p>
+    而 40–60 元与 80–120 元价格带表现更强。建议补充 60–80 元产品，
+    完善 59 元至 99 元之间的价格梯度。</p>
   <div class="chart"><svg id="cPrice" viewBox="0 0 920 300" role="img"
     aria-label="价格带 SKU 数量占比与营收占比对比条形图"></svg></div>
   <div class="legend">
@@ -270,11 +284,11 @@ td b{color:var(--ink)}
 <!-- ============ 06 时段热力 ============ -->
 <section class="reveal">
   <div class="eyebrow"><span class="no">06</span><span>时段矩阵 · 排班与备货依据</span></div>
-  <h2>两个尖峰，四个空洞</h2>
-  <p>星期 × 结账小时的日均营收。13 点与 19 点是两个尖峰，15–17 点是完整的空洞。
+  <h2>午晚市形成双高峰，15–17 时需求显著偏低</h2>
+  <p>星期 × 结账小时的日均营收显示，13 点与 19 点为高峰，15–17 点需求显著偏低。
     午晚市客单价几乎相同（<span class="num">365</span> vs <span class="num">369</span>），
-    说明这家店的午市不是「快餐化的补充」，而是与晚市同等的正餐场景——
-    这在商场店里不常见，也意味着<b>午市的排班不能按低峰配置</b>。</p>
+    午晚市客单价接近，表明午市同样承载正餐需求，
+    <b>排班不宜按低峰标准配置</b>。</p>
   <div class="chart"><svg id="cHeat" viewBox="0 0 920 300" role="img"
     aria-label="星期与小时的营收热力矩阵"></svg></div>
   <div class="legend" id="lHeat"></div>
@@ -286,10 +300,10 @@ td b{color:var(--ink)}
 <!-- ============ 07 客单价分布 ============ -->
 <section class="reveal">
   <div class="eyebrow"><span class="no">07</span><span>客单价分布 · 客群分层</span></div>
-  <h2>主峰在 250–350，右尾很长</h2>
+  <h2>250–350 元为核心客单价区间，高额账单贡献显著</h2>
   <p>账单实收金额分布。中位数 <span class="num">326</span>，均值 <span class="num">367</span>——
     右偏说明存在一批高额宴请账单（99 分位 <span class="num">1,230</span> 元）。
-    <b>200–400 元区间占 55% 的账单、45% 的营收</b>，是主战场；
+    <b>200–400 元区间占 55% 的账单、45% 的营收</b>，是核心客群；
     而 700 元以上只占 5.5% 的账单却贡献 15% 的营收。</p>
   <div class="chart"><svg id="cAtv" viewBox="0 0 920 280" role="img"
     aria-label="账单金额分布直方图与分位线"></svg></div>
@@ -312,11 +326,9 @@ td b{color:var(--ink)}
 <!-- ============ 08 折让 ============ -->
 <section class="reveal">
   <div class="eyebrow"><span class="no">08</span><span>折让治理 · 已经发生的改善</span></div>
-  <h2>折让率从 14.6% 收到 4.8%，赠送是主角</h2>
-  <p>这是数据里唯一一条明显向好的曲线：综合折让率（优惠 ÷ 应收）从开业初期的
-    <b>14.6%</b> 一路收到 <b>4.8%</b> 并稳住，其中赠送金额从 9.97% 降到 1.42%。
-    开业期的赠送是获客成本，收敛得干净——这条曲线说明门店有执行力，
-    是判断组织兑现率 ρ 的正面证据。</p>
+  <h2>折让率由 14.6% 降至 4.8%，主要由赠送收缩驱动</h2>
+  <p>综合折让率（优惠 ÷ 应收）由开业初期的 <b>14.6%</b> 降至 <b>4.8%</b> 并趋于稳定，
+    其中赠送率由 9.97% 降至 1.42%。该趋势表明门店对促销投入具备较强的执行与管控能力。</p>
   <div class="chart"><svg id="cDisc" viewBox="0 0 920 290" role="img"
     aria-label="折让率与赠送率月度趋势线"></svg></div>
   <div class="legend">
@@ -325,36 +337,33 @@ td b{color:var(--ink)}
     <span><i style="border-color:var(--slate);border-top-style:dotted"></i>套餐渗透率</span>
   </div>
   <div class="ledger" id="ledgerDisc"></div>
-  <p class="note">注意套餐渗透率的反向信号：从 18% 冲到 34.6% 后回落到 24.8%。
+  <p class="note">套餐渗透率由 18% 升至 34.6% 后回落至 24.8%。
     套餐单客单价高 <span class="num">15%</span>、停留长 <span class="num">7</span> 分钟、
-    折让反而更低——套餐渗透率下滑值得单独追问。</p>
+    且折让率更低，建议专项评估渗透率下降原因。</p>
 </section>
 
 <!-- ============ 09 组织力 ============ -->
 <section class="reveal">
   <div class="eyebrow"><span class="no">09</span><span>组织力 · 人的方差</span></div>
-  <h2>同一份菜单，16 个点菜员做出 63.6% 的客单价差</h2>
+  <h2>16 名点菜员的客单价差异达 63.6%</h2>
   <p>只取下单量 ≥ 200 的点菜员。最高 <span class="num">524</span> 元、最低
-    <span class="num">321</span> 元。同店、同菜单、同价格，差距只能来自推荐能力与桌型分配。
-    这就是<b>组织力作为兑现率乘数</b>的直接证据——把最低四位拉到中位数，
-    按其单量估算，年化增收约 <b>63 万元</b>，不需要动一分钱成本。</p>
+    <span class="num">321</span> 元。差异可能反映推荐能力与桌型分配的综合影响。
+    若最低四位提升至中位水平，按现有单量估算，年化增收潜力约 <b>63 万元</b>。</p>
   <div class="chart"><svg id="cStaff" viewBox="0 0 920 360" role="img"
     aria-label="点菜员客单价与折让率对比棒棒糖图"></svg></div>
   <div class="legend">
     <span style="color:var(--ink3)">横轴 = 客单价 ｜ 圆点大小 = 下单量 ｜ 颜色越深 = 折让率越高</span>
   </div>
-  <p class="note">这个发现也是一个警告：客单价高不等于做得对。
-    需要交叉验证桌型分配是否公平（包间分给谁）、以及高客单是否伴随高折让。
-    图中折让率与客单价并不同向，说明差异主要来自推荐结构而非让价。</p>
+  <p class="note">高客单价不必然代表更高销售效能，需校正桌型与包间分配差异。
+    折让率与客单价未呈同向变化，初步表明差异更可能来自推荐结构，而非价格让渡。</p>
 </section>
 
 <!-- ============ 10 数据缺口 ============ -->
 <section class="reveal">
   <div class="eyebrow"><span class="no">10</span><span>数据缺口 · 本体层的诚实清单</span></div>
-  <h2>这一个源头能走到哪，以及走不到哪</h2>
-  <p>上面九节全部来自一个 POS 导出。但从「毛收入模式」走到「净利润决策」，
-    还有七道缺口。最致命的一条：<b>成本价字段存在，但 100% 为空</b>——
-    这意味着真实毛利、菜品盈利结构、采购损耗三条线现在全部算不出来。</p>
+  <h2>当前数据可支持毛收入分析，尚不支持净利决策</h2>
+  <p>现有 POS 数据可支持九项毛收入相关分析，但距离净利决策仍有七项关键数据缺口。
+    其中<b>成本价字段可用率为 0%</b>，因此暂不支持真实毛利、菜品盈利结构与采购损耗分析。</p>
   <table id="tQuality"><thead><tr><th>字段 / 数据集</th><th style="text-align:right">可用率</th>
     <th>失去什么</th><th>从哪里补</th></tr></thead><tbody></tbody></table>
   <div class="chart" style="margin-top:26px"><svg id="cGap" viewBox="0 0 920 240" role="img"
@@ -364,10 +373,9 @@ td b{color:var(--ink)}
 <!-- ============ 11 五层大脑 ============ -->
 <section class="reveal">
   <div class="eyebrow"><span class="no">11</span><span>五层大脑 · 这份数据落在哪一层</span></div>
-  <h2>从 59 个字段到一个净利润目标函数</h2>
-  <p>把这份 POS 数据放进五层结构里看，就知道它填满了 L0 的一格、能支撑 L2 的两条预测线，
-    但 L3 的利润目标函数还差三个输入。绿色是本次数据已覆盖，土金是需补内部数据，
-    朱砂是需补外部数据。</p>
+  <h2>59 个字段对净利目标函数的支撑边界</h2>
+  <p>现有 POS 数据已覆盖部分 L0 数据层，并可支持 L2 的需求与品项预测；
+    L3 净利目标函数仍缺少成本、人工及固定费用等关键输入。颜色分别表示已覆盖、待补内部数据与待补外部数据。</p>
   <div class="chart"><svg id="cBrain" viewBox="0 0 920 520" role="img"
     aria-label="五层大脑架构图，标注本次数据覆盖情况"></svg></div>
   <div class="legend">
@@ -911,11 +919,11 @@ function axStyle(g){g.classed("ax",true);}
   g.append("text").attr("x",0).attr("y",210).attr("class","lbl").attr("fill",C.gold).text("L2 预测层");
   box(0,220,214,58,"需求预测","星期+时段+趋势 可跑","ok");
   box(232,220,214,58,"品项层次化预测","315 SKU 可跑","ok");
-  box(464,220,214,58,"成本与损耗预测","缺成本价，跑不了","int");
+  box(464,220,214,58,"成本与损耗预测","缺少成本价，暂不支持","int");
   box(696,220,224,58,"复购 / 组织力","样本 1379 人，偏弱","int");
 
   g.append("text").attr("x",0).attr("y",316).attr("class","lbl").attr("fill",C.gold).text("L3 决策层");
-  box(0,326,920,58,"利润目标函数 Π = R(1−f−l−m) − F","本次数据只能算到 R 与折让；f/l/m/F 全部缺失 → 现阶段只能出「毛收入洞察」，不能出净利结论","int");
+  box(0,326,920,58,"利润目标函数 Π = R(1−f−l−m) − F","当前数据支持 R 与折让分析；f/l/m/F 缺失，暂不支持净利结论","int");
 
   g.append("text").attr("x",0).attr("y",422).attr("class","lbl").attr("fill",C.gold).text("L4 执行验收层");
   box(0,432,920,52,"行动清单 + 验收指标 + 回流","菜单下架 / 价格带补位 / 点菜员对标 / 渠道去依赖 — 四条可立即执行","ok");
@@ -933,6 +941,20 @@ if(window.matchMedia("(prefers-reduced-motion: no-preference)").matches){
     e.target.classList.add("in");io.unobserve(e.target);}}),{threshold:.08});
   document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
 }else{document.querySelectorAll(".reveal").forEach(el=>el.classList.add("in"));}
+</script>
+<script>
+function fitPrintModules(){
+  document.querySelectorAll("section").forEach(section=>{
+    let box=section.querySelector(":scope > .print-fit");
+    if(!box){box=document.createElement("div");box.className="print-fit";box.append(...section.childNodes);section.append(box)}
+    box.style.transform="none";
+    const cs=getComputedStyle(section);
+    const available=section.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);
+    box.style.transform=`scale(${Math.min(1,available/box.scrollHeight)})`;
+  });
+}
+addEventListener("beforeprint",fitPrintModules);
+matchMedia("print").addEventListener("change",event=>{if(event.matches)requestAnimationFrame(fitPrintModules)});
 </script>
 </body>
 </html>

@@ -72,6 +72,8 @@ SOURCE · GLOSSARY (how to read) · CONCLUSION (takeaway) · CONFIDENCE (A/B/C) 
 
 `--sd-font-serif` / `--sd-font-mono` only. Packs: `TIANSIGHT` `songti` `kaiti` `fangsong` `lxgw` `xiaowei` `roboto-mono`. `?font=` or **F**. Print: `@page 16in 9in`, **P** / `?print=1` for PDF. `?export=1` hides workshop chrome and `#sd-explain`. **E** toggles the bottom explain drawer (closed by default). Never emit `<cite` / `cite index=`.
 
+For long-form HTML organized as discrete modules rather than 16:9 slides, each semantic module is one PDF page. Read the module-export rules in `references/quality-checklist.md`; never rely on the browser's automatic pagination to keep a module intact.
+
 ## Workflow
 
 1. Pick L2 job from the 12. Clone `templates/TIANSIGHT/jobs/<job>.html`.

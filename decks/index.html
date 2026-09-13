@@ -40,7 +40,7 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.92em;background:rgba(118,8
 <div class="wrap">
   <header class="hero">
     <p class="cap">Baslide01 · Deck index</p>
-    <h1>Deck 编号。<br><em>定位更新用 D01-D09。</em></h1>
+    <h1>Deck 编号。<br><em>定位更新用 D01-D15。</em></h1>
     <p class="lede">每个成品 deck 有稳定编号。首版汇报拆成 D03.1（MD→侍天）与 D03.2（HTML 导入）。真源：<code>decks.json</code>。不要改 <code>ref/</code>。</p>
     <div class="rule"></div>
   </header>
@@ -78,6 +78,8 @@ fetch("/decks.json").then(function (r) { return r.json(); }).then(function (data
     if (deck.data) {
       links += "<a href='" + esc(deck.data) + "'><span>库</span><b>本稿数据包</b></a>";
     }
+    const projectCode = "P" + String(Number(deck.id.slice(1))).padStart(3, "0");
+    links += "<a href='/projects/" + projectCode + "/history'><span>History</span><b>历史版本</b></a>";
     body += "<div class='vars'>" + links + "</div>";
     card.innerHTML = body;
     out.appendChild(card);

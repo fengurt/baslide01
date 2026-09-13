@@ -55,6 +55,14 @@ Complete every applicable gate before declaring a deck or PDF finished. Record c
 - Inspect the latest PNGs for alignment, font rendering, label collisions, clipping, and missing graphics.
 - Verify project-name filenames, final folder placement, file size shown by the folder index, and HTTP 200 for the folder and every PDF.
 - Do not publish while a temporary chunk directory, stale `deck.pdf`, or intermediate audit file remains in the final folder.
+- Verify the superseded HTML/PDF revision remains accessible from project history and its recorded checksums still match before replacing current-version files.
+
+For long-form module PDFs, replace the 16:9 slide-count check with these mandatory gates:
+
+- Count top-level semantic modules and require PDF page count to match exactly.
+- Verify every module begins and ends on the same PDF page; required result: zero split, clipped, duplicated, or blank modules.
+- Render and inspect every page, not only representative pages. Check the complete bottom edge of tables, SVGs, captions, legends, and notes.
+- Record the minimum whole-module fit scale. A page that passes only by violating the typography floor fails the audit and must be internally reflowed before export.
 
 ## Required audit summary
 

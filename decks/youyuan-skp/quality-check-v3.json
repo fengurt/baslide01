@@ -1,0 +1,33 @@
+{
+  "pages": 52,
+  "pageDimensionsPt": [
+    960,
+    540
+  ],
+  "sourceSha256": "2d7f0755470ae4dec62271514d3dd84388d81a233e5979c7a73a7a62a760464a",
+  "sourceHtmlUnchanged": true,
+  "importedVisibleTextUnchanged": true,
+  "pdfSha256": "70f92088ffe3f57a6125af6ac8a2ae29c1aadfea7bf12c4ac1729b4bf49dd535",
+  "pdfBytes": 1086421,
+  "visualPagesInspected": 52,
+  "clippedRequiredContent": 0,
+  "brokenAssets": 0,
+  "orphanCandidatesAfterExcludingVerticalRails": 0,
+  "textContrastCandidates": 0,
+  "fontsEmbedded": true,
+  "pdfTextMissingOrExtra": 0,
+  "figures": 16,
+  "tables": 39,
+  "wideTables5PlusColumns": 25,
+  "denseTables9PlusRows": 16,
+  "stressOverflowPages": [
+    17,
+    18,
+    29,
+    30,
+    32
+  ],
+  "scope": "Render and export fidelity; business calculations and external claims not independently verified. Accessibility findings remain.",
+  "pdf": "/Users/af/Public/APUCH/IPTrust/TableAI/education01/边江/侍天/游园/游园京梦_北京SKP店_经营洞察与菜单诊断_V3.0.pdf",
+  "importedHtml": "/Users/af/cpro01/0thebrain01/baslide01/decks/youyuan-skp/v3.html"
+}

@@ -1,0 +1,58 @@
+{
+  "fileye": "1.0.0",
+  "identity": {
+    "sha256": "15601db2fdbd32200bacc1a731e9f6ab9f71c03fe59fd4df788bd9287908c355",
+    "size_bytes": 1071345,
+    "legacy_sha1": "a60b9d6b9e9d5649eb9e236a9826bc873f042b03",
+    "legacy_md5": "6fd16f784755ad8010fe924b97838c5c",
+    "blake3": null,
+    "content_hash": {
+      "algorithm": "sha256(strip BOM, normalise line endings, strip trailing newline)",
+      "value": "15601db2fdbd32200bacc1a731e9f6ab9f71c03fe59fd4df788bd9287908c355"
+    },
+    "note": "sha256 identifies these exact bytes; content_hash identifies the data across re-saves"
+  },
+  "type": {
+    "detected": "html",
+    "container": null,
+    "mime": "text/html",
+    "claimed_extension": ".html",
+    "extension_agrees": true
+  },
+  "provenance": {
+    "trusted": {
+      "ingested_at": "2026-09-07T04:46:37.503599+00:00",
+      "ingest_host": "AFs-MacBook-Pro.local",
+      "ingest_os": "Darwin-25.1.0-arm64-arm-64bit-Mach-O",
+      "python": "3.14.7",
+      "fileye_version": "1.0.0",
+      "note": "only as trustworthy as this host and its clock; chain manifests in an append-only log for non-repudiation"
+    },
+    "claimed": {
+      "filesystem": {
+        "path": "/Users/af/Public/APUCH/IPTrust/TableAI/education01/边江/侍天/游园/游园京梦_北京SKP店_经营洞察与菜单诊断_V1.0.html",
+        "filename": "游园京梦_北京SKP店_经营洞察与菜单诊断_V1.0.html",
+        "fs_mtime": "2026-09-07T04:42:54.546695+00:00",
+        "fs_ctime": "2026-09-07T04:43:59.256176+00:00",
+        "fs_birthtime": "2026-09-07T04:42:54.402368+00:00",
+        "note": "filesystem timestamps are user-editable; treat as claims"
+      }
+    }
+  },
+  "structure": {
+    "kind": "text",
+    "encoding": "utf-8",
+    "lines": 117,
+    "chars": 1036722,
+    "line_ending": "LF",
+    "has_bom": false
+  },
+  "lossless": {
+    "layers_present": [
+      "L0_bytes"
+    ],
+    "minimum_lossless_store": "keep the original bytes content-addressed by sha256 (L0); every other layer is derivable from it",
+    "conversion_warning": null
+  },
+  "warnings": []
+}

@@ -1,0 +1,15 @@
+{
+  "pages": 35,
+  "pageDimensionsPt": [
+    960,
+    540
+  ],
+  "visualReview": "All 35 rendered PDF pages reviewed; no clipping, overlapping text, or missing chart labels observed.",
+  "imagesLoaded": true,
+  "sourceHtmlUnchanged": true,
+  "sourceSha256": "15601db2fdbd32200bacc1a731e9f6ab9f71c03fe59fd4df788bd9287908c355",
+  "pdfTextCheck": "Per-page Chinese, Latin and digit character counts: no omissions.",
+  "layoutNote": "Cover H1 reports 4px of glyph overflow, but overflow is visible and rendered text is intact; no change needed.",
+  "scope": "Rendering and export fidelity; business calculations and external claims not independently audited.",
+  "pdf": "/Users/af/Public/APUCH/IPTrust/TableAI/education01/边江/侍天/游园/游园京梦_北京SKP店_经营洞察与菜单诊断_V1.0.pdf"
+}

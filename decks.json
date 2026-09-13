@@ -74,12 +74,12 @@
     {
       "id": "D06",
       "slug": "qingshuiting",
-      "title": "清水亭 · 产品结构诊断",
+      "title": "清水亭 · 千湖河鲜战略提案 V6",
       "href": "/decks/qingshuiting/presentation.html",
       "kind": "import",
-      "canvas": "1440×810",
-      "slides": 296,
-      "source": "ref/htmls/清水亭_产品结构诊断_TIANSIGHT幻灯片 (5).html"
+      "canvas": "1280×720",
+      "slides": 109,
+      "source": "/Users/af/Public/APUCH/IPTrust/TableAI/education01/边江/侍天/清水亭/data20260731/清水亭TINGS-千湖河鲜战略提案-V6-109页.html"
     },
     {
       "id": "D07",
@@ -146,6 +146,122 @@
           "source": "/Users/af/Downloads/277/侍天TIANSIGHT_企业介绍_源文件.html"
         }
       ]
+    },
+    {
+      "id": "D10",
+      "slug": "qingshuiting-demo",
+      "title": "清水亭 · 经营模式与数据血缘",
+      "href": "/decks/qingshuiting-demo/",
+      "kind": "hub",
+      "canvas": "A4 portrait",
+      "variants": [
+        {
+          "id": "D10.1",
+          "title": "侍天本体 · 字段与血缘",
+          "href": "/decks/qingshuiting-demo/侍天本体_字段与血缘.html",
+          "kind": "import-optimized",
+          "canvas": "A4 portrait",
+          "slides": 6,
+          "source": "decks/qingshuiting-demo/侍天本体_字段与血缘.html"
+        },
+        {
+          "id": "D10.2",
+          "title": "清水亭经营模式长卷",
+          "href": "/decks/qingshuiting-demo/清水亭经营模式长卷.html",
+          "kind": "import-optimized",
+          "canvas": "A4 portrait",
+          "slides": 12,
+          "source": "decks/qingshuiting-demo/清水亭经营模式长卷.html"
+        }
+      ]
+    },
+    {
+      "id": "D11",
+      "slug": "tiansight-owner-value",
+      "title": "侍天 · 业主价值提案",
+      "href": "/decks/tiansight-owner-value/presentation.html",
+      "kind": "tiansight-v2",
+      "canvas": "2880×1620",
+      "slides": 57,
+      "source": "/Users/af/.codex/attachments/0cff1d9d-0662-4861-a007-0d020f3dc57c/pasted-text.txt"
+    },
+    {
+      "id": "D12",
+      "slug": "jiuchuan-six-month",
+      "title": "九川文化 · 双店诊断与六个月陪跑方案",
+      "href": "/decks/jiuchuan-six-month/v1.2.html",
+      "kind": "import-optimized",
+      "canvas": "1280×720",
+      "slides": 78,
+      "source": "/Users/af/Public/APUCH/IPTrust/TableAI/education01/边江/侍天/沧州风竹/九川文化-双店诊断与六个月陪跑方案-V1.2.html",
+      "variants": [
+        {
+          "href": "/decks/jiuchuan-six-month/v1.2.html",
+          "kind": "import-optimized",
+          "canvas": "1280×720",
+          "slides": 78,
+          "source": "/Users/af/Public/APUCH/IPTrust/TableAI/education01/边江/侍天/沧州风竹/九川文化-双店诊断与六个月陪跑方案-V1.2.html",
+          "id": "D12.2",
+          "title": "V1.2 · 双店诊断与六个月陪跑方案"
+        },
+        {
+          "href": "/decks/jiuchuan-six-month/presentation.html",
+          "kind": "import-optimized",
+          "canvas": "1280×720",
+          "slides": 64,
+          "source": "/Users/af/Public/APUCH/IPTrust/TableAI/education01/边江/侍天/沧州风竹/九川文化-双店诊断与六个月陪跑方案-V1.html",
+          "id": "D12.1",
+          "title": "V1 · 双店诊断与六个月陪跑方案"
+        }
+      ]
+    },
+    {
+      "id": "D13",
+      "slug": "youyuan-skp",
+      "title": "游园京梦 · 北京SKP店经营洞察与菜单诊断",
+      "href": "/decks/youyuan-skp/v3.html",
+      "kind": "import",
+      "canvas": "1280×720",
+      "slides": 52,
+      "source": "/Users/af/Public/APUCH/IPTrust/TableAI/education01/边江/侍天/游园/游园京梦_北京SKP店_经营洞察与菜单诊断_V3.0.html",
+      "variants": [
+        {
+          "id": "D13.3",
+          "title": "V3.0 · 经营洞察与菜单诊断（52页）",
+          "href": "/decks/youyuan-skp/v3.html",
+          "kind": "import",
+          "canvas": "1280×720",
+          "slides": 52
+        },
+        {
+          "id": "D13.1",
+          "title": "V1.0 · 经营洞察与菜单诊断（35页）",
+          "href": "/decks/youyuan-skp/presentation.html",
+          "kind": "import",
+          "canvas": "1280×720",
+          "slides": 35
+        }
+      ]
+    },
+    {
+      "id": "D14",
+      "slug": "chaofa-nanping-display",
+      "title": "潮发珠海南屏 · 展陈升级前瞻洞察",
+      "href": "/decks/chaofa-nanping-display/presentation.html",
+      "kind": "import-optimized",
+      "canvas": "1280×720",
+      "slides": 90,
+      "source": "/Users/af/Public/APUCH/IPTrust/TableAI/education01/边江/侍天/潮发/升级档口/files (31)/潮发珠海南屏A3002a_展陈升级前瞻洞察报告_V1.1.html"
+    },
+    {
+      "id": "D15",
+      "slug": "taiyuan-longcheng-brand",
+      "title": "太原龙城北街 · 新晋菜品牌提案",
+      "href": "/decks/taiyuan-longcheng-brand/presentation.html",
+      "kind": "import-optimized",
+      "canvas": "1280×720",
+      "slides": 61,
+      "source": "/Users/af/Public/APUCH/IPTrust/TableAI/education01/边江/侍天/郭强项目/New Folder With Items/太原龙城北街新晋菜品牌提案_16x9_侍天_20260913.html"
     }
   ]
 }

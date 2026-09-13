@@ -153,6 +153,7 @@ def coverage(snapshot: dict, landing_html: str, slides_html: str) -> dict:
         "project": snapshot["project"]["code"],
         "scenario": snapshot["scenario"]["code"],
         "revision": snapshot["revision"]["code"],
+        "revision_version": snapshot["revision"]["version"],
         "field_count": len(expected_fields),
         "asset_count": len(expected_assets),
         "character_count": sum(len(str(field["value"])) for field in snapshot["fields"]),
