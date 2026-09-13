@@ -23,5 +23,8 @@ try:
     try:s.publish(draft,rendered)
     except Conflict:pass
     else:raise AssertionError('stale rendered artifacts published')
-    print('PASS missing revision, invalid scenario, stale override, concurrent publish')
+    before=s.snapshot('P009','P009.SCN.SALES','draft')['revision']['version']
+    s.add_asset(draft,field['module_code'],'dom-image','test','test.txt','text/plain',b'test')
+    assert s.snapshot('P009','P009.SCN.SALES','draft')['revision']['version']==before+1
+    print('PASS missing revision, invalid scenario, stale override, concurrent publish, asset revision')
 finally:s.close()

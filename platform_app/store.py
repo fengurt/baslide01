@@ -308,6 +308,7 @@ class Store:
             ).fetchone()["id"]
             conn.execute("INSERT INTO asset_binding(asset_id,project_revision_id,asset_version_id) VALUES (%s,%s,%s)", (aid, draft["id"], avid))
             conn.execute("INSERT INTO change_event(project_id,revision_id,kind,payload) VALUES (%s,%s,'asset.added',%s)", (draft["project_id"], draft["id"], json.dumps({"asset": code})))
+            conn.execute("UPDATE project_revision SET version=version+1 WHERE id=%s", (draft["id"],))
             return {"code": code, "sha256": sha256, "object_path": object_path}
 
     def snapshot(self, project_value: str, scenario_value: str, revision: str = "published") -> dict:
